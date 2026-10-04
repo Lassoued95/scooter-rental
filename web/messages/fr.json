@@ -1,0 +1,16 @@
+{
+  "layout": {
+    "brand": "Location Scooter Djerba",
+    "book": "Réserver",
+    "footer": "Mezraya, Djerba, Tunisie",
+    "call": "Appeler",
+    "whatsapp": "Contacter sur WhatsApp",
+    "toggleTheme": "Changer de thème",
+    "language": "Changer de langue"
+  },
+  "home": {
+    "eyebrow": "Mezraya · Djerba · Tunisie",
+    "title": "À vous Djerba.",
+    "description": "La fondation du site est prête. La découverte des scooters et des excursions arrive à l’étape suivante."
+  }
+}

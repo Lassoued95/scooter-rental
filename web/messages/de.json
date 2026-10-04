@@ -1,0 +1,16 @@
+{
+  "layout": {
+    "brand": "Rollerverleih Djerba",
+    "book": "Jetzt buchen",
+    "footer": "Mezraya, Djerba, Tunesien",
+    "call": "Anrufen",
+    "whatsapp": "Kontakt über WhatsApp",
+    "toggleTheme": "Farbschema wechseln",
+    "language": "Sprache ändern"
+  },
+  "home": {
+    "eyebrow": "Mezraya · Djerba · Tunesien",
+    "title": "Djerba gehört dir.",
+    "description": "Das Grundgerüst der Website steht. Roller und Inselrundfahrten folgen im nächsten Schritt."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "layout": {
+    "brand": "Scooter Rental Djerba",
+    "book": "Book now",
+    "footer": "Mezraya, Djerba, Tunisia",
+    "call": "Call",
+    "whatsapp": "Contact us on WhatsApp",
+    "toggleTheme": "Toggle color theme",
+    "language": "Change language"
+  },
+  "home": {
+    "eyebrow": "Mezraya · Djerba · Tunisia",
+    "title": "Djerba is yours.",
+    "description": "The site foundation is ready. Scooter rentals and island tours are coming in the next step."
+  }
+}
