@@ -1,4 +1,5 @@
 import { MessageCircle } from "lucide-react";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "./locale-switcher";
@@ -11,9 +12,14 @@ export async function SiteHeader() {
     <header className="site-header">
       <div className="header-inner">
         <Link aria-label={t("brand")} className="brand" href="/">
-          <span aria-hidden="true" className="brand-mark">
-            <span>S</span>
-          </span>
+          <Image
+            alt=""
+            className="brand-logo"
+            height={80}
+            priority
+            src="/logos/location-scooter-djerba-logo.png"
+            width={80}
+          />
           <span>{t("brand")}</span>
         </Link>
         <div className="header-actions">

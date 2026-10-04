@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
 export async function SiteFooter() {
@@ -8,9 +9,13 @@ export async function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-inner">
         <Link className="brand" href="/">
-          <span aria-hidden="true" className="brand-mark">
-            <span>S</span>
-          </span>
+          <Image
+            alt=""
+            className="brand-logo brand-logo-footer"
+            height={64}
+            src="/logos/location-scooter-djerba-logo.png"
+            width={64}
+          />
           <span>{t("brand")}</span>
         </Link>
         <div className="footer-contact">
