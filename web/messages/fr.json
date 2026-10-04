@@ -13,9 +13,10 @@
     "description": "Location de scooters et excursions guidées à Djerba, en Tunisie."
   },
   "home": {
-    "eyebrow": "Mezraya · Djerba · Tunisie",
-    "title": "À vous Djerba.",
-    "description": "La fondation du site est prête. La découverte des scooters et des excursions arrive à l’étape suivante."
+    "title": "Louez. Roulez. Vivez Djerba.",
+    "description": "Partez à la découverte de Djerba en toute liberté : plages secrètes, villages authentiques, marchés locaux et petites routes pleines de charme.",
+    "tagline": "Votre scooter, votre itinéraire, votre aventure.",
+    "imageAlt": "Une touriste en scooter bleu et blanc dans une rue blanchie à la chaux de Djerba"
   },
   "styleguide": {
     "eyebrow": "Système visuel",

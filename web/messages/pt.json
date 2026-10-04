@@ -14,8 +14,10 @@
   },
   "home": {
     "eyebrow": "Mezraya · Djerba · Tunísia",
-    "title": "Descubra Djerba ao seu ritmo.",
-    "description": "A estrutura do site está pronta. O aluguer de scooters e os passeios pela ilha chegam na próxima etapa."
+    "title": "Alugue. Conduza. Viva Djerba. ",
+    "description": "Descubra Djerba com toda a liberdade: praias escondidas, aldeias autênticas, mercados locais e pequenas estradas cheias de encanto.",
+    "tagline": "A sua scooter, o seu percurso, a sua aventura.",
+    "imageAlt": "Uma turista numa scooter azul e branca numa rua caiada de branco em Djerba"
   },
   "styleguide": {
     "eyebrow": "Sistema visual",

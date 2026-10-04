@@ -14,8 +14,10 @@
   },
   "home": {
     "eyebrow": "Mezraya · Djerba · Tunesien",
-    "title": "Djerba gehört dir.",
-    "description": "Das Grundgerüst der Website steht. Roller und Inselrundfahrten folgen im nächsten Schritt."
+    "title": "Mieten. Losfahren. Djerba erleben. ",
+    "description": "Entdecke Djerba ganz frei: versteckte Strände, authentische Dörfer, lokale Märkte und kleine Straßen voller Charme.",
+    "tagline": "Dein Roller, deine Route, dein Abenteuer.",
+    "imageAlt": "Eine Touristin fährt mit einem blau-weißen Roller durch eine weiß getünchte Straße auf Djerba"
   },
   "styleguide": {
     "eyebrow": "Visuelles System",

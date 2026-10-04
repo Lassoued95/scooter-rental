@@ -14,8 +14,10 @@
   },
   "home": {
     "eyebrow": "Mezraya · Dżerba · Tunezja",
-    "title": "Odkryj Dżerbę po swojemu.",
-    "description": "Podstawy strony są już gotowe. W kolejnym etapie dodamy wynajem skuterów i wycieczki po wyspie."
+    "title": "Wynajmij. Ruszaj. Poczuj Dżerbę. ",
+    "description": "Odkrywaj Dżerbę na własnych zasadach: ukryte plaże, autentyczne wioski, lokalne targi i urokliwe, wąskie drogi.",
+    "tagline": "Twój skuter, Twoja trasa, Twoja przygoda.",
+    "imageAlt": "Turystka na niebiesko-białym skuterze na ulicy z bielonymi domami na Dżerbie"
   },
   "styleguide": {
     "eyebrow": "System wizualny",
