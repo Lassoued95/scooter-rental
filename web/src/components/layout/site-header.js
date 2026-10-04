@@ -23,8 +23,8 @@ export async function SiteHeader() {
           <span>{t("brand")}</span>
         </Link>
         <div className="header-actions">
-          <LocaleSwitcher />
           <ThemeToggle />
+          <LocaleSwitcher />
           <a
             className="book-link"
             href="https://wa.me/21628340240"

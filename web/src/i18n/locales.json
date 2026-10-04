@@ -1,0 +1,8 @@
+[
+  { "code": "fr", "nativeName": "Français", "flag": "fr" },
+  { "code": "en", "nativeName": "English", "flag": "gb" },
+  { "code": "de", "nativeName": "Deutsch", "flag": "de" },
+  { "code": "it", "nativeName": "Italiano", "flag": "it" },
+  { "code": "pl", "nativeName": "Polski", "flag": "pl" },
+  { "code": "pt", "nativeName": "Português", "flag": "pt" }
+]

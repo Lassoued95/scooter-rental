@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "@wrksz/themes/next";
+import "flag-icons/css/flag-icons.min.css";
 import { routing } from "@/i18n/routing";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -11,13 +12,13 @@ import "../globals.css";
 
 const sans = DM_Sans({
   variable: "--font-dm-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
 const display = Playfair_Display({
   variable: "--font-playfair",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
@@ -28,24 +29,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-
-  const metadata = {
-    fr: {
-      title: "Location Scooter Djerba",
-      description: "Location de scooters et excursions à Djerba, Tunisie.",
-    },
-    en: {
-      title: "Scooter Rental Djerba",
-      description: "Scooter rentals and guided tours in Djerba, Tunisia.",
-    },
-    de: {
-      title: "Rollerverleih Djerba",
-      description: "Rollerverleih und geführte Touren auf Djerba, Tunesien.",
-    },
-  };
+  const t = await getTranslations({ locale, namespace: "metadata" });
 
   return {
-    ...metadata[locale],
+    title: t("title"),
+    description: t("description"),
     alternates: {
       languages: Object.fromEntries(
         routing.locales.map((supportedLocale) => [

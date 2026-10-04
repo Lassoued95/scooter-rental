@@ -1,10 +1,10 @@
 import { z } from "zod";
 
-export const localizedTextSchema = z.object({
-  fr: z.string().min(1),
-  en: z.string().min(1),
-  de: z.string().min(1),
-});
+export const localizedTextSchema = z
+  .record(z.string(), z.string().min(1))
+  .refine((translations) => Boolean(translations.en), {
+    message: "An English translation is required for fallback.",
+  });
 
 export const priceTierSchema = z.object({
   minDays: z.number().int().positive(),
@@ -22,20 +22,14 @@ export const productSchema = z.object({
   stock: z.number().int().nonnegative().optional(),
   capacityPerSlot: z.number().int().positive().optional(),
   durationHours: z.number().positive().optional(),
-  highlights: z
-    .object({
-      fr: z.array(z.string()),
-      en: z.array(z.string()),
-      de: z.array(z.string()),
-    })
-    .optional(),
-  meetingPoint: z.string().optional(),
+  highlights: z.record(z.string(), z.array(z.string())).optional(),
+  meetingPoint: localizedTextSchema.optional(),
   specs: z
     .object({
       engineCc: z.number().int().positive(),
       passengers: z.number().int().positive(),
       luggage: z.number().int().nonnegative(),
-      fuel: z.string(),
+      fuel: localizedTextSchema,
     })
     .optional(),
   active: z.boolean(),
@@ -77,7 +71,7 @@ export const reviewSchema = z.object({
   id: z.string().min(1),
   author: z.string().min(1),
   rating: z.number().min(1).max(5),
-  text: z.string().min(1),
+  text: localizedTextSchema,
   date: z.string().date(),
 });
 

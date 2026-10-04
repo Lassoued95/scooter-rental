@@ -8,6 +8,10 @@
     "toggleTheme": "Toggle color theme",
     "language": "Change language"
   },
+  "metadata": {
+    "title": "Scooter Rental Djerba",
+    "description": "Scooter rentals and guided tours in Djerba, Tunisia."
+  },
   "home": {
     "eyebrow": "Mezraya · Djerba · Tunisia",
     "title": "Djerba is yours.",

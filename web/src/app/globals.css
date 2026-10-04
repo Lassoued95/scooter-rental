@@ -165,15 +165,13 @@ a {
 }
 
 .header-actions,
-.footer-contact,
-.locale-links {
+.footer-contact {
   display: flex;
   align-items: center;
   gap: 0.6rem;
 }
 
-.icon-button,
-.locale-link {
+.icon-button {
   display: inline-flex;
   min-height: 2.6rem;
   align-items: center;
@@ -201,16 +199,101 @@ a {
   display: block;
 }
 
-.locale-link {
-  min-width: 2.6rem;
-  padding-inline: 0.7rem;
-  font-size: 0.78rem;
+.locale-switcher {
+  position: relative;
+}
+
+.locale-trigger {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
   font-weight: 700;
 }
 
-.locale-link[aria-current="page"] {
-  border-color: var(--secondary);
-  color: var(--secondary);
+.locale-trigger:hover,
+.locale-trigger[aria-expanded="true"] {
+  background: var(--surface-elevated);
+}
+
+.locale-chevron {
+  transition: transform 150ms ease;
+}
+
+.locale-trigger[aria-expanded="true"] .locale-chevron {
+  transform: rotate(180deg);
+}
+
+.locale-dropdown {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 0.55rem);
+  right: 0;
+  width: 14.5rem;
+  overflow: hidden;
+  border: 1px solid #34466b;
+  border-radius: 0.9rem;
+  padding: 0.35rem;
+  background: #0a1228;
+  box-shadow: 0 16px 36px rgb(10 18 40 / 28%);
+  color: #fff4e4;
+  transform-origin: top right;
+}
+
+.locale-option {
+  display: flex;
+  width: 100%;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.8rem;
+  border: 0;
+  border-bottom: 1px solid #263657;
+  padding: 0.6rem 0.7rem;
+  background: transparent;
+  color: #fff4e4;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.locale-option:last-child {
+  border-bottom: 0;
+}
+
+.locale-option:hover,
+.locale-option:focus-visible {
+  background: #16254a;
+}
+
+.locale-option.is-current {
+  color: #ff9140;
+  font-weight: 700;
+}
+
+.locale-flag {
+  display: inline-block;
+  width: 1.35rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  border-radius: 0.15rem;
+  background-size: cover;
+}
+
+.locale-native-name {
+  flex: 1;
+}
+
+.locale-check {
+  color: #ff7a1a;
 }
 
 .book-link,
@@ -288,8 +371,7 @@ a {
   transform: translateY(-2px);
 }
 
-.icon-button:hover,
-.locale-link:hover {
+.icon-button:hover {
   background: var(--surface-elevated);
 }
 
@@ -628,18 +710,26 @@ a {
     gap: 0.35rem;
   }
 
+  .locale-trigger {
+    min-height: 2.4rem;
+    gap: 0.3rem;
+    padding-inline: 0.55rem;
+    font-size: 0.78rem;
+  }
+
+  .locale-dropdown {
+    width: min(22rem, calc(100vw - 1.5rem));
+  }
+
+  .locale-option {
+    min-height: 2.9rem;
+  }
+
   .book-link {
     min-height: 2.4rem;
     gap: 0.3rem;
     padding-inline: 0.65rem;
     font-size: 0.78rem;
-  }
-
-  .locale-link {
-    min-width: 2.3rem;
-    min-height: 2.4rem;
-    padding-inline: 0.45rem;
-    font-size: 0.72rem;
   }
 
   .icon-button {

@@ -1,19 +1,13 @@
 /**
- * @typedef {"fr" | "en" | "de"} Locale
+ * @typedef {string} Locale
  */
 
 /**
- * @typedef {Object} LocalizedText
- * @property {string} fr
- * @property {string} en
- * @property {string} de
+ * @typedef {Record<string, string>} LocalizedText
  */
 
 /**
- * @typedef {Object} LocalizedList
- * @property {string[]} fr
- * @property {string[]} en
- * @property {string[]} de
+ * @typedef {Record<string, string[]>} LocalizedList
  */
 
 /**
@@ -36,7 +30,7 @@
  * @property {number} [durationHours]
  * @property {LocalizedList} [highlights]
  * @property {string} [meetingPoint]
- * @property {{ engineCc: number, passengers: number, luggage: number, fuel: string }} [specs]
+ * @property {{ engineCc: number, passengers: number, luggage: number, fuel: LocalizedText }} [specs]
  * @property {boolean} active
  */
 
@@ -74,7 +68,7 @@
  * @property {string} id
  * @property {string} author
  * @property {number} rating
- * @property {string} text
+ * @property {LocalizedText} text
  * @property {string} date
  */
 
