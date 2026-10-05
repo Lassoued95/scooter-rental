@@ -6,7 +6,13 @@
     "call": "Anrufen",
     "whatsapp": "Kontakt über WhatsApp",
     "toggleTheme": "Farbschema wechseln",
-    "language": "Sprache ändern"
+    "language": "Sprache ändern",
+    "mainNavigation": "Hauptnavigation",
+    "navScooters": "Rollerverleih",
+    "navAbout": "Über uns",
+    "navFaq": "FAQ",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen"
   },
   "metadata": {
     "title": "Rollerverleih Djerba",
@@ -63,5 +69,43 @@
     "focusRing": "Fokusring",
     "success": "Erfolg",
     "error": "Fehler"
+  },
+  "about": {
+    "metaTitle": "Über uns | Roller- und E-Bike-Verleih auf Djerba",
+    "metaDescription": "Roller- und E-Bike-Verleih auf Djerba, gegenüber dem Hotel Zenon. Seit 2023. Helm, Schloss und Versicherung inklusive.",
+    "eyebrow": "Über uns",
+    "title": "Djerba ganz frei entdecken",
+    "intro": "Seit 2023 vermieten wir Roller und Fahrräder an Reisende, die die Insel in ihrem eigenen Tempo erkunden möchten.",
+    "storyTitle": "Unsere Geschichte",
+    "storyP1": "Location Scooter Djerba wurde 2023 im Touristengebiet direkt gegenüber dem Hotel Zenon gegründet.",
+    "storyP2": "Unsere Idee ist einfach: Wir bieten moderne Fahrzeuge in ausgezeichnetem Zustand und einen Service ohne Überraschungen. Helm, Schloss und Versicherung sind inklusive, die Abholung an Ihrem Hotel ist kostenlos.",
+    "fleetTitle": "Unsere Flotte",
+    "fleetIntro": "Das passende Fahrzeug für jede Art, die Insel zu entdecken.",
+    "fleet": {
+      "scooter50": { "name": "50-ccm-Roller", "text": "Leicht und einfach zu fahren, ideal für kurze Ausflüge und kleinere Straßen." },
+      "scooter125": { "name": "125-ccm-Roller", "text": "Mehr Leistung und Komfort, um die ganze Insel zu erkunden." },
+      "electricScooter": { "name": "Elektroroller", "text": "Leise und angenehm unterwegs – ganz ohne Motorengeräusch." },
+      "electricBike": { "name": "E-Bike", "text": "Fahren Sie mühelos, selbst unter der Sonne von Djerba." },
+      "bike": { "name": "Klassisches Fahrrad", "text": "Für entspannte Fahrten im eigenen Tempo." }
+    },
+    "storyImageAlt": "Djerba mit dem Roller entdecken",
+    "mapTitle": "Karte: Location Scooter Djerba",
+    "whatsappMessage": "Hallo, ich möchte auf Djerba ein Fahrzeug mieten.",
+    "includedTitle": "Bei jeder Miete inklusive",
+    "included": {
+      "helmet": "Helm inklusive",
+      "lock": "Schloss inklusive",
+      "insurance": "Versicherung inklusive",
+      "pickup": "Kostenlose Abholung an Ihrem Hotel",
+      "condition": "Moderne Fahrzeuge in ausgezeichnetem Zustand",
+      "deposit": "Keine Kaution"
+    },
+    "locationTitle": "So finden Sie uns",
+    "locationText": "Touristengebiet von Djerba, gegenüber dem Hotel Zenon.",
+    "directions": "Route anzeigen",
+    "ctaTitle": "Bereit für die Fahrt?",
+    "ctaText": "Schreiben Sie uns auf WhatsApp oder buchen Sie online.",
+    "ctaBook": "Jetzt buchen",
+    "ctaWhatsapp": "WhatsApp"
   }
 }

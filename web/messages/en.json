@@ -6,7 +6,13 @@
     "call": "Call",
     "whatsapp": "Contact us on WhatsApp",
     "toggleTheme": "Toggle color theme",
-    "language": "Change language"
+    "language": "Change language",
+    "mainNavigation": "Main navigation",
+    "navScooters": "Scooter rental",
+    "navAbout": "About",
+    "navFaq": "FAQ",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "metadata": {
     "title": "Scooter Rental Djerba",
@@ -63,5 +69,43 @@
     "focusRing": "Focus ring",
     "success": "Success",
     "error": "Error"
+  },
+  "about": {
+    "metaTitle": "About | Scooter and e-bike rental in Djerba",
+    "metaDescription": "Scooter and electric bike rental in Djerba, opposite Hotel Zenon. Since 2023. Helmet, lock, and insurance included.",
+    "eyebrow": "About us",
+    "title": "Discover Djerba with complete freedom",
+    "intro": "Since 2023, we have rented scooters and bicycles to travelers who want to explore the island at their own pace.",
+    "storyTitle": "Our story",
+    "storyP1": "Location Scooter Djerba started in 2023 in the tourist area, directly opposite Hotel Zenon.",
+    "storyP2": "Our idea is simple: offer recent vehicles in excellent condition and service with no surprises. A helmet, lock, and insurance are included, and pickup at your hotel is free.",
+    "fleetTitle": "Our fleet",
+    "fleetIntro": "A vehicle for every way of discovering the island.",
+    "fleet": {
+      "scooter50": { "name": "50cc scooter", "text": "Light and easy to ride, ideal for short trips and smaller roads." },
+      "scooter125": { "name": "125cc scooter", "text": "More power and comfort for exploring the whole island." },
+      "electricScooter": { "name": "Electric scooter", "text": "Quiet and enjoyable for getting around without the noise." },
+      "electricBike": { "name": "Electric bike", "text": "Ride with less effort, even under the Djerba sun." },
+      "bike": { "name": "Classic bicycle", "text": "For relaxed rides at your own pace." }
+    },
+    "storyImageAlt": "Discovering Djerba by scooter",
+    "mapTitle": "Map: Location Scooter Djerba",
+    "whatsappMessage": "Hello, I would like to rent a vehicle in Djerba.",
+    "includedTitle": "Included with every rental",
+    "included": {
+      "helmet": "Helmet included",
+      "lock": "Lock included",
+      "insurance": "Insurance included",
+      "pickup": "Free pickup at your hotel",
+      "condition": "Recent vehicles in excellent condition",
+      "deposit": "No deposit"
+    },
+    "locationTitle": "Where to find us",
+    "locationText": "Djerba tourist area, opposite Hotel Zenon.",
+    "directions": "Get directions",
+    "ctaTitle": "Ready to ride?",
+    "ctaText": "Message us on WhatsApp or book online.",
+    "ctaBook": "Book now",
+    "ctaWhatsapp": "WhatsApp"
   }
 }

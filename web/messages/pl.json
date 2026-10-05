@@ -6,7 +6,13 @@
     "call": "Zadzwoń",
     "whatsapp": "Napisz do nas na WhatsAppie",
     "toggleTheme": "Zmień motyw",
-    "language": "Zmień język"
+    "language": "Zmień język",
+    "mainNavigation": "Nawigacja główna",
+    "navScooters": "Wynajem skuterów",
+    "navAbout": "O nas",
+    "navFaq": "FAQ",
+    "openMenu": "Otwórz menu",
+    "closeMenu": "Zamknij menu"
   },
   "metadata": {
     "title": "Wypożyczalnia skuterów na Dżerbie",
@@ -63,5 +69,43 @@
     "focusRing": "Obramowanie fokusu",
     "success": "Sukces",
     "error": "Błąd"
+  },
+  "about": {
+    "metaTitle": "O nas | Wynajem skuterów i rowerów elektrycznych na Dżerbie",
+    "metaDescription": "Wynajem skuterów i rowerów elektrycznych na Dżerbie, naprzeciwko hotelu Zenon. Działamy od 2023 roku. Kask, zapięcie i ubezpieczenie w cenie.",
+    "eyebrow": "O nas",
+    "title": "Odkrywaj Dżerbę bez ograniczeń",
+    "intro": "Od 2023 roku wynajmujemy skutery i rowery podróżnym, którzy chcą odkrywać wyspę we własnym tempie.",
+    "storyTitle": "Nasza historia",
+    "storyP1": "Location Scooter Djerba powstała w 2023 roku w strefie turystycznej, tuż naprzeciwko hotelu Zenon.",
+    "storyP2": "Nasz pomysł jest prosty: oferować nowoczesne pojazdy w doskonałym stanie i obsługę bez niespodzianek. Kask, zapięcie i ubezpieczenie są w cenie, a odbiór przy hotelu jest bezpłatny.",
+    "fleetTitle": "Nasza flota",
+    "fleetIntro": "Pojazd na każdy sposób odkrywania wyspy.",
+    "fleet": {
+      "scooter50": { "name": "Skuter 50 cm³", "text": "Lekki i łatwy w prowadzeniu, idealny na krótkie przejażdżki i mniejsze drogi." },
+      "scooter125": { "name": "Skuter 125 cm³", "text": "Więcej mocy i komfortu podczas zwiedzania całej wyspy." },
+      "electricScooter": { "name": "Skuter elektryczny", "text": "Cichy i wygodny sposób poruszania się bez hałasu." },
+      "electricBike": { "name": "Rower elektryczny", "text": "Jedź bez wysiłku, nawet w słońcu Dżerby." },
+      "bike": { "name": "Rower klasyczny", "text": "Na spokojne przejażdżki we własnym tempie." }
+    },
+    "storyImageAlt": "Odkrywanie Dżerby na skuterze",
+    "mapTitle": "Mapa: Location Scooter Djerba",
+    "whatsappMessage": "Dzień dobry, chcę wynająć pojazd na Dżerbie.",
+    "includedTitle": "W cenie każdego wynajmu",
+    "included": {
+      "helmet": "Kask w cenie",
+      "lock": "Zapięcie w cenie",
+      "insurance": "Ubezpieczenie w cenie",
+      "pickup": "Bezpłatny odbiór przy hotelu",
+      "condition": "Nowoczesne pojazdy w doskonałym stanie",
+      "deposit": "Bez kaucji"
+    },
+    "locationTitle": "Gdzie nas znaleźć",
+    "locationText": "Strefa turystyczna Dżerby, naprzeciwko hotelu Zenon.",
+    "directions": "Wyznacz trasę",
+    "ctaTitle": "Gotowy do drogi?",
+    "ctaText": "Napisz do nas na WhatsApp lub zarezerwuj online.",
+    "ctaBook": "Zarezerwuj",
+    "ctaWhatsapp": "WhatsApp"
   }
 }

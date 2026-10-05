@@ -1,105 +1,206 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Button } from "@/components/ui/button";
 
 const swatches = [
-  ["background", "--background", "#FFF8EC", "#0A1228"],
-  ["surface", "--surface", "#FFFFFF", "#111D3A"],
-  ["surfaceElevated", "--surface-elevated", "#F2EBDF", "#1B2C50"],
-  ["text", "--text", "#16254A", "#FFF4E4"],
-  ["muted", "--text-muted", "#58677F", "#BDC9DC"],
-  ["border", "--border", "#858D99", "#7182A0"],
-  ["primary", "--primary", "#FF7A1A", "#FF7A1A"],
-  ["primaryHover", "--primary-hover", "#FF9140", "#FF9140"],
-  ["secondary", "--secondary", "#16254A", "#58B8F0"],
-  ["accent", "--accent", "#58B8F0", "#58B8F0"],
-  ["whatsapp", "--whatsapp", "#1FAF5A", "#25D366"],
-  ["focusRing", "--focus-ring", "#16254A", "#58B8F0"],
-  ["success", "--success", "#1C633E", "#85E0A8"],
-  ["error", "--error", "#A5242A", "#FFB4AB"],
+  ["background", "--background"],
+  ["surface", "--surface"],
+  ["surfaceElevated", "--surface-elevated"],
+  ["text", "--text"],
+  ["muted", "--text-muted"],
+  ["border", "--border"],
+  ["primary", "--primary"],
+  ["primaryHover", "--primary-hover"],
+  ["secondary", "--secondary"],
+  ["accent", "--accent"],
+  ["whatsapp", "--whatsapp"],
+  ["focusRing", "--focus-ring"],
+  ["success", "--success"],
+  ["error", "--error"],
 ];
 
-function Swatches({ dark, t }) {
+const lightThemeVariables = Object.fromEntries(
+  [
+    "background",
+    "surface",
+    "surface-elevated",
+    "text",
+    "text-muted",
+    "border",
+    "primary",
+    "primary-hover",
+    "primary-foreground",
+    "secondary",
+    "secondary-hover",
+    "secondary-foreground",
+    "accent",
+    "accent-foreground",
+    "whatsapp",
+    "focus-ring",
+    "success",
+    "success-background",
+    "error",
+    "error-background",
+    "brand-section",
+    "section-text",
+  ].map((token) => [`--${token}`, `var(--palette-light-${token})`]),
+);
+
+function Swatches({ t }) {
   return (
-    <div className="styleguide-swatches">
-      {swatches.map(([key, token, lightValue, darkValue]) => (
-        <div className="styleguide-swatch" key={token}>
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-3">
+      {swatches.map(([key, token]) => (
+        <div
+          className="grid grid-cols-[1fr_auto] items-center gap-3 rounded-xl border border-border p-3 text-[0.8rem] font-bold text-foreground"
+          key={token}
+        >
           <span>{t(key)}</span>
           <span
             aria-hidden="true"
-            className="styleguide-swatch-chip"
+            className="row-span-2 size-10 rounded-[0.55rem] border border-border"
             style={{ backgroundColor: `var(${token})` }}
           />
-          <code>{dark ? darkValue : lightValue}</code>
+          <code className="text-xs font-medium text-muted">var({token})</code>
         </div>
       ))}
     </div>
   );
 }
 
-function ButtonDemo({ label, className, hoverLabel }) {
+function ButtonDemo({ label, variant, hoverLabel }) {
+  const hoverClass = {
+    primary: "!border-primary-hover !bg-primary-hover",
+    secondary: "!border-secondary-hover !bg-secondary-hover",
+    ghost: "!border-foreground !bg-surface-elevated",
+    whatsapp: "-translate-y-0.5",
+  }[variant];
+
   return (
-    <div className="styleguide-button-demo">
-      <button className={`token-button ${className}`} type="button">
+    <div className="grid justify-items-start gap-[0.65rem]">
+      <Button className="w-full" variant={variant}>
         {label}
-      </button>
-      <button className={`token-button ${className} is-hover`} type="button">
+      </Button>
+      <Button className={`w-full ${hoverClass}`} variant={variant}>
         {label} · {hoverLabel}
-      </button>
+      </Button>
     </div>
   );
 }
 
-function ThemeSamples({ title, themeClass, t }) {
+function ThemeSamples({ title, dark = false, t }) {
   return (
-    <section aria-labelledby={`styleguide-${themeClass}`} className={`styleguide-theme ${themeClass}`}>
-      <h2 id={`styleguide-${themeClass}`}>{title}</h2>
-      <section className="styleguide-section" aria-label={t("palette")}>
-        <h3>{t("palette")}</h3>
-        <Swatches dark={themeClass === "theme-dark"} t={t} />
+    <section
+      aria-labelledby={`styleguide-${dark ? "dark" : "light"}`}
+      className={`my-8 rounded-2xl border border-border p-[clamp(1rem,3vw,2rem)] ${
+        dark ? "dark" : ""
+      } bg-background text-foreground`}
+      style={dark ? undefined : lightThemeVariables}
+    >
+      <h2
+        className="mb-6 mt-0 font-display text-[1.75rem] text-secondary"
+        id={`styleguide-${dark ? "dark" : "light"}`}
+      >
+        {title}
+      </h2>
+      <section aria-label={t("palette")} className="mt-8">
+        <h3 className="mb-4 mt-0 text-[1.15rem] font-bold text-foreground">
+          {t("palette")}
+        </h3>
+        <Swatches t={t} />
       </section>
-      <section className="styleguide-section" aria-label={t("typography")}>
-        <h3>{t("typography")}</h3>
-        <p className="type-sample type-sample-h1">{t("headingOne")}</p>
-        <p className="type-sample type-sample-h2">{t("headingTwo")}</p>
-        <p className="type-sample type-sample-h3">{t("headingThree")}</p>
-        <p className="type-sample type-sample-body">{t("bodySample")}</p>
-        <p className="type-sample type-sample-small">{t("smallSample")}</p>
+      <section aria-label={t("typography")} className="mt-8">
+        <h3 className="mb-4 mt-0 text-[1.15rem] font-bold text-foreground">
+          {t("typography")}
+        </h3>
+        <p className="my-3 font-display text-[clamp(2.25rem,5vw,3.25rem)] leading-[1.1] text-foreground">
+          {t("headingOne")}
+        </p>
+        <p className="my-3 font-display text-[2rem] leading-[1.2] text-foreground">
+          {t("headingTwo")}
+        </p>
+        <p className="my-3 text-[1.375rem] font-bold text-foreground">
+          {t("headingThree")}
+        </p>
+        <p className="my-3 max-w-3xl text-base leading-[1.65] text-muted">
+          {t("bodySample")}
+        </p>
+        <p className="my-3 text-sm text-muted">{t("smallSample")}</p>
       </section>
-      <section className="styleguide-section" aria-label={t("buttons")}>
-        <h3>{t("buttons")}</h3>
-        <div className="styleguide-button-row">
-          <ButtonDemo className="token-button-primary" hoverLabel={t("hover")} label={t("primaryButton")} />
-          <ButtonDemo className="token-button-secondary" hoverLabel={t("hover")} label={t("secondaryButton")} />
-          <ButtonDemo className="token-button-ghost" hoverLabel={t("hover")} label={t("ghostButton")} />
-          <ButtonDemo className="token-button-whatsapp" hoverLabel={t("hover")} label={t("whatsappButton")} />
+      <section aria-label={t("buttons")} className="mt-8">
+        <h3 className="mb-4 mt-0 text-[1.15rem] font-bold text-foreground">
+          {t("buttons")}
+        </h3>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] items-start gap-3">
+          <ButtonDemo
+            hoverLabel={t("hover")}
+            label={t("primaryButton")}
+            variant="primary"
+          />
+          <ButtonDemo
+            hoverLabel={t("hover")}
+            label={t("secondaryButton")}
+            variant="secondary"
+          />
+          <ButtonDemo
+            hoverLabel={t("hover")}
+            label={t("ghostButton")}
+            variant="ghost"
+          />
+          <ButtonDemo
+            hoverLabel={t("hover")}
+            label={t("whatsappButton")}
+            variant="whatsapp"
+          />
         </div>
       </section>
-      <section className="styleguide-section" aria-label={t("cards")}>
-        <h3>{t("cards")}</h3>
-        <div className="styleguide-card-row">
-          <article className="styleguide-card">
-            <h4>{t("cardTitle")}</h4>
-            <p>{t("cardBody")}</p>
+      <section aria-label={t("cards")} className="mt-8">
+        <h3 className="mb-4 mt-0 text-[1.15rem] font-bold text-foreground">
+          {t("cards")}
+        </h3>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-3">
+          <article className="rounded-2xl border border-border bg-surface p-5 text-foreground">
+            <h4 className="mb-2 mt-0 font-display text-xl text-secondary">
+              {t("cardTitle")}
+            </h4>
+            <p className="m-0 leading-[1.6] text-muted">{t("cardBody")}</p>
           </article>
-          <article className="styleguide-card styleguide-card-elevated">
-            <h4>{t("elevatedCardTitle")}</h4>
-            <p>{t("cardBody")}</p>
+          <article className="rounded-2xl border border-border bg-surface-elevated p-5 text-foreground">
+            <h4 className="mb-2 mt-0 font-display text-xl text-secondary">
+              {t("elevatedCardTitle")}
+            </h4>
+            <p className="m-0 leading-[1.6] text-muted">{t("cardBody")}</p>
           </article>
         </div>
       </section>
-      <section className="styleguide-section" aria-label={t("badges")}>
-        <h3>{t("badges")}</h3>
-        <div className="styleguide-badges">
-          <span className="styleguide-badge">{t("accentBadge")}</span>
-          <span className="styleguide-badge styleguide-badge-success">{t("successBadge")}</span>
-          <span className="styleguide-badge styleguide-badge-error">{t("errorBadge")}</span>
+      <section aria-label={t("badges")} className="mt-8">
+        <h3 className="mb-4 mt-0 text-[1.15rem] font-bold text-foreground">
+          {t("badges")}
+        </h3>
+        <div className="flex flex-wrap gap-3">
+          <span className="inline-flex min-h-8 items-center justify-center rounded-full bg-accent px-3 py-1 text-[0.85rem] font-bold text-accent-foreground">
+            {t("accentBadge")}
+          </span>
+          <span className="inline-flex min-h-8 items-center justify-center rounded-full bg-success-background px-3 py-1 text-[0.85rem] font-bold text-success">
+            {t("successBadge")}
+          </span>
+          <span className="inline-flex min-h-8 items-center justify-center rounded-full bg-error-background px-3 py-1 text-[0.85rem] font-bold text-error">
+            {t("errorBadge")}
+          </span>
         </div>
       </section>
-      <section className="styleguide-section" aria-label={t("inputs")}>
-        <h3>{t("inputs")}</h3>
-        <div className="styleguide-form">
-          <label htmlFor={`styleguide-email-${themeClass}`}>{t("emailLabel")}</label>
+      <section aria-label={t("inputs")} className="mt-8">
+        <h3 className="mb-4 mt-0 text-[1.15rem] font-bold text-foreground">
+          {t("inputs")}
+        </h3>
+        <div className="grid max-w-md gap-2">
+          <label
+            className="text-[0.9rem] font-bold text-foreground"
+            htmlFor={`styleguide-email-${dark ? "dark" : "light"}`}
+          >
+            {t("emailLabel")}
+          </label>
           <input
-            id={`styleguide-email-${themeClass}`}
+            className="min-h-[2.9rem] rounded-[0.6rem] border-2 border-border bg-surface px-3 py-[0.6rem] text-foreground placeholder:text-muted focus-visible:border-focus"
+            id={`styleguide-email-${dark ? "dark" : "light"}`}
             placeholder={t("emailPlaceholder")}
             type="email"
           />
@@ -115,12 +216,16 @@ export default async function StyleguidePage({ params }) {
   const t = await getTranslations("styleguide");
 
   return (
-    <div className="page-shell styleguide">
-      <p className="eyebrow">{t("eyebrow")}</p>
-      <h1>{t("title")}</h1>
-      <p className="styleguide-intro">{t("intro")}</p>
-      <ThemeSamples themeClass="theme-light" title={t("lightMode")} t={t} />
-      <ThemeSamples themeClass="theme-dark" title={t("darkMode")} t={t} />
+    <div className="mx-auto w-[calc(100%-2rem)] max-w-6xl py-12 pb-20 max-sm:w-[calc(100%-1.25rem)]">
+      <p className="mb-2 mt-0 text-sm font-bold text-primary">{t("eyebrow")}</p>
+      <h1 className="m-0 font-display text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] text-secondary">
+        {t("title")}
+      </h1>
+      <p className="mb-10 mt-4 max-w-3xl leading-[1.7] text-muted">
+        {t("intro")}
+      </p>
+      <ThemeSamples title={t("lightMode")} t={t} />
+      <ThemeSamples dark title={t("darkMode")} t={t} />
     </div>
   );
 }

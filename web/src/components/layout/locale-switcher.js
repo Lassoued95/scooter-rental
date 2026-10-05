@@ -95,13 +95,13 @@ function LocaleSwitcherMenu({ locale, pathname }) {
   }
 
   return (
-    <div className="locale-switcher" ref={containerRef}>
+    <div className="relative" ref={containerRef}>
       <button
         aria-controls="language-listbox"
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-label={`${t("language")}: ${currentLocale.nativeName}`}
-        className="locale-trigger"
+        className="group inline-flex min-h-11 cursor-pointer items-center justify-center gap-[0.45rem] rounded-full border border-border bg-surface px-3 py-2 text-[0.85rem] font-bold text-foreground hover:bg-surface-elevated aria-expanded:bg-surface-elevated max-sm:min-h-[2.4rem] max-sm:gap-[0.3rem] max-sm:px-[0.55rem] max-sm:text-[0.78rem]"
         onClick={() => (open ? setOpen(false) : openList())}
         onKeyDown={handleTriggerKeyDown}
         ref={triggerRef}
@@ -109,13 +109,13 @@ function LocaleSwitcherMenu({ locale, pathname }) {
       >
         <Globe2 aria-hidden="true" size={17} />
         <span>{currentLocale.code.toUpperCase()}</span>
-        <ChevronDown aria-hidden="true" className="locale-chevron" size={14} />
+        <ChevronDown aria-hidden="true" className="transition-transform duration-150 group-aria-expanded:rotate-180" size={14} />
       </button>
       <AnimatePresence>
         {open && (
           <motion.div
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="locale-dropdown"
+            className="absolute right-0 top-[calc(100%+0.55rem)] z-30 w-[14.5rem] origin-top-right overflow-hidden rounded-[0.9rem] border border-white/15 bg-brand-section p-[0.35rem] text-section-text shadow-xl shadow-brand-section/30 max-sm:w-[min(22rem,calc(100vw-1.5rem))]"
             exit={{ opacity: 0, scale: 0.97, y: -4 }}
             initial={reduceMotion ? false : { opacity: 0, scale: 0.97, y: -4 }}
             id="language-listbox"
@@ -125,7 +125,9 @@ function LocaleSwitcherMenu({ locale, pathname }) {
             {localeConfig.map((item, index) => (
               <button
                 aria-selected={item.code === locale}
-                className={`locale-option${item.code === locale ? " is-current" : ""}`}
+                className={`flex min-h-12 w-full cursor-pointer items-center gap-3 border-b border-white/10 bg-transparent px-[0.7rem] py-[0.6rem] text-left font-sans text-section-text hover:bg-secondary focus-visible:bg-secondary last:border-b-0 max-sm:min-h-[2.9rem] ${
+                  item.code === locale ? "font-bold text-primary-hover" : ""
+                }`}
                 id={`locale-option-${item.code}`}
                 key={item.code}
                 onClick={() => selectLocale(item.code)}
@@ -138,10 +140,10 @@ function LocaleSwitcherMenu({ locale, pathname }) {
                 tabIndex={activeIndex === index ? 0 : -1}
                 type="button"
               >
-                <span aria-hidden="true" className={`fi fi-${item.flag} locale-flag`} />
-                <span className="locale-native-name">{item.nativeName}</span>
+                <span aria-hidden="true" className={`fi fi-${item.flag} inline-block h-4 w-[1.35rem] shrink-0 rounded-[0.15rem] bg-cover`} />
+                <span className="flex-1">{item.nativeName}</span>
                 {item.code === locale && (
-                  <Check aria-hidden="true" className="locale-check" size={17} />
+                  <Check aria-hidden="true" className="text-primary" size={17} />
                 )}
               </button>
             ))}
