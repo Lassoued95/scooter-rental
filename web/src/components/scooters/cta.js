@@ -1,0 +1,3 @@
+// Shared classes for the WhatsApp button (hero, pricing card, mobile bar)
+export const whatsappCtaClass =
+  "group relative inline-flex min-h-14 items-center justify-center gap-2 overflow-hidden rounded-full bg-whatsapp px-7 text-base font-bold text-primary-foreground shadow-lg transition duration-200 hover:-translate-y-0.5 hover:shadow-xl focus-visible:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2 before:absolute before:inset-y-0 before:left-0 before:w-1/3 before:-translate-x-full before:skew-x-[-20deg] before:bg-white/30 before:transition-transform before:duration-700 hover:before:translate-x-[320%]";
