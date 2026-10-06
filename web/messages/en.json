@@ -1,4 +1,67 @@
 {
+  "errors": {
+    "title": "Something went wrong",
+    "apiUnavailable": "Our products are temporarily unavailable. Please try again in a moment.",
+    "retry": "Try again",
+    "notFoundTitle": "Page not found",
+    "notFoundMessage": "The requested product does not exist or is no longer available."
+  },
+  "apiCheck": {
+    "title": "Product API check",
+    "count": "{count} products received from the API",
+    "name": "Name",
+    "category": "Category",
+    "type": "Type",
+    "stock": "Stock",
+    "image": "Image",
+    "notApplicable": "Not available",
+    "placeholder": "Placeholder image",
+    "available": "Image available"
+  },
+  "products": {
+    "metaTitle": "Scooter and vehicle rental in Djerba",
+    "metaDescription": "Choose a scooter, bicycle or another vehicle to explore Djerba. Helmet, anti-theft lock and insurance included, free hotel pick-up, and no deposit.",
+    "eyebrow": "Rent in Djerba",
+    "title": "Choose your vehicle",
+    "intro": "Explore Djerba at your own pace. Browse our selection of scooters and bicycles, with prices shown in euros.",
+    "trustLine": "Helmet, anti-theft lock and insurance included · Free hotel pick-up · No deposit",
+    "filterLabel": "Filter vehicles by category",
+    "filterAll": "All",
+    "categories": {
+      "scooter": "Scooters",
+      "three_wheel_scooter": "Three-wheel scooters",
+      "electric_scooter": "Electric scooters",
+      "electric_bike": "Electric bikes",
+      "bicycle": "Bicycles"
+    },
+    "fromPrice": "From",
+    "perDay": "day",
+    "bookWhatsapp": "Book on WhatsApp",
+    "viewDetails": "View details",
+    "whatsappMessage": "Hello, I'd like to ask about renting the {name} in Djerba.",
+    "empty": "No vehicles are available in this category right now.",
+    "loading": "Loading vehicles",
+    "testPrice": "Test price",
+    "specs": {
+      "passengers": "{count, plural, one {# passenger} other {# passengers}}"
+    },
+    "specValues": {
+      "engine": {
+        "electric": "Electric",
+        "unknown": "Not specified",
+        "none": "No engine"
+      },
+      "fuel": {
+        "petrol": "Petrol",
+        "electric": "Electric",
+        "none": "None"
+      },
+      "transmission": {
+        "automatic": "Automatic",
+        "manual": "Manual"
+      }
+    }
+  },
   "layout": {
     "brand": "Scooter Rental Djerba",
     "book": "Book now",

@@ -1,4 +1,67 @@
 {
+  "errors": {
+    "title": "Ein Fehler ist aufgetreten",
+    "apiUnavailable": "Unsere Produkte sind vorübergehend nicht verfügbar. Bitte versuchen Sie es gleich noch einmal.",
+    "retry": "Erneut versuchen",
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundMessage": "Das gesuchte Produkt existiert nicht oder ist nicht mehr verfügbar."
+  },
+  "apiCheck": {
+    "title": "Produkt-API-Prüfung",
+    "count": "{count} Produkte von der API empfangen",
+    "name": "Name",
+    "category": "Kategorie",
+    "type": "Typ",
+    "stock": "Bestand",
+    "image": "Bild",
+    "notApplicable": "Nicht verfügbar",
+    "placeholder": "Platzhalterbild",
+    "available": "Bild verfügbar"
+  },
+  "products": {
+    "metaTitle": "Roller- und Fahrzeugverleih auf Djerba",
+    "metaDescription": "Wählen Sie einen Roller, ein Fahrrad oder ein anderes Fahrzeug, um Djerba zu entdecken. Helm, Diebstahlsicherung und Versicherung inklusive, kostenlose Hotelabholung und keine Kaution.",
+    "eyebrow": "Mieten auf Djerba",
+    "title": "Wählen Sie Ihr Fahrzeug",
+    "intro": "Entdecken Sie Djerba in Ihrem eigenen Tempo. Finden Sie Roller und Fahrräder in unserer Auswahl; die Preise sind in Euro angegeben.",
+    "trustLine": "Helm, Diebstahlsicherung und Versicherung inklusive · Kostenlose Hotelabholung · Keine Kaution",
+    "filterLabel": "Fahrzeuge nach Kategorie filtern",
+    "filterAll": "Alle",
+    "categories": {
+      "scooter": "Roller",
+      "three_wheel_scooter": "Dreirad-Roller",
+      "electric_scooter": "Elektroroller",
+      "electric_bike": "E-Bikes",
+      "bicycle": "Fahrräder"
+    },
+    "fromPrice": "Ab",
+    "perDay": "Tag",
+    "bookWhatsapp": "Per WhatsApp anfragen",
+    "viewDetails": "Details ansehen",
+    "whatsappMessage": "Hallo, ich möchte mich über die Anmietung von {name} auf Djerba informieren.",
+    "empty": "In dieser Kategorie sind derzeit keine Fahrzeuge verfügbar.",
+    "loading": "Fahrzeuge werden geladen",
+    "testPrice": "Testpreis",
+    "specs": {
+      "passengers": "{count, plural, one {# Person} other {# Personen}}"
+    },
+    "specValues": {
+      "engine": {
+        "electric": "Elektrisch",
+        "unknown": "Nicht angegeben",
+        "none": "Ohne Motor"
+      },
+      "fuel": {
+        "petrol": "Benzin",
+        "electric": "Elektrisch",
+        "none": "Keiner"
+      },
+      "transmission": {
+        "automatic": "Automatik",
+        "manual": "Manuell"
+      }
+    }
+  },
   "layout": {
     "brand": "Rollerverleih Djerba",
     "book": "Jetzt buchen",

@@ -1,4 +1,67 @@
 {
+  "errors": {
+    "title": "Une erreur est survenue",
+    "apiUnavailable": "Nos produits sont temporairement indisponibles. Veuillez réessayer dans quelques instants.",
+    "retry": "Réessayer",
+    "notFoundTitle": "Page introuvable",
+    "notFoundMessage": "Le produit demandé n'existe pas ou n'est plus disponible."
+  },
+  "apiCheck": {
+    "title": "Vérification de l'API produits",
+    "count": "{count} produits reçus de l'API",
+    "name": "Nom",
+    "category": "Catégorie",
+    "type": "Type",
+    "stock": "Stock",
+    "image": "Image",
+    "notApplicable": "Non disponible",
+    "placeholder": "Image de remplacement",
+    "available": "Image disponible"
+  },
+  "products": {
+    "metaTitle": "Location de scooters et véhicules à Djerba",
+    "metaDescription": "Choisissez un scooter, un vélo ou un autre véhicule pour explorer Djerba. Casque, antivol et assurance inclus, prise en charge gratuite à l'hôtel et sans caution.",
+    "eyebrow": "Location à Djerba",
+    "title": "Choisissez votre véhicule",
+    "intro": "Parcourez Djerba à votre rythme : découvrez notre sélection de scooters et de vélos, avec des tarifs affichés en euros.",
+    "trustLine": "Casque, antivol et assurance inclus · Prise en charge gratuite à l'hôtel · Sans caution",
+    "filterLabel": "Filtrer les véhicules par catégorie",
+    "filterAll": "Tout voir",
+    "categories": {
+      "scooter": "Scooters",
+      "three_wheel_scooter": "Scooters à 3 roues",
+      "electric_scooter": "Scooters électriques",
+      "electric_bike": "Vélos électriques",
+      "bicycle": "Vélos"
+    },
+    "fromPrice": "À partir de",
+    "perDay": "jour",
+    "bookWhatsapp": "Réserver sur WhatsApp",
+    "viewDetails": "Voir les détails",
+    "whatsappMessage": "Bonjour, je souhaite me renseigner sur la location de {name} à Djerba.",
+    "empty": "Aucun véhicule n'est disponible dans cette catégorie pour le moment.",
+    "loading": "Chargement des véhicules",
+    "testPrice": "Prix de test",
+    "specs": {
+      "passengers": "{count, plural, one {# passager} other {# passagers}}"
+    },
+    "specValues": {
+      "engine": {
+        "electric": "Électrique",
+        "unknown": "Non précisé",
+        "none": "Sans moteur"
+      },
+      "fuel": {
+        "petrol": "Essence",
+        "electric": "Électrique",
+        "none": "Aucun"
+      },
+      "transmission": {
+        "automatic": "Automatique",
+        "manual": "Manuelle"
+      }
+    }
+  },
   "layout": {
     "brand": "Location Scooter Djerba",
     "book": "Réserver",

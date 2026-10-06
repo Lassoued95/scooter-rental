@@ -11,26 +11,71 @@
  */
 
 /**
+ * @typedef {Object} RawProductDocument
+ * @property {string} [id]
+ * @property {string} [name]
+ * @property {string} [slug]
+ * @property {string} [category]
+ * @property {string} [engine]
+ * @property {string} [fuel]
+ * @property {string} [transmission]
+ * @property {number} [stock]
+ * @property {{ amount: number, currency?: string, unit?: string }} [price]
+ * @property {boolean} [active]
+ * @property {boolean} [isTestData]
+ * @property {number} [order]
+ * @property {Record<string, Object<string, string|string[]>>} [translations]
+ */
+
+/**
  * @typedef {Object} PriceTier
  * @property {number} minDays
  * @property {number} pricePerDay
+ * @property {string} [currency]
+ * @property {string} [unit]
  */
 
 /**
  * @typedef {Object} Product
  * @property {string} id
  * @property {string} slug
+ * @property {"vehicle" | "tour" | "free rental"} type
+ * @property {string} category
+ * @property {string} name
+ * @property {string} [tagline]
+ * @property {string} description
+ * @property {number} price
+ * @property {PriceTier[]} [priceTiers]
+ * @property {string} [currency]
+ * @property {string} [priceUnit]
+ * @property {number|null} [stock]
+ * @property {number} [capacityPerSlot]
+ * @property {number} [durationHours]
+ * @property {string[]} [highlights]
+ * @property {string} [meetingPoint]
+ * @property {Object<string, *>} [specs]
+ * @property {Object[]} images
+ * @property {boolean} placeholderImage
+ * @property {boolean} active
+ * @property {number} order
+ * @property {boolean} isTestData
+ */
+
+/**
+ * @typedef {Object} MockProduct
+ * @property {string} id
+ * @property {string} slug
  * @property {"rental" | "tour"} type
  * @property {LocalizedText} name
  * @property {LocalizedText} description
- * @property {number} price
+ * @property {number} [price]
  * @property {PriceTier[]} [priceTiers]
  * @property {number} [stock]
  * @property {number} [capacityPerSlot]
  * @property {number} [durationHours]
  * @property {LocalizedList} [highlights]
- * @property {string} [meetingPoint]
- * @property {{ engineCc: number, passengers: number, luggage: number, fuel: LocalizedText }} [specs]
+ * @property {LocalizedText} [meetingPoint]
+ * @property {Object<string, *>} [specs]
  * @property {boolean} active
  */
 

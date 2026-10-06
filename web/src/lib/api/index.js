@@ -1,16 +1,11 @@
 import { addMockReservation, getMockAvailability } from "@/lib/mock/availability";
-import {
-  faqs,
-  options,
-  products,
-  reviews,
-  settings,
-  tourSlots,
-} from "@/lib/mock/data";
+import { faqs, options, reviews, settings, tourSlots } from "@/lib/mock/data";
 import { reservationSchema } from "@/lib/schemas";
 
 const MOCK_DELAY_MS = 80;
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
+
+export { getProduct, getProducts } from "./products";
 
 function delay() {
   return new Promise((resolve) => setTimeout(resolve, MOCK_DELAY_MS));
@@ -22,22 +17,6 @@ async function request(path, options) {
     throw new Error(`API request failed (${response.status} ${response.statusText}): ${path}`);
   }
   return response.json();
-}
-
-export async function getProducts(type) {
-  if (apiBaseUrl) {
-    const query = type ? `?type=${encodeURIComponent(type)}` : "";
-    return request(`/products${query}`);
-  }
-  await delay();
-  return products.filter((product) => product.active && (!type || product.type === type));
-}
-
-export async function getProduct(slug) {
-  if (apiBaseUrl) return request(`/products/${encodeURIComponent(slug)}`);
-  await delay();
-  const product = products.find((candidate) => candidate.slug === slug && candidate.active);
-  return product ?? null;
 }
 
 export async function getAvailability(productId, requestOptions) {

@@ -1,4 +1,4 @@
-/** @type {import("@/types").Product[]} */
+/** @type {import("@/types").MockProduct[]} */
 export const products = [
   {
     id: "scooter-50cc",

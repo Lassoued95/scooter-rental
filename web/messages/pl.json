@@ -1,4 +1,67 @@
 {
+  "errors": {
+    "title": "Wystąpił błąd",
+    "apiUnavailable": "Nasze produkty są tymczasowo niedostępne. Spróbuj ponownie za chwilę.",
+    "retry": "Spróbuj ponownie",
+    "notFoundTitle": "Nie znaleziono strony",
+    "notFoundMessage": "Żądany produkt nie istnieje lub nie jest już dostępny."
+  },
+  "apiCheck": {
+    "title": "Sprawdzenie API produktów",
+    "count": "Produkty otrzymane z API: {count}",
+    "name": "Nazwa",
+    "category": "Kategoria",
+    "type": "Typ",
+    "stock": "Stan",
+    "image": "Obraz",
+    "notApplicable": "Niedostępne",
+    "placeholder": "Obraz zastępczy",
+    "available": "Obraz dostępny"
+  },
+  "products": {
+    "metaTitle": "Wynajem skuterów i pojazdów na Dżerbie",
+    "metaDescription": "Wybierz skuter, rower lub inny pojazd i odkrywaj Dżerbę. Kask, zabezpieczenie antykradzieżowe i ubezpieczenie w cenie, bezpłatny odbiór z hotelu i bez kaucji.",
+    "eyebrow": "Wynajem na Dżerbie",
+    "title": "Wybierz pojazd",
+    "intro": "Odkrywaj Dżerbę we własnym tempie. Sprawdź naszą ofertę skuterów i rowerów z cenami podanymi w euro.",
+    "trustLine": "Kask, zabezpieczenie antykradzieżowe i ubezpieczenie w cenie · Bezpłatny odbiór z hotelu · Bez kaucji",
+    "filterLabel": "Filtruj pojazdy według kategorii",
+    "filterAll": "Wszystkie",
+    "categories": {
+      "scooter": "Skutery",
+      "three_wheel_scooter": "Skutery trójkołowe",
+      "electric_scooter": "Skutery elektryczne",
+      "electric_bike": "Rowery elektryczne",
+      "bicycle": "Rowery"
+    },
+    "fromPrice": "Od",
+    "perDay": "dzień",
+    "bookWhatsapp": "Zapytaj na WhatsApp",
+    "viewDetails": "Zobacz szczegóły",
+    "whatsappMessage": "Dzień dobry, proszę o informacje na temat wynajmu {name} na Dżerbie.",
+    "empty": "Obecnie brak pojazdów w tej kategorii.",
+    "loading": "Ładowanie pojazdów",
+    "testPrice": "Cena testowa",
+    "specs": {
+      "passengers": "{count, plural, one {# pasażer} few {# pasażerów} many {# pasażerów} other {# pasażera}}"
+    },
+    "specValues": {
+      "engine": {
+        "electric": "Elektryczny",
+        "unknown": "Nie podano",
+        "none": "Bez silnika"
+      },
+      "fuel": {
+        "petrol": "Benzyna",
+        "electric": "Elektryczny",
+        "none": "Brak"
+      },
+      "transmission": {
+        "automatic": "Automatyczna",
+        "manual": "Ręczna"
+      }
+    }
+  },
   "layout": {
     "brand": "Location Scooter Djerba",
     "book": "Zarezerwuj",
