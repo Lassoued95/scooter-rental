@@ -27,6 +27,17 @@
     "trustLine": "Casque, antivol et assurance inclus · Prise en charge gratuite à l'hôtel · Sans caution",
     "filterLabel": "Filtrer les véhicules par catégorie",
     "filterAll": "Tout voir",
+    "filtersLabel": "Filtrer par type",
+    "filters": {
+      "all": "Tous",
+      "50": "50cc",
+      "125": "125cc",
+      "electric": "Électrique"
+    },
+    "fuel": {
+      "petrol": "Essence",
+      "electric": "Électrique"
+    },
     "categories": {
       "scooter": "Scooters",
       "three_wheel_scooter": "Scooters à 3 roues",
@@ -35,6 +46,7 @@
       "bicycle": "Vélos"
     },
     "fromPrice": "À partir de",
+    "from": "À partir de",
     "perDay": "jour",
     "bookWhatsapp": "Réserver sur WhatsApp",
     "viewDetails": "Voir les détails",
@@ -52,7 +64,32 @@
       "passengers": "Passagers",
       "pricing": "Tarifs de location",
       "oneDay": "1 jour",
-      "fromDays": "À partir de {days} jours"
+      "fromDays": "À partir de {days} jours",
+      "galleryPrev": "Photo précédente",
+      "galleryNext": "Photo suivante",
+      "trustPay": "Paiement sur place",
+      "trustNoDeposit": "Aucune caution",
+      "trustHelmets": "Casques inclus"
+    },
+    "reservation": {
+      "title": "Demander une réservation",
+      "intro": "Choisissez vos dates et indiquez vos coordonnées. Votre demande reste en attente jusqu'à sa confirmation.",
+      "startDate": "Date de prise en charge",
+      "endDate": "Date de retour",
+      "quantity": "Nombre de véhicules",
+      "fullName": "Nom complet",
+      "email": "Adresse e-mail",
+      "phone": "Numéro de téléphone",
+      "hotel": "Hôtel ou hébergement (facultatif)",
+      "message": "Message (facultatif)",
+      "terms": "Je comprends qu'il s'agit d'une demande de réservation qui ne sera confirmée qu'après avoir été contacté par l'équipe.",
+      "submit": "Envoyer la demande par e-mail",
+      "submitting": "Envoi en cours…",
+      "successTitle": "Demande reçue",
+      "successMessage": "Votre demande est en attente de confirmation. Nous vous contacterons à l'adresse e-mail indiquée.",
+      "errorMessage": "Votre demande n'a pas pu être envoyée. Réessayez ou contactez-nous sur WhatsApp.",
+      "availabilityError": "Ces dates ou cette quantité ne sont plus disponibles. Choisissez d'autres dates ou contactez-nous.",
+      "whatsappAlternative": "Vous préférez WhatsApp ? Écrivez-nous."
     },
     "whatsappMessage": "Bonjour, je souhaite me renseigner sur la location de {name} à Djerba.",
     "empty": "Aucun véhicule n'est disponible dans cette catégorie pour le moment.",

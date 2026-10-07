@@ -1,18 +1,18 @@
 const express = require("express");
 const rateLimit = require("express-rate-limit");
-const { createReservationHandler } = require("../controllers/reservationController");
+const { getAvailabilityHandler } = require("../controllers/reservationController");
 
 const router = express.Router();
 
-router.post(
-  "/",
+router.use(
   rateLimit({
     windowMs: 60 * 60 * 1000,
-    max: 10,
+    max: 60,
     standardHeaders: true,
     legacyHeaders: false,
   }),
-  createReservationHandler,
 );
+
+router.get("/:id/availability", getAvailabilityHandler);
 
 module.exports = router;

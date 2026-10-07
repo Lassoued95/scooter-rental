@@ -4,7 +4,15 @@ import { motion, useReducedMotion } from "motion/react";
 import { Check, MessageCircle } from "lucide-react";
 import { whatsappCtaClass } from "@/components/scooters/cta";
 
-export function PricingCard({ title, tiers, singlePrice, perDay, trust, cta }) {
+export function PricingCard({
+  title,
+  tiers,
+  singlePrice,
+  perDay,
+  trust,
+  cta,
+  reservationCta,
+}) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -87,15 +95,25 @@ export function PricingCard({ title, tiers, singlePrice, perDay, trust, cta }) {
         ))}
       </ul>
 
-      <a
-        className={`${whatsappCtaClass} mt-6 w-full`}
-        href={cta.href}
-        rel="noreferrer"
-        target="_blank"
-      >
-        <MessageCircle aria-hidden="true" size={19} />
-        <span className="relative">{cta.label}</span>
-      </a>
+      <div className="relative mt-6 grid gap-3">
+        {reservationCta && (
+          <a
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-5 text-center font-bold text-primary-foreground shadow-lg transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            href={reservationCta.href}
+          >
+            {reservationCta.label}
+          </a>
+        )}
+        <a
+          className={`${whatsappCtaClass} w-full`}
+          href={cta.href}
+          rel="noreferrer"
+          target="_blank"
+        >
+          <MessageCircle aria-hidden="true" size={19} />
+          <span className="relative">{cta.label}</span>
+        </a>
+      </div>
     </aside>
   );
 }

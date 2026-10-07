@@ -23,6 +23,7 @@ import {
 } from "@/components/scooters/detail-motion";
 import { MobileCtaBar } from "@/components/scooters/mobile-cta-bar";
 import { PricingCard } from "@/components/scooters/pricing-card";
+import { ReservationForm } from "@/components/scooters/reservation-form";
 
 const WHATSAPP_NUMBER = "21628340240";
 
@@ -421,23 +422,36 @@ export default async function ScooterDetailsPage({ params }) {
             )}
           </div>
 
-          <FadeUp delay={0.1}>
-            <PricingCard
-              cta={{ href: whatsappUrl, label: t("bookWhatsapp") }}
-              perDay={t("perDay")}
-              singlePrice={singlePrice}
-              tiers={tiers}
-              title={t("detail.pricing")}
-              trust={trust}
-            />
-          </FadeUp>
+          <div className="grid gap-8">
+            <FadeUp delay={0.1}>
+              <PricingCard
+                cta={{ href: whatsappUrl, label: t("bookWhatsapp") }}
+                perDay={t("perDay")}
+                reservationCta={{
+                  href: "#reservation",
+                  label: t("reservation.submit"),
+                }}
+                singlePrice={singlePrice}
+                tiers={tiers}
+                title={t("detail.pricing")}
+                trust={trust}
+              />
+            </FadeUp>
+            <FadeUp delay={0.15}>
+              <ReservationForm
+                productId={product.id}
+                stock={product.stock}
+                whatsappUrl={whatsappUrl}
+              />
+            </FadeUp>
+          </div>
         </div>
       </div>
 
       <MobileCtaBar
         fromLabel={t("from")}
-        href={whatsappUrl}
-        label={t("bookWhatsapp")}
+        href="#reservation"
+        label={t("reservation.submit")}
         perDay={t("perDay")}
         price={fromPrice}
       />

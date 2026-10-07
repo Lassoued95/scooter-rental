@@ -5,8 +5,7 @@ const helmet = require("helmet");
 
 const productRoutes = require("./routes/productRoutes");
 const adminRoutes = require("./routes/adminRoutes");
-// Routes de réservation : on les branche après relecture (voir la note plus bas)
-// const reservationRoutes = require("./routes/reservationRoutes");
+const reservationRoutes = require("./routes/reservationRoutes");
 
 const app = express();
 
@@ -51,7 +50,7 @@ if (process.env.NODE_ENV !== "production") {
 
 app.use("/api/products", productRoutes);
 app.use("/api/admin", adminRoutes);
-// app.use("/api/reservations", reservationRoutes);
+app.use("/api/reservations", reservationRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Not found" });

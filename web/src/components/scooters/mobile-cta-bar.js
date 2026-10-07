@@ -7,7 +7,7 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "motion/react";
-import { MessageCircle } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 
 export function MobileCtaBar({ fromLabel, price, perDay, href, label }) {
   const { scrollY } = useScroll();
@@ -39,12 +39,10 @@ export function MobileCtaBar({ fromLabel, price, perDay, href, label }) {
             <span />
           )}
           <a
-            className="inline-flex h-12 items-center gap-2 rounded-full bg-whatsapp px-5 font-bold text-primary-foreground shadow-lg"
+            className="inline-flex h-12 items-center gap-2 rounded-full bg-primary px-5 font-bold text-primary-foreground shadow-lg"
             href={href}
-            rel="noreferrer"
-            target="_blank"
           >
-            <MessageCircle aria-hidden="true" size={18} />
+            <CalendarDays aria-hidden="true" size={18} />
             {label}
           </a>
         </motion.div>
