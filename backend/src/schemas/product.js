@@ -22,6 +22,7 @@ const productSchema = z
     category: z.string().trim().min(1),
     type: z.enum(["vehicle", "tour", "free_rental"]),
     order: z.number().int().positive(),
+    stock: z.number().int().positive().optional(),
     currency: z.literal("EUR"),
     price: z.object({
       amount: z.number().finite().nonnegative(),
@@ -59,6 +60,14 @@ const productSchema = z
   .passthrough()
   .superRefine((product, context) => {
     if (product.type === "vehicle") {
+      if (!product.stock) {
+        context.addIssue({
+          code: "custom",
+          path: ["stock"],
+          message: "Vehicles require a positive stock value.",
+        });
+      }
+
       if (!product.priceTiers || product.priceTiers.length !== 4) {
         context.addIssue({
           code: "custom",

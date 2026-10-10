@@ -1,4 +1,5 @@
 const { admin, db } = require("../config/firebase");
+const { assertStockNotBelowUpcomingReservations } = require("./stockGuard");
 
 const productsCollection = db.collection("products");
 
@@ -56,23 +57,37 @@ const createProduct = async (product) => {
 const updateProduct = async (id, product) => {
   const { id: productId, ...data } = product;
   const reference = productsCollection.doc(id);
-  const existing = await reference.get();
 
-  if (!existing.exists) {
-    return null;
-  }
+  return db.runTransaction(async (transaction) => {
+    const existing = await transaction.get(reference);
+    if (!existing.exists) return null;
 
-  const { createdAt } = existing.data();
-  await reference.set(
-    {
-      ...data,
-      createdAt: createdAt ?? admin.firestore.FieldValue.serverTimestamp(),
-      updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-    },
-    { merge: false },
-  );
+    const current = existing.data();
+    if (
+      current.type === "vehicle" &&
+      product.type === "vehicle" &&
+      product.stock < (Number(current.stock) || 0)
+    ) {
+      await assertStockNotBelowUpcomingReservations(
+        transaction,
+        id,
+        product.stock,
+      );
+    }
 
-  return { ...product, id: productId };
+    transaction.set(
+      reference,
+      {
+        ...data,
+        createdAt:
+          current.createdAt ?? admin.firestore.FieldValue.serverTimestamp(),
+        updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      },
+      { merge: false },
+    );
+
+    return { ...product, id: productId };
+  });
 };
 
 const deleteProduct = async (id) => {

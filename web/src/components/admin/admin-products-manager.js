@@ -24,7 +24,8 @@ const API_BASE = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000").re
   "",
 );
 
-function frenchAdminError(message) {
+// NOUVEAU : valeur par défaut pour ne jamais planter si l'erreur n'a pas de message
+function frenchAdminError(message = "") {
   if (
     message.includes("auth/invalid-credential") ||
     message.includes("auth/wrong-password") ||
@@ -47,6 +48,14 @@ function frenchAdminError(message) {
   ) {
     return "Votre session a expiré. Déconnectez-vous puis reconnectez-vous.";
   }
+
+  // NOUVEAU : baisse de stock refusée (des réservations à venir l'utilisent encore)
+  const stockMatch = message.match(/Stock too low: (\d+)/);
+  if (stockMatch) {
+    const count = stockMatch[1];
+    return `Le stock ne peut pas être inférieur à ${count} : ${count} véhicule(s) sont déjà réservés pour une date à venir. Annulez ou terminez d’abord ces réservations.`;
+  }
+
   if (message.includes("already exists")) {
     return "Cet identifiant est déjà utilisé par un autre produit.";
   }
@@ -127,9 +136,7 @@ async function uploadProductImage(user, file) {
 
   const result = await response.json().catch(() => null);
   if (!response.ok || !result?.secure_url || !result?.public_id) {
-    throw new Error(
-      result?.error?.message ?? "Failed to upload image",
-    );
+    throw new Error(result?.error?.message ?? "Failed to upload image");
   }
 
   return { url: result.secure_url, publicId: result.public_id };
@@ -151,6 +158,38 @@ function getProductImageUrl(product) {
       ? `https://res.cloudinary.com/${cloudName}/image/upload/${image.publicId}`
       : null;
   }
+  return null;
+}
+
+// NOUVEAU : ligne de stock affichée sous le nom du produit
+function StockLine({ product }) {
+  if (product.type === "vehicle") {
+    const stock = Number(product.stock);
+    const valid = Number.isFinite(stock);
+
+    if (!valid || stock <= 0) {
+      return (
+        <p className="mb-0 mt-1 text-xs font-semibold text-error">
+          Aucun véhicule en stock : non réservable
+        </p>
+      );
+    }
+    return (
+      <p className="mb-0 mt-1 text-xs text-muted">
+        {stock} véhicule{stock > 1 ? "s" : ""} en stock
+      </p>
+    );
+  }
+
+  if (product.type === "tour" && Number.isFinite(Number(product.capacityPerSlot))) {
+    const places = Number(product.capacityPerSlot);
+    return (
+      <p className="mb-0 mt-1 text-xs text-muted">
+        {places} place{places > 1 ? "s" : ""} par départ
+      </p>
+    );
+  }
+
   return null;
 }
 
@@ -541,6 +580,8 @@ export function AdminProductsManager() {
                     <p className="mb-0 mt-1 truncate text-xs capitalize text-muted">
                       {product.category?.replaceAll("_", " ")}
                     </p>
+                    {/* NOUVEAU : stock visible directement dans la liste */}
+                    <StockLine product={product} />
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-sm font-bold">
@@ -613,7 +654,6 @@ export function AdminProductsManager() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

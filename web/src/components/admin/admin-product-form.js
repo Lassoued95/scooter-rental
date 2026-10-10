@@ -47,6 +47,7 @@ function newProduct(order = 1) {
     category: "scooter",
     type: "vehicle",
     order,
+    stock: 1,
     currency: "EUR",
     price: { amount: 20, currency: "EUR", unit: "day" },
     active: true,
@@ -89,6 +90,7 @@ function prepareProduct(product) {
   return {
     ...defaults,
     ...product,
+    stock: product.stock ?? defaults.stock,
     price: { ...defaults.price, ...product.price },
     specs: { ...defaults.specs, ...product.specs },
     images: (product.images ?? []).map((image) => ({ ...image })),
@@ -356,6 +358,7 @@ export function AdminProductForm({
         })),
       ...(draft.type === "vehicle"
         ? {
+            stock: Number(draft.stock),
             priceTiers: draft.priceTiers.map((tier, index) => ({
               minDays: VEHICLE_PRICE_DAYS[index],
               pricePerDay: Number(tier.pricePerDay),
@@ -365,7 +368,7 @@ export function AdminProductForm({
               passengers: Number(draft.specs.passengers),
             },
           }
-        : { priceTiers: undefined, specs: undefined }),
+        : { stock: undefined, priceTiers: undefined, specs: undefined }),
       ...(draft.type === "tour"
         ? {
             duration: Number(draft.duration || 300),
@@ -523,6 +526,15 @@ export function AdminProductForm({
             title="Caractéristiques du véhicule"
           />
           <div className="grid gap-4 sm:grid-cols-2">
+            <Field
+              label="Nombre de véhicules (stock)"
+              min="1"
+              onChange={(event) => updateField("stock", event.target.value)}
+              required
+              step="1"
+              type="number"
+              value={draft.stock}
+            />
             <Field
               label="Cylindrée / moteur"
               onChange={(event) => updateSpec("engine", event.target.value)}

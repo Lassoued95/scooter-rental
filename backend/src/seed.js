@@ -274,6 +274,10 @@ const products = [
 ];
 
 async function seedProducts() {
+  // node src/seed.js          : crée seulement les produits qui n'existent pas
+  // node src/seed.js --force  : ÉCRASE les produits existants (à éviter une fois en production)
+  const force = process.argv.includes("--force");
+
   try {
     console.log("🌱 Starting Firestore seed...");
 
@@ -282,28 +286,37 @@ async function seedProducts() {
       validateProduct(enrichProduct(product)),
     );
 
-    validatedProducts.forEach((product) => {
+    let created = 0;
+    let skipped = 0;
+
+    for (const product of validatedProducts) {
       const productRef = db.collection("products").doc(product.id);
 
+      if (!force) {
+        const snapshot = await productRef.get();
+        if (snapshot.exists) {
+          skipped += 1;
+          continue;
+        }
+      }
+
       const { id, ...data } = product;
+      const seedData = { ...data, updatedAt: new Date() };
+      if (force) {
+        batch.set(productRef, seedData, { merge: true });
+      } else {
+        batch.create(productRef, seedData);
+      }
+      created += 1;
+    }
 
-      batch.set(productRef, {
-        ...data,
-        updatedAt: new Date(),
-      }, { merge: true });
-    });
+    if (created > 0) await batch.commit();
 
-    await batch.commit();
-
-    console.log(`✅ ${validatedProducts.length} products seeded successfully.`);
-    console.log("📦 Collection: products");
-    console.log("🎉 Seed completed!");
-
+    console.log(`✅ ${created} product(s) written, ${skipped} existing product(s) left untouched.`);
     process.exit(0);
   } catch (error) {
     console.error("❌ Seed failed during product validation or Firestore write.");
     process.exitCode = 1;
   }
 }
-
 seedProducts();

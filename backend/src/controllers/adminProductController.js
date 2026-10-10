@@ -87,6 +87,9 @@ async function updateProduct(req, res) {
 
     return res.status(200).json({ success: true, product });
   } catch (error) {
+    if (error.code === "STOCK_TOO_LOW") {
+      return res.status(409).json({ success: false, message: error.message });
+    }
     console.error("Admin update product error:", error);
     return res.status(500).json({ success: false, message: "Failed to update product" });
   }
