@@ -4,5 +4,4 @@ PROJECT_BRIEF.md
 node_modules/
 .env*
 backend/firebase-service-account.json
-bg
 web\video-source\
