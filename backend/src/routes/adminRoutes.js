@@ -10,6 +10,13 @@ const {
   deleteProduct,
 } = require("../controllers/adminProductController");
 
+
+const {
+  listReservationsHandler,
+  getReservationHandler,
+  updateReservationStatusHandler,
+} = require("../controllers/adminReservationController");
+
 const router = express.Router();
 
 router.use(
@@ -23,6 +30,10 @@ router.use(
 
 // Tout ce qui suit exige un administrateur connecté
 router.use(requireAdmin);
+
+router.get("/reservations", listReservationsHandler);
+router.get("/reservations/:id", getReservationHandler);
+router.patch("/reservations/:id/status", updateReservationStatusHandler);
 
 router.get("/me", (req, res) => {
   res.json({ success: true, admin: req.admin });

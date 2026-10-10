@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CalendarDays, CheckCircle2, LoaderCircle } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { ApiError } from "@/lib/api/client";
+import { getAvailability } from "@/lib/api/availability";
 import { createReservation } from "@/lib/api/reservations";
 import { todayInTunis } from "@/lib/cart/dates";
 
@@ -15,20 +16,79 @@ export function ReservationForm({ productId, whatsappUrl, stock }) {
   const locale = useLocale();
   const [today] = useState(todayInTunis);
   const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [availability, setAvailability] = useState(null);
+  const [reference, setReference] = useState("");
   const [pending, setPending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [availabilityError, setAvailabilityError] = useState(false);
+  const [rateLimitError, setRateLimitError] = useState(false);
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const validIsoDate = (value) => {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+      const date = new Date(`${value}T00:00:00Z`);
+      return (
+        Number.isFinite(date.getTime()) &&
+        date.toISOString().slice(0, 10) === value
+      );
+    };
+
+    if (
+      !validIsoDate(startDate) ||
+      !validIsoDate(endDate) ||
+      startDate < today ||
+      endDate < startDate
+    ) {
+      return undefined;
+    }
+
+    let active = true;
+    const timer = setTimeout(() => {
+      setAvailability({
+        key: `${productId}|${startDate}|${endDate}`,
+        state: "loading",
+      });
+      getAvailability(productId, startDate, endDate)
+        .then((result) => {
+          if (!result?.success || !Number.isFinite(Number(result.available))) {
+            throw new Error("Invalid availability response.");
+          }
+          if (active) {
+            setAvailability({
+              key: `${productId}|${startDate}|${endDate}`,
+              state: "available",
+              count: Number(result.available),
+            });
+          }
+        })
+        .catch(() => {
+          if (active) {
+            setAvailability({
+              key: `${productId}|${startDate}|${endDate}`,
+              state: "error",
+            });
+          }
+        });
+    }, 400);
+
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [endDate, productId, startDate, today]);
 
   async function handleSubmit(event) {
     event.preventDefault();
     setPending(true);
     setError(false);
     setAvailabilityError(false);
+    setRateLimitError(false);
 
     const formData = new FormData(event.currentTarget);
     try {
-      await createReservation({
+      const response = await createReservation({
         items: [
           {
             productId,
@@ -48,10 +108,14 @@ export function ReservationForm({ productId, whatsappUrl, stock }) {
         termsAccepted: formData.get("termsAccepted") === "on",
         website: formData.get("website"),
       });
+      setReference(response?.reservation?.reference ?? "");
       setSubmitted(true);
     } catch (submitError) {
       setAvailabilityError(
         submitError instanceof ApiError && submitError.status === 409,
+      );
+      setRateLimitError(
+        submitError instanceof ApiError && submitError.status === 429,
       );
       setError(true);
     } finally {
@@ -61,6 +125,9 @@ export function ReservationForm({ productId, whatsappUrl, stock }) {
 
   const maxQuantity =
     stock == null ? 10 : Math.max(1, Math.min(Number(stock), 10));
+  const availabilityKey = `${productId}|${startDate}|${endDate}`;
+  const currentAvailability =
+    availability?.key === availabilityKey ? availability : null;
 
   return (
     <section
@@ -92,7 +159,9 @@ export function ReservationForm({ productId, whatsappUrl, stock }) {
             {t("reservation.successTitle")}
           </p>
           <p className="mb-0 text-sm leading-6">
-            {t("reservation.successMessage")}
+            {reference
+              ? t("reservation.successReference", { reference })
+              : t("reservation.successMessage")}
           </p>
         </div>
       ) : (
@@ -115,11 +184,25 @@ export function ReservationForm({ productId, whatsappUrl, stock }) {
                 className={inputClass}
                 min={startDate || today || undefined}
                 name="endDate"
+                onChange={(event) => setEndDate(event.target.value)}
                 required
                 type="date"
               />
             </label>
           </div>
+          {currentAvailability && (
+            <p
+              aria-live="polite"
+              className="m-0 text-sm font-semibold text-muted"
+              role="status"
+            >
+              {currentAvailability.state === "loading"
+                ? t("reservation.checkingAvailability")
+                : currentAvailability.state === "error"
+                  ? t("reservation.availabilityUnavailable")
+                  : t("reservation.remaining", { count: currentAvailability.count })}
+            </p>
+          )}
 
           <label className="text-sm font-semibold text-foreground">
             {t("reservation.quantity")}
@@ -216,6 +299,8 @@ export function ReservationForm({ productId, whatsappUrl, stock }) {
             <p aria-live="polite" className="m-0 text-sm font-semibold text-error" role="alert">
               {availabilityError
                 ? t("reservation.availabilityError")
+                : rateLimitError
+                  ? t("reservation.rateLimitError")
                 : t("reservation.errorMessage")}
             </p>
           )}

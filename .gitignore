@@ -1,1 +1,8 @@
 PROJECT_BRIEF.md
+
+# Sensitive local configuration and dependencies
+node_modules/
+.env*
+backend/firebase-service-account.json
+bg
+web\video-source\

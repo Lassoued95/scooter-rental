@@ -27,6 +27,9 @@
     "trustLine": "Helmet, anti-theft lock and insurance included · Free hotel pick-up · No deposit",
     "filterLabel": "Filter vehicles by category",
     "filterAll": "All",
+    "filtersLabel": "Filter by type",
+    "filters": { "all": "All", "50": "50cc", "125": "125cc", "electric": "Electric" },
+    "fuel": { "petrol": "Petrol", "electric": "Electric" },
     "categories": {
       "scooter": "Scooters",
       "three_wheel_scooter": "Three-wheel scooters",
@@ -35,6 +38,7 @@
       "bicycle": "Bicycles"
     },
     "fromPrice": "From",
+    "from": "From",
     "perDay": "day",
     "bookWhatsapp": "Book on WhatsApp",
     "viewDetails": "View details",
@@ -52,7 +56,12 @@
       "passengers": "Passengers",
       "pricing": "Rental prices",
       "oneDay": "1 day",
-      "fromDays": "From {days} days"
+      "fromDays": "From {days} days",
+      "galleryPrev": "Previous photo",
+      "galleryNext": "Next photo",
+      "trustPay": "Pay on site",
+      "trustNoDeposit": "No deposit",
+      "trustHelmets": "Helmets included"
     },
     "reservation": {
       "title": "Request a reservation",
@@ -70,6 +79,11 @@
       "submitting": "Sending request…",
       "successTitle": "Request received",
       "successMessage": "Your request is pending confirmation. We will contact you using the email address provided.",
+      "successReference": "Your request is pending confirmation. Reference: {reference}. We will contact you using the email address provided.",
+      "checkingAvailability": "Checking availability…",
+      "remaining": "Remaining quantity for these dates: {count}",
+      "availabilityUnavailable": "Availability could not be checked right now.",
+      "rateLimitError": "You have reached the limit of 3 reservation requests per 24 hours for this email address or phone number.",
       "errorMessage": "We could not send your request. Please try again or contact us on WhatsApp.",
       "availabilityError": "Those dates or that quantity are no longer available. Please choose different dates or contact us.",
       "whatsappAlternative": "Prefer WhatsApp? Message us instead."
@@ -205,6 +219,12 @@
     "ctaTitle": "Ready to ride?",
     "ctaText": "Message us on WhatsApp or book online.",
     "ctaBook": "Book now",
-    "ctaWhatsapp": "WhatsApp"
+    "ctaWhatsapp": "WhatsApp",
+    "stats": {
+      "founded": "Since",
+      "rating": "Google rating",
+      "vehicles": "Vehicle types",
+      "deposit": "Deposit required"
+    }
   }
 }

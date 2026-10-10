@@ -27,6 +27,9 @@
     "trustLine": "Helm, Diebstahlsicherung und Versicherung inklusive · Kostenlose Hotelabholung · Keine Kaution",
     "filterLabel": "Fahrzeuge nach Kategorie filtern",
     "filterAll": "Alle",
+    "filtersLabel": "Nach Typ filtern",
+    "filters": { "all": "Alle", "50": "50cc", "125": "125cc", "electric": "Elektrisch" },
+    "fuel": { "petrol": "Benzin", "electric": "Elektrisch" },
     "categories": {
       "scooter": "Roller",
       "three_wheel_scooter": "Dreirad-Roller",
@@ -35,6 +38,7 @@
       "bicycle": "Fahrräder"
     },
     "fromPrice": "Ab",
+    "from": "Ab",
     "perDay": "Tag",
     "bookWhatsapp": "Per WhatsApp anfragen",
     "viewDetails": "Details ansehen",
@@ -52,7 +56,12 @@
       "passengers": "Sitzplätze",
       "pricing": "Mietpreise",
       "oneDay": "1 Tag",
-      "fromDays": "Ab {days} Tagen"
+      "fromDays": "Ab {days} Tagen",
+      "galleryPrev": "Vorheriges Foto",
+      "galleryNext": "Nächstes Foto",
+      "trustPay": "Zahlung vor Ort",
+      "trustNoDeposit": "Keine Kaution",
+      "trustHelmets": "Helme inklusive"
     },
     "reservation": {
       "title": "Reservierung anfragen",
@@ -70,6 +79,11 @@
       "submitting": "Anfrage wird gesendet…",
       "successTitle": "Anfrage erhalten",
       "successMessage": "Ihre Anfrage wartet auf Bestätigung. Wir kontaktieren Sie über die angegebene E-Mail-Adresse.",
+      "successReference": "Ihre Anfrage wartet auf Bestätigung. Referenz: {reference}. Wir kontaktieren Sie über die angegebene E-Mail-Adresse.",
+      "checkingAvailability": "Verfügbarkeit wird geprüft…",
+      "remaining": "Für diese Daten noch verfügbare Anzahl: {count}",
+      "availabilityUnavailable": "Die Verfügbarkeit kann derzeit nicht geprüft werden.",
+      "rateLimitError": "Sie haben das Limit von 3 Reservierungsanfragen innerhalb von 24 Stunden für diese E-Mail-Adresse oder Telefonnummer erreicht.",
       "errorMessage": "Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns auf WhatsApp.",
       "availabilityError": "Diese Daten oder diese Anzahl sind nicht mehr verfügbar. Bitte wählen Sie andere Daten oder kontaktieren Sie uns.",
       "whatsappAlternative": "Lieber WhatsApp? Schreiben Sie uns."
@@ -205,6 +219,12 @@
     "ctaTitle": "Bereit für die Fahrt?",
     "ctaText": "Schreiben Sie uns auf WhatsApp oder buchen Sie online.",
     "ctaBook": "Jetzt buchen",
-    "ctaWhatsapp": "WhatsApp"
+    "ctaWhatsapp": "WhatsApp",
+    "stats": {
+      "founded": "Seit",
+      "rating": "Google-Bewertung",
+      "vehicles": "Fahrzeugtypen",
+      "deposit": "Kaution erforderlich"
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { AdminProductsManager } from "@/components/admin/admin-products-manager";
+import { AdminNavigation } from "@/components/admin/admin-navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +12,7 @@ export default function AdminProductsPage() {
       <h1 className="mb-8 mt-0 font-display text-4xl font-bold">
         Gestion des produits
       </h1>
+      <AdminNavigation />
       <AdminProductsManager />
     </section>
   );

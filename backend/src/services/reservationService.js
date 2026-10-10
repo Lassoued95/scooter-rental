@@ -1,7 +1,21 @@
 const { admin, db } = require("../config/firebase");
+const { createHash } = require("crypto");
 const { sendMail } = require("./mailService");
 const { countRentalDays, expandDateRange, getTodayInTunisia, toUtcDate } = require("../utils/dateUtils");
 const { calculateVehicleLineTotal } = require("../utils/pricing");
+const { buildStatusEmail, escapeHtml, sanitizeSubject } = require("../emails/statusEmail");
+
+const CONTACT_REQUEST_LIMIT = 3;
+const CONTACT_WINDOW_MS = 24 * 60 * 60 * 1000;
+
+async function sendMailSafely(message) {
+  try {
+    return await sendMail(message);
+  } catch (error) {
+    console.error("Reservation email failed:", error.code || error.name || "MAIL_FAILED");
+    return { ok: false, error: "MAIL_FAILED" };
+  }
+}
 
 class ReservationError extends Error {
   constructor(message, status) {
@@ -9,16 +23,6 @@ class ReservationError extends Error {
     this.name = "ReservationError";
     this.status = status;
   }
-}
-
-function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, (character) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  })[character]);
 }
 
 function getPriceDetails(product) {
@@ -38,6 +42,46 @@ function getPriceDetails(product) {
   };
 }
 
+function contactRateLimitRef(type, value) {
+  const digest = createHash("sha256").update(value).digest("hex");
+  return db.collection("reservation_contact_limits").doc(`${type}_${digest}`);
+}
+
+async function recordContactRequest(customer) {
+  const now = Date.now();
+  const cutoff = now - CONTACT_WINDOW_MS;
+  const phoneDigits = customer.phone.replace(/\D/g, "");
+  const refs = [
+    contactRateLimitRef("email", customer.email.trim().toLowerCase()),
+    contactRateLimitRef("phone", phoneDigits || customer.phone.trim()),
+  ];
+
+  const limited = await db.runTransaction(async (transaction) => {
+    const snapshots = await Promise.all(refs.map((ref) => transaction.get(ref)));
+    const recentRequests = snapshots.map((snapshot) =>
+      (snapshot.data()?.requests ?? []).filter(
+        (timestamp) => Number(timestamp) >= cutoff && Number(timestamp) <= now,
+      ),
+    );
+
+    if (recentRequests.some((requests) => requests.length >= CONTACT_REQUEST_LIMIT)) {
+      return true;
+    }
+
+    refs.forEach((ref, index) => {
+      transaction.set(ref, { requests: [...recentRequests[index], now] }, { merge: true });
+    });
+    return false;
+  });
+
+  if (limited) {
+    throw new ReservationError(
+      "The reservation limit for this email address or phone number is 3 requests per 24 hours.",
+      429,
+    );
+  }
+}
+
 async function createVehicleReservation(input) {
   const item = input.items[0];
   const { startDate, endDate } = item;
@@ -48,6 +92,8 @@ async function createVehicleReservation(input) {
   if (!start || !end || days === 0 || days > 60 || startDate < getTodayInTunisia()) {
     throw new ReservationError("Choose a valid rental date range.", 400);
   }
+
+  await recordContactRequest(input.customer);
 
   const dateRange = expandDateRange(startDate, endDate);
   const productRef = db.collection("products").doc(item.productId);
@@ -103,6 +149,7 @@ async function createVehicleReservation(input) {
     };
     const record = {
       id: reservationRef.id,
+      reference: reservationRef.id.slice(0, 8).toUpperCase(),
       productId: product.id,
       productName: String(product.name ?? product.id),
       type: "rental",
@@ -134,7 +181,7 @@ async function createVehicleReservation(input) {
   const escapedCustomer = escapeHtml(reservation.customer.name);
   const escapedEmail = escapeHtml(reservation.customer.email);
   const escapedPhone = escapeHtml(reservation.customer.phone);
-  const escapedDates = `${escapeHtml(startDate)} – ${escapeHtml(endDate)}`;
+  const escapedDates = `${escapeHtml(startDate)} - ${escapeHtml(endDate)}`;
   const escapedTotal = escapeHtml(`${reservation.totalPrice.toFixed(2)} EUR`);
   const extraDetails = [
     reservation.customer.hotel
@@ -160,9 +207,9 @@ async function createVehicleReservation(input) {
   const emails = [];
   if (process.env.AGENCY_NOTIFY_EMAIL) {
     emails.push(
-      sendMail({
+      sendMailSafely({
         to: process.env.AGENCY_NOTIFY_EMAIL,
-        subject: `New rental request: ${reservation.productName.replace(/[\r\n]+/g, " ")}`,
+        subject: sanitizeSubject(`New rental request: ${reservation.productName}`),
         html: notification,
         text: notification.replace(/<[^>]*>/g, " "),
         replyTo: reservation.customer.email,
@@ -173,18 +220,12 @@ async function createVehicleReservation(input) {
   }
 
   emails.push(
-    sendMail({
+    sendMailSafely({
       to: reservation.customer.email,
-      subject: "We received your scooter reservation request",
-      html: [
-        `<p>Hello ${escapedCustomer},</p>`,
-        `<p>We received your request for <strong>${escapedName}</strong>.</p>`,
-        `<p><strong>Dates:</strong> ${escapedDates}<br>`,
-        `<strong>Quantity:</strong> ${reservation.quantity}<br>`,
-        `<strong>Estimated total:</strong> ${escapedTotal}</p>`,
-        "<p>Your reservation is pending confirmation. We will contact you shortly.</p>",
-      ].join(""),
-      text: `Hello ${reservation.customer.name}, we received your request for ${reservation.productName}, ${startDate} to ${endDate}. Your reservation is pending confirmation.`,
+      ...buildStatusEmail("RECEIVED", {
+        ...reservation,
+        reference: reservation.reference,
+      }),
     }),
   );
   await Promise.all(emails);
@@ -192,9 +233,14 @@ async function createVehicleReservation(input) {
   return {
     id: reservation.id,
     status: reservation.status,
+    reference: reservation.reference,
     totalPrice: reservation.totalPrice,
     currency: reservation.currency,
   };
 }
 
-module.exports = { createVehicleReservation, ReservationError };
+module.exports = {
+  createVehicleReservation,
+  recordContactRequest,
+  ReservationError,
+};

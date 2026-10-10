@@ -229,7 +229,7 @@ export default async function ScooterDetailsPage({ params }) {
 
   /* ---------- render ---------- */
   return (
-    <main className="bg-background text-foreground">
+    <div className="bg-background text-foreground">
       <script
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
@@ -455,6 +455,6 @@ export default async function ScooterDetailsPage({ params }) {
         perDay={t("perDay")}
         price={fromPrice}
       />
-    </main>
+    </div>
   );
 }

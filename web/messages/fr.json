@@ -87,6 +87,11 @@
       "submitting": "Envoi en cours…",
       "successTitle": "Demande reçue",
       "successMessage": "Votre demande est en attente de confirmation. Nous vous contacterons à l'adresse e-mail indiquée.",
+      "successReference": "Votre demande est en attente de confirmation. Référence : {reference}. Nous vous contacterons à l'adresse e-mail indiquée.",
+      "checkingAvailability": "Vérification de la disponibilité…",
+      "remaining": "Quantité encore disponible pour ces dates : {count}",
+      "availabilityUnavailable": "La disponibilité ne peut pas être vérifiée pour le moment.",
+      "rateLimitError": "Vous avez atteint la limite de 3 demandes de réservation par période de 24 heures pour cette adresse e-mail ou ce numéro de téléphone.",
       "errorMessage": "Votre demande n'a pas pu être envoyée. Réessayez ou contactez-nous sur WhatsApp.",
       "availabilityError": "Ces dates ou cette quantité ne sont plus disponibles. Choisissez d'autres dates ou contactez-nous.",
       "whatsappAlternative": "Vous préférez WhatsApp ? Écrivez-nous."
@@ -130,16 +135,74 @@
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu"
   },
+
+  "footer": {
+  "tagline": "Location de scooters et de vélos à Djerba. Découvrez l'île en toute liberté.",
+  "whatsappMessage": "Bonjour, je souhaite des informations sur la location à Djerba.",
+  "whatsappCta": "Écrire sur WhatsApp",
+  "navLabel": "Navigation du pied de page",
+  "legalLabel": "Informations légales",
+  "exploreTitle": "Explorer",
+  "contact": "Contact",
+  "contactTitle": "Contact",
+  "address": "Zone touristique de Djerba, en face de l'hôtel Zenon",
+  "directions": "Voir sur Google Maps",
+  "hoursTitle": "Horaires",
+  "hoursText": "À confirmer avec l'agence",
+  "followTitle": "Suivez-nous",
+  "payOnSite": "Paiement sur place, sans caution",
+  "terms": "Conditions de location",
+  "privacy": "Politique de confidentialité",
+  "rights": "Tous droits réservés.",
+  "backToTop": "Retour en haut",
+  "perks": {
+    "helmet": "Casque inclus",
+    "lock": "Antivol inclus",
+    "insurance": "Assurance incluse",
+    "pickup": "Prise en charge gratuite à l'hôtel",
+    "deposit": "Sans caution"
+  }
+},
   "metadata": {
     "title": "Location Scooter Djerba",
     "description": "Location de scooters et excursions guidées à Djerba, en Tunisie."
   },
   "home": {
+
+    "how": {
+  "eyebrow": "Comment ça marche",
+  "title": "Réservez en quatre étapes",
+  "intro": "Simple et rapide, avec paiement sur place.",
+  "cta": "Voir les véhicules",
+  "steps": {
+    "choose": { "title": "Choisissez votre véhicule", "text": "Parcourez la flotte et trouvez le scooter ou le vélo qui vous convient." },
+    "request": { "title": "Envoyez votre demande", "text": "Indiquez vos dates et votre hôtel. Quelques champs suffisent." },
+    "confirm": { "title": "Nous confirmons", "text": "L'agence vous répond par WhatsApp ou par e-mail." },
+    "ride": { "title": "Roulez", "text": "Prise en charge gratuite à votre hôtel, paiement sur place, sans caution." }
+  }
+},
     "eyebrow": "Mezraya · Djerba · Tunisie",
     "title": "Louez. Roulez. Vivez Djerba.",
     "description": "Partez à la découverte de Djerba en toute liberté : plages secrètes, villages authentiques, marchés locaux et petites routes pleines de charme.",
     "tagline": "Votre scooter, votre itinéraire, votre aventure.",
-    "imageAlt": "Une touriste en scooter bleu et blanc dans une rue blanchie à la chaux de Djerba"
+    "imageAlt": "Une touriste en scooter bleu et blanc dans une rue blanchie à la chaux de Djerba",
+    "discover": {
+  "eyebrow": "Idées de balades",
+  "title": "Où rouler à Djerba avec nos véhicules",
+  "intro": "Quelques lieux à découvrir sur l'île, à votre rythme.",
+  "regionLabel": "Lieux à découvrir à Djerba",
+  "prev": "Lieu précédent",
+  "next": "Lieu suivant",
+  "ctaText": "Choisissez votre véhicule et partez à la découverte.",
+  "ctaButton": "Voir les véhicules",
+  "places": {
+    "houmtSouk": { "name": "Houmt Souk", "tag": "Ville et souk", "text": "La principale ville de l'île, avec ses ruelles et son marché." },
+    "erriadh": { "name": "Erriadh", "tag": "Street art", "text": "Le village connu pour ses fresques murales, le projet Djerbahood." },
+    "guellala": { "name": "Guellala", "tag": "Poterie", "text": "Un village réputé pour ses ateliers de poterie." },
+    "midoun": { "name": "Midoun", "tag": "Bourg de l'île", "text": "L'un des principaux bourgs de Djerba, au cœur de la vie locale." },
+    "sidiMahrez": { "name": "Sidi Mahrez", "tag": "Plage", "text": "Une plage de sable sur la côte est de l'île." }
+  }
+}
   },
   "styleguide": {
     "eyebrow": "Système visuel",
@@ -231,6 +294,11 @@
   "deposit": "Caution demandée"
 }
 
+
+
+
 }
+
+
 
 }

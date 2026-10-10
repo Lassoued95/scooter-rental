@@ -4,10 +4,22 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const productRoutes = require("./routes/productRoutes");
+const availabilityRoutes = require("./routes/availabilityRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const reservationRoutes = require("./routes/reservationRoutes");
 
 const app = express();
+
+function parseTrustProxy(value) {
+  if (value === undefined || value.trim() === "") return false;
+  const normalized = value.trim();
+  if (normalized === "true") return true;
+  if (normalized === "false") return false;
+  if (/^\d+$/.test(normalized)) return Number(normalized);
+  return normalized.split(",").map((entry) => entry.trim());
+}
+
+app.set("trust proxy", parseTrustProxy(process.env.TRUST_PROXY));
 
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:3000")
   .split(",")
@@ -48,6 +60,7 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 
+app.use("/api/products", availabilityRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/reservations", reservationRoutes);

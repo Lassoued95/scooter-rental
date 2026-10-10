@@ -27,6 +27,9 @@
     "trustLine": "Kask, zabezpieczenie antykradzieżowe i ubezpieczenie w cenie · Bezpłatny odbiór z hotelu · Bez kaucji",
     "filterLabel": "Filtruj pojazdy według kategorii",
     "filterAll": "Wszystkie",
+    "filtersLabel": "Filtruj według typu",
+    "filters": { "all": "Wszystkie", "50": "50cc", "125": "125cc", "electric": "Elektryczne" },
+    "fuel": { "petrol": "Benzyna", "electric": "Elektryczny" },
     "categories": {
       "scooter": "Skutery",
       "three_wheel_scooter": "Skutery trójkołowe",
@@ -35,6 +38,7 @@
       "bicycle": "Rowery"
     },
     "fromPrice": "Od",
+    "from": "Od",
     "perDay": "dzień",
     "bookWhatsapp": "Zapytaj na WhatsApp",
     "viewDetails": "Zobacz szczegóły",
@@ -52,7 +56,12 @@
       "passengers": "Liczba pasażerów",
       "pricing": "Ceny wynajmu",
       "oneDay": "1 dzień",
-      "fromDays": "Od {days} dni"
+      "fromDays": "Od {days} dni",
+      "galleryPrev": "Poprzednie zdjęcie",
+      "galleryNext": "Następne zdjęcie",
+      "trustPay": "Płatność na miejscu",
+      "trustNoDeposit": "Bez kaucji",
+      "trustHelmets": "Kaski w cenie"
     },
     "reservation": {
       "title": "Wyślij prośbę o rezerwację",
@@ -70,6 +79,11 @@
       "submitting": "Wysyłanie prośby…",
       "successTitle": "Otrzymaliśmy prośbę",
       "successMessage": "Prośba oczekuje na potwierdzenie. Skontaktujemy się z Tobą pod podanym adresem e-mail.",
+      "successReference": "Prośba oczekuje na potwierdzenie. Numer referencyjny: {reference}. Skontaktujemy się z Tobą pod podanym adresem e-mail.",
+      "checkingAvailability": "Sprawdzanie dostępności…",
+      "remaining": "Liczba dostępnych pojazdów w tych terminach: {count}",
+      "availabilityUnavailable": "Nie można teraz sprawdzić dostępności.",
+      "rateLimitError": "Osiągnięto limit 3 próśb o rezerwację w ciągu 24 godzin dla tego adresu e-mail lub numeru telefonu.",
       "errorMessage": "Nie udało się wysłać prośby. Spróbuj ponownie lub skontaktuj się z nami przez WhatsApp.",
       "availabilityError": "Te daty lub ta liczba pojazdów nie są już dostępne. Wybierz inne daty lub skontaktuj się z nami.",
       "whatsappAlternative": "Wolisz WhatsApp? Napisz do nas."
@@ -205,6 +219,12 @@
     "ctaTitle": "Gotowy do drogi?",
     "ctaText": "Napisz do nas na WhatsApp lub zarezerwuj online.",
     "ctaBook": "Zarezerwuj",
-    "ctaWhatsapp": "WhatsApp"
+    "ctaWhatsapp": "WhatsApp",
+    "stats": {
+      "founded": "Od",
+      "rating": "Ocena Google",
+      "vehicles": "Rodzaje pojazdów",
+      "deposit": "Wymagana kaucja"
+    }
   }
 }

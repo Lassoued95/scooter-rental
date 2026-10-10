@@ -45,7 +45,7 @@ async function sendMail({ to, subject, html, text, replyTo }) {
     });
     return { ok: true, messageId: info.messageId };
   } catch (error) {
-    console.error("Mail error:", error.code || error.message);
+    console.error("Mail error:", error.code || "MAIL_FAILED");
     return { ok: false, error: error.code || "MAIL_FAILED" };
   }
 }
