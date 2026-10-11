@@ -12,6 +12,27 @@ import {
 
 const HERO_SCREENS = 2.5; // hauteur totale du scroll du hero, en écrans
 
+// Point de cadrage d'une image : une chaîne ("70% 30%") ou { mobile, desktop }
+function focalPoints(position) {
+  if (position && typeof position === "object") {
+    return {
+      mobile: position.mobile ?? position.desktop ?? "50% 50%",
+      desktop: position.desktop ?? position.mobile ?? "50% 50%",
+    };
+  }
+  const value = position ?? "70% 30%";
+  return { mobile: value, desktop: value };
+}
+
+function focalStyle(position) {
+  const { mobile, desktop } = focalPoints(position);
+  return { "--pos-mobile": mobile, "--pos-desktop": desktop };
+}
+
+// Les variables CSS sont posées sur le conteneur de l'image et lues par l'image
+const coverClass =
+  "object-cover [object-position:var(--pos-mobile)] md:[object-position:var(--pos-desktop)]";
+
 export function HeroFlythrough({ images, children }) {
   const reduceMotion = useReducedMotion();
   return reduceMotion ? (
@@ -69,15 +90,15 @@ function ScrollHero({ images, children }) {
           }}
         />
 
-        {/* léger voile en bas pour la lisibilité */}
+        {/* voile du bas pour la lisibilité (plus fort sur mobile, où le texte est en bas) */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-10 bg-linear-to-t from-brand-section/55 via-transparent to-brand-section/10"
+          className="pointer-events-none absolute inset-0 z-10 bg-linear-to-t from-brand-section/55 via-transparent to-brand-section/10 max-sm:from-brand-section/90 max-sm:via-brand-section/30"
         />
 
-        {/* texte */}
+        {/* texte : centré sur ordinateur, en bas sur mobile */}
         <motion.div
-          className="absolute inset-0 z-20 flex items-center"
+          className="absolute inset-0 z-20 flex items-center max-sm:items-end max-sm:pb-20"
           style={{ opacity: textOpacity, y: textY }}
         >
           <div className="mx-auto w-[calc(100%-2rem)] max-w-6xl max-sm:w-[calc(100%-1.25rem)]">
@@ -146,7 +167,7 @@ function FlythroughLayer({ image, index, count, progress }) {
     <motion.div
       aria-hidden={image.alt ? undefined : true}
       className="absolute inset-0"
-      style={{ opacity }}
+      style={{ opacity, ...focalStyle(image.position) }}
     >
       <motion.div
         className="absolute inset-0 will-change-transform"
@@ -158,8 +179,7 @@ function FlythroughLayer({ image, index, count, progress }) {
           fill
           priority={index === 0}
           sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: image.position ?? "70% 30%" }}
+          className={coverClass}
         />
       </motion.div>
     </motion.div>
@@ -170,21 +190,23 @@ function FlythroughLayer({ image, index, count, progress }) {
 function StaticHero({ images, children }) {
   const image = images[0];
   return (
-    <div className="relative isolate flex min-h-[min(88svh,54rem)] items-center overflow-hidden bg-brand-section">
+    <div
+      className="relative isolate flex min-h-[min(88svh,54rem)] items-center overflow-hidden bg-brand-section max-sm:items-end"
+      style={focalStyle(image.position)}
+    >
       <Image
         src={image.src}
         alt={image.alt ?? ""}
         fill
         priority
         sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition: image.position ?? "70% 30%" }}
+        className={coverClass}
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-t from-brand-section/70 via-transparent to-transparent"
+        className="absolute inset-0 bg-linear-to-t from-brand-section/70 via-transparent to-transparent max-sm:from-brand-section/90 max-sm:via-brand-section/30"
       />
-      <div className="relative z-10 mx-auto w-[calc(100%-2rem)] max-w-6xl py-16">
+      <div className="relative z-10 mx-auto w-[calc(100%-2rem)] max-w-6xl py-16 max-sm:w-[calc(100%-1.25rem)]">
         {children}
       </div>
     </div>

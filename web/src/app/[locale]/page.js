@@ -9,10 +9,22 @@ export default async function HomePage({ params }) {
   const t = await getTranslations("home");
 
   const images = [
-    { src: "/bg/bg.webp", alt: t("imageAlt") },
-    { src: "/bg/bg2.webp", alt: "" },
-    { src: "/bg/bg3.webp", alt: "" },
-  ];
+  {
+    src: "/bg/bg.webp",
+    alt: t("imageAlt"),
+    position: { mobile: "36% 45%", desktop: "70% 30%" },
+  },
+  {
+    src: "/bg/bg2.webp",
+    alt: "",
+    position: { mobile: "50% 40%", desktop: "70% 30%" },
+  },
+  {
+    src: "/bg/bg3.webp",
+    alt: "",
+    position: { mobile: "50% 40%", desktop: "70% 30%" },
+  },
+];
 
   return (
     <>
