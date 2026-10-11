@@ -297,6 +297,83 @@
 
 
 
+},
+
+
+"faq": {
+  "metaTitle": "Questions fréquentes | Location scooter Djerba",
+  "metaDescription": "Réservation, paiement sur place, sans caution, casque, antivol et assurance inclus : les réponses aux questions fréquentes sur la location à Djerba.",
+  "eyebrow": "Aide",
+  "title": "Questions fréquentes",
+  "intro": "Les réponses aux questions les plus posées avant de réserver.",
+  "filterLabel": "Filtrer par thème",
+  "all": "Toutes",
+  "groups": {
+    "booking": "Réserver",
+    "payment": "Paiement et inclus",
+    "vehicles": "Véhicules",
+    "practical": "Pratique"
+  },
+  "stillTitle": "Une autre question ?",
+  "stillText": "Écrivez-nous sur WhatsApp ou appelez-nous.",
+  "ctaWhatsapp": "Écrire sur WhatsApp",
+  "ctaCall": "Appeler",
+  "address": "Zone touristique de Djerba, en face de l'hôtel Zenon",
+  "whatsappMessage": "Bonjour, j'ai une question avant de réserver.",
+  "questions": {
+    "howToBook": {
+      "q": "Comment réserver un véhicule ?",
+      "a": "Choisissez un véhicule dans la page Location scooter, indiquez vos dates, la quantité et vos coordonnées, puis envoyez votre demande. Vous pouvez aussi nous écrire directement sur WhatsApp au +216 28 340 240."
+    },
+    "confirmation": {
+      "q": "Ma réservation est-elle confirmée tout de suite ?",
+      "a": "Non. Votre demande est d'abord enregistrée, puis l'agence la confirme par WhatsApp ou par e-mail. Pensez à indiquer un numéro et une adresse e-mail valides."
+    },
+    "severalVehicles": {
+      "q": "Puis-je réserver plusieurs véhicules ?",
+      "a": "Oui. Vous pouvez choisir plusieurs exemplaires du même modèle dans une même demande. Pour des modèles différents, envoyez une demande par véhicule ou écrivez-nous sur WhatsApp."
+    },
+    "changeOrCancel": {
+      "q": "Comment modifier ou annuler ma réservation ?",
+      "a": "Contactez-nous sur WhatsApp en indiquant votre nom et vos dates de location."
+    },
+    "howToPay": {
+      "q": "Comment se passe le paiement ?",
+      "a": "Le paiement se fait sur place, auprès de l'agence. Il n'y a pas de paiement en ligne."
+    },
+    "deposit": {
+      "q": "Faut-il verser une caution ?",
+      "a": "Non, la location se fait sans caution."
+    },
+    "included": {
+      "q": "Qu'est-ce qui est inclus dans la location ?",
+      "a": "Le casque, l'antivol et l'assurance sont inclus, ainsi que la prise en charge gratuite à votre hôtel. Pour le détail de l'assurance, demandez-le-nous."
+    },
+    "whichVehicles": {
+      "q": "Quels véhicules proposez-vous ?",
+      "a": "Des scooters 50 cc et 125 cc, un scooter électrique, un scooter à trois roues, des vélos électriques et des vélos classiques. Les modèles disponibles sont présentés dans la page Location scooter."
+    },
+    "condition": {
+      "q": "Dans quel état sont les véhicules ?",
+      "a": "Nos véhicules sont récents et en excellent état."
+    },
+    "availability": {
+      "q": "Comment savoir si un véhicule est disponible à mes dates ?",
+      "a": "Indiquez vos dates dans le formulaire de réservation : l'agence vérifie la disponibilité et vous répond. En cas de doute, écrivez-nous sur WhatsApp."
+    },
+    "hotelPickup": {
+      "q": "Comment fonctionne la prise en charge gratuite à l'hôtel ?",
+      "a": "Indiquez le nom de votre hôtel dans le formulaire de réservation. L'agence vous précise les modalités de la prise en charge au moment de la confirmation."
+    },
+    "where": {
+      "q": "Où se trouve l'agence ?",
+      "a": "Dans la zone touristique de Djerba, en face de l'hôtel Zenon."
+    },
+    "contact": {
+      "q": "Comment vous contacter ?",
+      "a": "Par WhatsApp ou par téléphone au +216 28 340 240."
+    }
+  }
 }
 
 
