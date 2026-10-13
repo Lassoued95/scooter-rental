@@ -28,8 +28,16 @@
     "filterLabel": "Filtrar veículos por categoria",
     "filterAll": "Todos",
     "filtersLabel": "Filtrar por tipo",
-    "filters": { "all": "Todos", "50": "50cc", "125": "125cc", "electric": "Elétrico" },
-    "fuel": { "petrol": "Gasolina", "electric": "Elétrico" },
+    "filters": {
+      "all": "Todos",
+      "50": "50cc",
+      "125": "125cc",
+      "electric": "Elétrico"
+    },
+    "fuel": {
+      "petrol": "Gasolina",
+      "electric": "Elétrico"
+    },
     "categories": {
       "scooter": "Scooters",
       "three_wheel_scooter": "Scooters de três rodas",
@@ -127,16 +135,72 @@
     "openMenu": "Abrir menu",
     "closeMenu": "Fechar menu"
   },
+  "footer": {
+    "tagline": "Aluguer de scooters e bicicletas em Djerba. Descubra a ilha com toda a liberdade.",
+    "whatsappMessage": "Olá, gostaria de obter informações sobre o aluguer em Djerba.",
+    "whatsappCta": "Escrever pelo WhatsApp",
+    "navLabel": "Navegação do rodapé",
+    "legalLabel": "Informações legais",
+    "exploreTitle": "Explorar",
+    "contact": "Contacto",
+    "contactTitle": "Contacto",
+    "address": "Zona turística de Djerba, em frente ao Hotel Zenon",
+    "directions": "Ver no Google Maps",
+    "hoursTitle": "Horário",
+    "hoursText": "A confirmar com a agência",
+    "followTitle": "Siga-nos",
+    "payOnSite": "Pagamento no local, sem caução",
+    "terms": "Condições de aluguer",
+    "privacy": "Política de privacidade",
+    "rights": "Todos os direitos reservados.",
+    "backToTop": "Voltar ao topo",
+    "perks": {
+      "helmet": "Capacete incluído",
+      "lock": "Cadeado antirroubo incluído",
+      "insurance": "Seguro incluído",
+      "pickup": "Recolha gratuita no hotel",
+      "deposit": "Sem caução"
+    }
+  },
   "metadata": {
     "title": "Aluguer de scooters em Djerba",
     "description": "Aluguer de scooters e passeios guiados em Djerba, na Tunísia."
   },
   "home": {
+    "how": {
+      "eyebrow": "Como funciona",
+      "title": "Reserve em quatro passos",
+      "intro": "Simples e rápido, com pagamento no local.",
+      "cta": "Ver veículos",
+      "steps": {
+        "choose": { "title": "Escolha o seu veículo", "text": "Explore a frota e encontre a scooter ou a bicicleta que mais lhe convém." },
+        "request": { "title": "Envie o seu pedido", "text": "Indique as suas datas e o seu hotel. Bastam alguns campos." },
+        "confirm": { "title": "Nós confirmamos", "text": "A agência responde-lhe por WhatsApp ou por e-mail." },
+        "ride": { "title": "Parta à descoberta", "text": "Recolha gratuita no seu hotel, pagamento no local, sem caução." }
+      }
+    },
     "eyebrow": "Mezraya · Djerba · Tunísia",
-    "title": "Alugue. Conduza. Viva Djerba. ",
+    "title": "Alugue. Conduza. Viva Djerba.",
     "description": "Descubra Djerba com toda a liberdade: praias escondidas, aldeias autênticas, mercados locais e pequenas estradas cheias de encanto.",
     "tagline": "A sua scooter, o seu percurso, a sua aventura.",
-    "imageAlt": "Uma turista numa scooter azul e branca numa rua caiada de branco em Djerba"
+    "imageAlt": "Uma turista numa scooter azul e branca numa rua caiada de branco em Djerba",
+    "discover": {
+      "eyebrow": "Ideias de passeios",
+      "title": "Onde passear em Djerba com os nossos veículos",
+      "intro": "Alguns locais para descobrir na ilha, ao seu ritmo.",
+      "regionLabel": "Locais para descobrir em Djerba",
+      "prev": "Local anterior",
+      "next": "Local seguinte",
+      "ctaText": "Escolha o seu veículo e parta à descoberta.",
+      "ctaButton": "Ver veículos",
+      "places": {
+        "houmtSouk": { "name": "Houmt Souk", "tag": "Cidade e souk", "text": "A principal cidade da ilha, com as suas ruelas e o seu mercado." },
+        "erriadh": { "name": "Erriadh", "tag": "Arte de rua", "text": "A aldeia conhecida pelos seus murais, o projeto Djerbahood." },
+        "guellala": { "name": "Guellala", "tag": "Cerâmica", "text": "Uma aldeia famosa pelas suas oficinas de cerâmica." },
+        "midoun": { "name": "Midoun", "tag": "Vila da ilha", "text": "Uma das principais vilas de Djerba, no coração da vida local." },
+        "sidiMahrez": { "name": "Sidi Mahrez", "tag": "Praia", "text": "Uma praia de areia na costa leste da ilha." }
+      }
+    }
   },
   "styleguide": {
     "eyebrow": "Sistema visual",
@@ -225,6 +289,81 @@
       "rating": "Classificação do Google",
       "vehicles": "Tipos de veículos",
       "deposit": "Caução exigida"
+    }
+  },
+  "faq": {
+    "metaTitle": "Perguntas frequentes | Aluguer de scooters em Djerba",
+    "metaDescription": "Reserva, pagamento no local, sem caução, capacete, cadeado antirroubo e seguro incluídos: as respostas às perguntas frequentes sobre o aluguer em Djerba.",
+    "eyebrow": "Ajuda",
+    "title": "Perguntas frequentes",
+    "intro": "As respostas às perguntas mais frequentes antes de reservar.",
+    "filterLabel": "Filtrar por tema",
+    "all": "Todas",
+    "groups": {
+      "booking": "Reservar",
+      "payment": "Pagamento e itens incluídos",
+      "vehicles": "Veículos",
+      "practical": "Informações práticas"
+    },
+    "stillTitle": "Tem outra pergunta?",
+    "stillText": "Escreva-nos pelo WhatsApp ou ligue-nos.",
+    "ctaWhatsapp": "Escrever pelo WhatsApp",
+    "ctaCall": "Ligar",
+    "address": "Zona turística de Djerba, em frente ao Hotel Zenon",
+    "whatsappMessage": "Olá, tenho uma pergunta antes de reservar.",
+    "questions": {
+      "howToBook": {
+        "q": "Como reservar um veículo?",
+        "a": "Escolha um veículo na página Aluguer de scooters, indique as datas, a quantidade e os seus contactos e envie o pedido. Também pode escrever-nos diretamente pelo WhatsApp para o +216 28 340 240."
+      },
+      "confirmation": {
+        "q": "A minha reserva é confirmada de imediato?",
+        "a": "Não. O seu pedido é primeiro registado e, depois, a agência confirma-o por WhatsApp ou por e-mail. Não se esqueça de indicar um número de telefone e um endereço de e-mail válidos."
+      },
+      "severalVehicles": {
+        "q": "Posso reservar vários veículos?",
+        "a": "Sim. Pode escolher vários exemplares do mesmo modelo num único pedido. Para modelos diferentes, envie um pedido por veículo ou escreva-nos pelo WhatsApp."
+      },
+      "changeOrCancel": {
+        "q": "Como posso alterar ou cancelar a minha reserva?",
+        "a": "Contacte-nos pelo WhatsApp indicando o seu nome e as datas de aluguer."
+      },
+      "howToPay": {
+        "q": "Como funciona o pagamento?",
+        "a": "O pagamento é feito no local, na agência. Não existe pagamento online."
+      },
+      "deposit": {
+        "q": "É necessário pagar uma caução?",
+        "a": "Não, o aluguer é feito sem caução."
+      },
+      "included": {
+        "q": "O que está incluído no aluguer?",
+        "a": "O capacete, o cadeado antirroubo e o seguro estão incluídos, bem como a recolha gratuita no seu hotel. Para saber os pormenores do seguro, pergunte-nos."
+      },
+      "whichVehicles": {
+        "q": "Que veículos oferecem?",
+        "a": "Scooters de 50 cc e 125 cc, uma scooter elétrica, uma scooter de três rodas, bicicletas elétricas e bicicletas clássicas. Os modelos disponíveis estão apresentados na página Aluguer de scooters."
+      },
+      "condition": {
+        "q": "Em que estado estão os veículos?",
+        "a": "Os nossos veículos são recentes e estão em excelente estado."
+      },
+      "availability": {
+        "q": "Como sei se um veículo está disponível nas minhas datas?",
+        "a": "Indique as datas no formulário de reserva: a agência verifica a disponibilidade e responde-lhe. Em caso de dúvida, escreva-nos pelo WhatsApp."
+      },
+      "hotelPickup": {
+        "q": "Como funciona a recolha gratuita no hotel?",
+        "a": "Indique o nome do seu hotel no formulário de reserva. A agência informa-o das condições da recolha no momento da confirmação."
+      },
+      "where": {
+        "q": "Onde fica a agência?",
+        "a": "Na zona turística de Djerba, em frente ao Hotel Zenon."
+      },
+      "contact": {
+        "q": "Como vos posso contactar?",
+        "a": "Pelo WhatsApp ou por telefone, através do +216 28 340 240."
+      }
     }
   }
 }

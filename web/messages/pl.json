@@ -28,8 +28,16 @@
     "filterLabel": "Filtruj pojazdy według kategorii",
     "filterAll": "Wszystkie",
     "filtersLabel": "Filtruj według typu",
-    "filters": { "all": "Wszystkie", "50": "50cc", "125": "125cc", "electric": "Elektryczne" },
-    "fuel": { "petrol": "Benzyna", "electric": "Elektryczny" },
+    "filters": {
+      "all": "Wszystkie",
+      "50": "50cc",
+      "125": "125cc",
+      "electric": "Elektryczne"
+    },
+    "fuel": {
+      "petrol": "Benzyna",
+      "electric": "Elektryczny"
+    },
     "categories": {
       "scooter": "Skutery",
       "three_wheel_scooter": "Skutery trójkołowe",
@@ -127,16 +135,72 @@
     "openMenu": "Otwórz menu",
     "closeMenu": "Zamknij menu"
   },
+  "footer": {
+    "tagline": "Wynajem skuterów i rowerów na Dżerbie. Odkrywaj wyspę bez ograniczeń.",
+    "whatsappMessage": "Dzień dobry, proszę o informacje na temat wynajmu na Dżerbie.",
+    "whatsappCta": "Napisz na WhatsApp",
+    "navLabel": "Nawigacja w stopce",
+    "legalLabel": "Informacje prawne",
+    "exploreTitle": "Odkrywaj",
+    "contact": "Kontakt",
+    "contactTitle": "Kontakt",
+    "address": "Strefa turystyczna Dżerby, naprzeciwko hotelu Zenon",
+    "directions": "Zobacz w Mapach Google",
+    "hoursTitle": "Godziny otwarcia",
+    "hoursText": "Do potwierdzenia w wypożyczalni",
+    "followTitle": "Obserwuj nas",
+    "payOnSite": "Płatność na miejscu, bez kaucji",
+    "terms": "Warunki wynajmu",
+    "privacy": "Polityka prywatności",
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "backToTop": "Wróć na górę",
+    "perks": {
+      "helmet": "Kask w cenie",
+      "lock": "Zabezpieczenie antykradzieżowe w cenie",
+      "insurance": "Ubezpieczenie w cenie",
+      "pickup": "Bezpłatny odbiór z hotelu",
+      "deposit": "Bez kaucji"
+    }
+  },
   "metadata": {
     "title": "Wypożyczalnia skuterów na Dżerbie",
     "description": "Wynajem skuterów i wycieczki z przewodnikiem na Dżerbie w Tunezji."
   },
   "home": {
+    "how": {
+      "eyebrow": "Jak to działa",
+      "title": "Zarezerwuj w czterech krokach",
+      "intro": "Prosto i szybko, z płatnością na miejscu.",
+      "cta": "Zobacz pojazdy",
+      "steps": {
+        "choose": { "title": "Wybierz pojazd", "text": "Przeglądaj flotę i znajdź skuter lub rower, który Ci odpowiada." },
+        "request": { "title": "Wyślij prośbę", "text": "Podaj daty i hotel. Wystarczy kilka pól." },
+        "confirm": { "title": "Potwierdzamy", "text": "Wypożyczalnia odpowie Ci przez WhatsApp lub e-mail." },
+        "ride": { "title": "Ruszaj", "text": "Bezpłatny odbiór z hotelu, płatność na miejscu, bez kaucji." }
+      }
+    },
     "eyebrow": "Mezraya · Dżerba · Tunezja",
-    "title": "Wynajmij. Ruszaj. Poczuj Dżerbę. ",
+    "title": "Wynajmij. Ruszaj. Poczuj Dżerbę.",
     "description": "Odkrywaj Dżerbę na własnych zasadach: ukryte plaże, autentyczne wioski, lokalne targi i urokliwe, wąskie drogi.",
     "tagline": "Twój skuter, Twoja trasa, Twoja przygoda.",
-    "imageAlt": "Turystka na niebiesko-białym skuterze na ulicy z bielonymi domami na Dżerbie"
+    "imageAlt": "Turystka na niebiesko-białym skuterze na ulicy z bielonymi domami na Dżerbie",
+    "discover": {
+      "eyebrow": "Pomysły na trasy",
+      "title": "Dokąd jechać na Dżerbie naszymi pojazdami",
+      "intro": "Kilka miejsc na wyspie do odkrycia we własnym tempie.",
+      "regionLabel": "Miejsca do odkrycia na Dżerbie",
+      "prev": "Poprzednie miejsce",
+      "next": "Następne miejsce",
+      "ctaText": "Wybierz pojazd i ruszaj na odkrywanie.",
+      "ctaButton": "Zobacz pojazdy",
+      "places": {
+        "houmtSouk": { "name": "Houmt Souk", "tag": "Miasto i suk", "text": "Główne miasto wyspy z wąskimi uliczkami i targiem." },
+        "erriadh": { "name": "Erriadh", "tag": "Street art", "text": "Wioska znana z murali, czyli projektu Djerbahood." },
+        "guellala": { "name": "Guellala", "tag": "Ceramika", "text": "Wioska słynąca z pracowni garncarskich." },
+        "midoun": { "name": "Midoun", "tag": "Miasteczko na wyspie", "text": "Jedno z głównych miasteczek Dżerby, w samym sercu lokalnego życia." },
+        "sidiMahrez": { "name": "Sidi Mahrez", "tag": "Plaża", "text": "Piaszczysta plaża na wschodnim wybrzeżu wyspy." }
+      }
+    }
   },
   "styleguide": {
     "eyebrow": "System wizualny",
@@ -225,6 +289,81 @@
       "rating": "Ocena Google",
       "vehicles": "Rodzaje pojazdów",
       "deposit": "Wymagana kaucja"
+    }
+  },
+  "faq": {
+    "metaTitle": "Najczęstsze pytania | Wynajem skuterów na Dżerbie",
+    "metaDescription": "Rezerwacja, płatność na miejscu, bez kaucji, kask, zabezpieczenie antykradzieżowe i ubezpieczenie w cenie: odpowiedzi na najczęstsze pytania o wynajem na Dżerbie.",
+    "eyebrow": "Pomoc",
+    "title": "Najczęstsze pytania",
+    "intro": "Odpowiedzi na pytania, które najczęściej padają przed rezerwacją.",
+    "filterLabel": "Filtruj według tematu",
+    "all": "Wszystkie",
+    "groups": {
+      "booking": "Rezerwacja",
+      "payment": "Płatność i wyposażenie w cenie",
+      "vehicles": "Pojazdy",
+      "practical": "Informacje praktyczne"
+    },
+    "stillTitle": "Masz inne pytanie?",
+    "stillText": "Napisz do nas na WhatsApp lub zadzwoń.",
+    "ctaWhatsapp": "Napisz na WhatsApp",
+    "ctaCall": "Zadzwoń",
+    "address": "Strefa turystyczna Dżerby, naprzeciwko hotelu Zenon",
+    "whatsappMessage": "Dzień dobry, mam pytanie przed rezerwacją.",
+    "questions": {
+      "howToBook": {
+        "q": "Jak zarezerwować pojazd?",
+        "a": "Wybierz pojazd na stronie Wynajem skuterów, podaj daty, liczbę pojazdów i dane kontaktowe, a następnie wyślij prośbę. Możesz też napisać do nas bezpośrednio na WhatsApp pod numerem +216 28 340 240."
+      },
+      "confirmation": {
+        "q": "Czy rezerwacja jest potwierdzana od razu?",
+        "a": "Nie. Prośba jest najpierw rejestrowana, a następnie wypożyczalnia potwierdza ją przez WhatsApp lub e-mail. Pamiętaj, aby podać prawidłowy numer telefonu i adres e-mail."
+      },
+      "severalVehicles": {
+        "q": "Czy mogę zarezerwować kilka pojazdów?",
+        "a": "Tak. W jednej prośbie możesz wybrać kilka sztuk tego samego modelu. W przypadku różnych modeli wyślij osobną prośbę dla każdego pojazdu lub napisz do nas na WhatsApp."
+      },
+      "changeOrCancel": {
+        "q": "Jak zmienić lub anulować rezerwację?",
+        "a": "Skontaktuj się z nami przez WhatsApp, podając imię i nazwisko oraz daty wynajmu."
+      },
+      "howToPay": {
+        "q": "Jak wygląda płatność?",
+        "a": "Płatność odbywa się na miejscu, w wypożyczalni. Nie ma płatności online."
+      },
+      "deposit": {
+        "q": "Czy trzeba wpłacić kaucję?",
+        "a": "Nie, wynajem odbywa się bez kaucji."
+      },
+      "included": {
+        "q": "Co jest wliczone w cenę wynajmu?",
+        "a": "W cenie są kask, zabezpieczenie antykradzieżowe i ubezpieczenie, a także bezpłatny odbiór z hotelu. Szczegóły ubezpieczenia podamy na prośbę."
+      },
+      "whichVehicles": {
+        "q": "Jakie pojazdy oferujecie?",
+        "a": "Skutery 50 cc i 125 cc, skuter elektryczny, skuter trójkołowy, rowery elektryczne i rowery klasyczne. Dostępne modele znajdziesz na stronie Wynajem skuterów."
+      },
+      "condition": {
+        "q": "W jakim stanie są pojazdy?",
+        "a": "Nasze pojazdy są nowoczesne i w doskonałym stanie."
+      },
+      "availability": {
+        "q": "Jak sprawdzić, czy pojazd jest dostępny w moich terminach?",
+        "a": "Podaj daty w formularzu rezerwacji: wypożyczalnia sprawdzi dostępność i odpowie Ci. W razie wątpliwości napisz do nas na WhatsApp."
+      },
+      "hotelPickup": {
+        "q": "Jak działa bezpłatny odbiór z hotelu?",
+        "a": "Podaj nazwę swojego hotelu w formularzu rezerwacji. Wypożyczalnia poinformuje Cię o szczegółach odbioru przy potwierdzeniu."
+      },
+      "where": {
+        "q": "Gdzie znajduje się wypożyczalnia?",
+        "a": "W strefie turystycznej Dżerby, naprzeciwko hotelu Zenon."
+      },
+      "contact": {
+        "q": "Jak się z Wami skontaktować?",
+        "a": "Przez WhatsApp lub telefonicznie pod numerem +216 28 340 240."
+      }
     }
   }
 }

@@ -28,8 +28,16 @@
     "filterLabel": "Fahrzeuge nach Kategorie filtern",
     "filterAll": "Alle",
     "filtersLabel": "Nach Typ filtern",
-    "filters": { "all": "Alle", "50": "50cc", "125": "125cc", "electric": "Elektrisch" },
-    "fuel": { "petrol": "Benzin", "electric": "Elektrisch" },
+    "filters": {
+      "all": "Alle",
+      "50": "50 cc",
+      "125": "125 cc",
+      "electric": "Elektrisch"
+    },
+    "fuel": {
+      "petrol": "Benzin",
+      "electric": "Elektrisch"
+    },
     "categories": {
       "scooter": "Roller",
       "three_wheel_scooter": "Dreirad-Roller",
@@ -127,16 +135,72 @@
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen"
   },
+  "footer": {
+    "tagline": "Roller- und Fahrradverleih auf Djerba. Entdecken Sie die Insel in aller Freiheit.",
+    "whatsappMessage": "Hallo, ich hätte gerne Informationen zur Miete auf Djerba.",
+    "whatsappCta": "Per WhatsApp schreiben",
+    "navLabel": "Navigation im Fußbereich",
+    "legalLabel": "Rechtliche Hinweise",
+    "exploreTitle": "Entdecken",
+    "contact": "Kontakt",
+    "contactTitle": "Kontakt",
+    "address": "Touristengebiet von Djerba, gegenüber dem Hotel Zenon",
+    "directions": "Auf Google Maps ansehen",
+    "hoursTitle": "Öffnungszeiten",
+    "hoursText": "Bitte mit der Agentur klären",
+    "followTitle": "Folgen Sie uns",
+    "payOnSite": "Zahlung vor Ort, keine Kaution",
+    "terms": "Mietbedingungen",
+    "privacy": "Datenschutzerklärung",
+    "rights": "Alle Rechte vorbehalten.",
+    "backToTop": "Nach oben",
+    "perks": {
+      "helmet": "Helm inklusive",
+      "lock": "Schloss inklusive",
+      "insurance": "Versicherung inklusive",
+      "pickup": "Kostenlose Hotelabholung",
+      "deposit": "Keine Kaution"
+    }
+  },
   "metadata": {
     "title": "Rollerverleih Djerba",
     "description": "Rollerverleih und geführte Touren auf Djerba, Tunesien."
   },
   "home": {
+    "how": {
+      "eyebrow": "So funktioniert's",
+      "title": "In vier Schritten buchen",
+      "intro": "Einfach und schnell, mit Zahlung vor Ort.",
+      "cta": "Fahrzeuge ansehen",
+      "steps": {
+        "choose": { "title": "Fahrzeug auswählen", "text": "Stöbern Sie in unserer Flotte und finden Sie den passenden Roller oder das passende Fahrrad." },
+        "request": { "title": "Anfrage senden", "text": "Geben Sie Ihre Daten und Ihr Hotel an. Ein paar Felder genügen." },
+        "confirm": { "title": "Wir bestätigen", "text": "Die Agentur antwortet Ihnen per WhatsApp oder E-Mail." },
+        "ride": { "title": "Losfahren", "text": "Kostenlose Abholung an Ihrem Hotel, Zahlung vor Ort, keine Kaution." }
+      }
+    },
     "eyebrow": "Mezraya · Djerba · Tunesien",
-    "title": "Mieten. Losfahren. Djerba erleben. ",
+    "title": "Mieten. Losfahren. Djerba erleben.",
     "description": "Entdecke Djerba ganz frei: versteckte Strände, authentische Dörfer, lokale Märkte und kleine Straßen voller Charme.",
     "tagline": "Dein Roller, deine Route, dein Abenteuer.",
-    "imageAlt": "Eine Touristin fährt mit einem blau-weißen Roller durch eine weiß getünchte Straße auf Djerba"
+    "imageAlt": "Eine Touristin fährt mit einem blau-weißen Roller durch eine weiß getünchte Straße auf Djerba",
+    "discover": {
+      "eyebrow": "Ausflugsideen",
+      "title": "Wohin Sie auf Djerba mit unseren Fahrzeugen fahren können",
+      "intro": "Einige Orte auf der Insel, die Sie in Ihrem eigenen Tempo entdecken können.",
+      "regionLabel": "Sehenswerte Orte auf Djerba",
+      "prev": "Vorheriger Ort",
+      "next": "Nächster Ort",
+      "ctaText": "Wählen Sie Ihr Fahrzeug und entdecken Sie die Insel.",
+      "ctaButton": "Fahrzeuge ansehen",
+      "places": {
+        "houmtSouk": { "name": "Houmt Souk", "tag": "Stadt und Souk", "text": "Die Hauptstadt der Insel mit ihren Gassen und ihrem Markt." },
+        "erriadh": { "name": "Erriadh", "tag": "Street-Art", "text": "Das für seine Wandgemälde bekannte Dorf, bekannt durch das Projekt Djerbahood." },
+        "guellala": { "name": "Guellala", "tag": "Töpferei", "text": "Ein Dorf, das für seine Töpferwerkstätten berühmt ist." },
+        "midoun": { "name": "Midoun", "tag": "Inselort", "text": "Einer der wichtigsten Orte Djerbas, mitten im lokalen Leben." },
+        "sidiMahrez": { "name": "Sidi Mahrez", "tag": "Strand", "text": "Ein Sandstrand an der Ostküste der Insel." }
+      }
+    }
   },
   "styleguide": {
     "eyebrow": "Visuelles System",
@@ -202,7 +266,7 @@
       "bike": { "name": "Klassisches Fahrrad", "text": "Für entspannte Fahrten im eigenen Tempo." }
     },
     "storyImageAlt": "Djerba mit dem Roller entdecken",
-    "mapTitle": "Karte: Location Scooter Djerba",
+    "mapTitle": "Karte: Location Scooter Djerba, Djerba",
     "whatsappMessage": "Hallo, ich möchte auf Djerba ein Fahrzeug mieten.",
     "includedTitle": "Bei jeder Miete inklusive",
     "included": {
@@ -225,6 +289,81 @@
       "rating": "Google-Bewertung",
       "vehicles": "Fahrzeugtypen",
       "deposit": "Kaution erforderlich"
+    }
+  },
+  "faq": {
+    "metaTitle": "Häufige Fragen | Rollerverleih Djerba",
+    "metaDescription": "Reservierung, Zahlung vor Ort, keine Kaution, Helm, Schloss und Versicherung inklusive: Antworten auf häufige Fragen zur Miete auf Djerba.",
+    "eyebrow": "Hilfe",
+    "title": "Häufige Fragen",
+    "intro": "Antworten auf die Fragen, die vor einer Buchung am häufigsten gestellt werden.",
+    "filterLabel": "Nach Thema filtern",
+    "all": "Alle",
+    "groups": {
+      "booking": "Buchen",
+      "payment": "Zahlung und Inklusivleistungen",
+      "vehicles": "Fahrzeuge",
+      "practical": "Praktisches"
+    },
+    "stillTitle": "Noch eine Frage?",
+    "stillText": "Schreiben Sie uns auf WhatsApp oder rufen Sie uns an.",
+    "ctaWhatsapp": "Per WhatsApp schreiben",
+    "ctaCall": "Anrufen",
+    "address": "Touristengebiet von Djerba, gegenüber dem Hotel Zenon",
+    "whatsappMessage": "Hallo, ich habe eine Frage vor der Buchung.",
+    "questions": {
+      "howToBook": {
+        "q": "Wie buche ich ein Fahrzeug?",
+        "a": "Wählen Sie auf der Seite Rollerverleih ein Fahrzeug aus, geben Sie Ihre Daten, die Anzahl und Ihre Kontaktdaten an und senden Sie Ihre Anfrage ab. Sie können uns auch direkt auf WhatsApp unter +216 28 340 240 schreiben."
+      },
+      "confirmation": {
+        "q": "Ist meine Reservierung sofort bestätigt?",
+        "a": "Nein. Ihre Anfrage wird zunächst erfasst und anschließend von der Agentur per WhatsApp oder E-Mail bestätigt. Bitte geben Sie eine gültige Telefonnummer und E-Mail-Adresse an."
+      },
+      "severalVehicles": {
+        "q": "Kann ich mehrere Fahrzeuge reservieren?",
+        "a": "Ja. Sie können in einer Anfrage mehrere Exemplare desselben Modells auswählen. Für unterschiedliche Modelle senden Sie bitte eine Anfrage pro Fahrzeug oder schreiben Sie uns auf WhatsApp."
+      },
+      "changeOrCancel": {
+        "q": "Wie kann ich meine Reservierung ändern oder stornieren?",
+        "a": "Kontaktieren Sie uns auf WhatsApp und geben Sie Ihren Namen und Ihre Mietdaten an."
+      },
+      "howToPay": {
+        "q": "Wie läuft die Zahlung ab?",
+        "a": "Die Zahlung erfolgt vor Ort in der Agentur. Es gibt keine Online-Zahlung."
+      },
+      "deposit": {
+        "q": "Muss ich eine Kaution hinterlegen?",
+        "a": "Nein, die Miete erfolgt ohne Kaution."
+      },
+      "included": {
+        "q": "Was ist in der Miete enthalten?",
+        "a": "Helm, Schloss und Versicherung sind inklusive, ebenso die kostenlose Abholung an Ihrem Hotel. Für Details zur Versicherung fragen Sie uns gerne."
+      },
+      "whichVehicles": {
+        "q": "Welche Fahrzeuge bieten Sie an?",
+        "a": "50-ccm- und 125-ccm-Roller, einen Elektroroller, einen Dreirad-Roller, E-Bikes und klassische Fahrräder. Die verfügbaren Modelle finden Sie auf der Seite Rollerverleih."
+      },
+      "condition": {
+        "q": "In welchem Zustand sind die Fahrzeuge?",
+        "a": "Unsere Fahrzeuge sind modern und in ausgezeichnetem Zustand."
+      },
+      "availability": {
+        "q": "Wie erfahre ich, ob ein Fahrzeug an meinen Daten verfügbar ist?",
+        "a": "Geben Sie Ihre Daten im Reservierungsformular an: Die Agentur prüft die Verfügbarkeit und antwortet Ihnen. Im Zweifel schreiben Sie uns auf WhatsApp."
+      },
+      "hotelPickup": {
+        "q": "Wie funktioniert die kostenlose Abholung am Hotel?",
+        "a": "Geben Sie im Reservierungsformular den Namen Ihres Hotels an. Die Agentur teilt Ihnen die Einzelheiten der Abholung bei der Bestätigung mit."
+      },
+      "where": {
+        "q": "Wo befindet sich die Agentur?",
+        "a": "Im Touristengebiet von Djerba, gegenüber dem Hotel Zenon."
+      },
+      "contact": {
+        "q": "Wie kann ich Sie kontaktieren?",
+        "a": "Per WhatsApp oder telefonisch unter +216 28 340 240."
+      }
     }
   }
 }

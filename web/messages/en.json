@@ -127,16 +127,72 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
+  "footer": {
+    "tagline": "Scooter and bike rental in Djerba. Discover the island in complete freedom.",
+    "whatsappMessage": "Hello, I would like information about renting in Djerba.",
+    "whatsappCta": "Message us on WhatsApp",
+    "navLabel": "Footer navigation",
+    "legalLabel": "Legal information",
+    "exploreTitle": "Explore",
+    "contact": "Contact",
+    "contactTitle": "Contact",
+    "address": "Djerba tourist area, opposite Hotel Zenon",
+    "directions": "View on Google Maps",
+    "hoursTitle": "Opening hours",
+    "hoursText": "To be confirmed with the agency",
+    "followTitle": "Follow us",
+    "payOnSite": "Pay on site, no deposit",
+    "terms": "Rental terms",
+    "privacy": "Privacy policy",
+    "rights": "All rights reserved.",
+    "backToTop": "Back to top",
+    "perks": {
+      "helmet": "Helmet included",
+      "lock": "Anti-theft lock included",
+      "insurance": "Insurance included",
+      "pickup": "Free hotel pick-up",
+      "deposit": "No deposit"
+    }
+  },
   "metadata": {
     "title": "Scooter Rental Djerba",
     "description": "Scooter rentals and guided tours in Djerba, Tunisia."
   },
   "home": {
     "eyebrow": "Mezraya · Djerba · Tunisia",
-    "title": "Rent. Ride. Live Djerba. ",
+    "title": "Rent. Ride. Live Djerba.",
     "description": "Discover Djerba your way: hidden beaches, authentic villages, local markets, and charming little roads.",
     "tagline": "Your scooter, your route, your adventure.",
-    "imageAlt": "A tourist riding a blue and white scooter along a whitewashed street in Djerba"
+    "imageAlt": "A tourist riding a blue and white scooter along a whitewashed street in Djerba",
+    "how": {
+      "eyebrow": "How it works",
+      "title": "Book in four steps",
+      "intro": "Simple and quick, with payment on site.",
+      "cta": "See the vehicles",
+      "steps": {
+        "choose": { "title": "Choose your vehicle", "text": "Browse the fleet and find the scooter or bike that suits you." },
+        "request": { "title": "Send your request", "text": "Enter your dates and your hotel. A few fields are enough." },
+        "confirm": { "title": "We confirm", "text": "The agency replies by WhatsApp or email." },
+        "ride": { "title": "Ride", "text": "Free pick-up at your hotel, pay on site, no deposit." }
+      }
+    },
+    "discover": {
+      "eyebrow": "Ride ideas",
+      "title": "Where to ride in Djerba with our vehicles",
+      "intro": "A few places to discover on the island, at your own pace.",
+      "regionLabel": "Places to discover in Djerba",
+      "prev": "Previous place",
+      "next": "Next place",
+      "ctaText": "Choose your vehicle and go exploring.",
+      "ctaButton": "See the vehicles",
+      "places": {
+        "houmtSouk": { "name": "Houmt Souk", "tag": "Town and souk", "text": "The island's main town, with its alleys and market." },
+        "erriadh": { "name": "Erriadh", "tag": "Street art", "text": "The village known for its murals, the Djerbahood project." },
+        "guellala": { "name": "Guellala", "tag": "Pottery", "text": "A village known for its pottery workshops." },
+        "midoun": { "name": "Midoun", "tag": "Island town", "text": "One of Djerba's main towns, at the heart of local life." },
+        "sidiMahrez": { "name": "Sidi Mahrez", "tag": "Beach", "text": "A sandy beach on the island's east coast." }
+      }
+    }
   },
   "styleguide": {
     "eyebrow": "Visual system",
@@ -225,6 +281,81 @@
       "rating": "Google rating",
       "vehicles": "Vehicle types",
       "deposit": "Deposit required"
+    }
+  },
+  "faq": {
+    "metaTitle": "Frequently asked questions | Scooter rental Djerba",
+    "metaDescription": "Booking, payment on site, no deposit, helmet, lock and insurance included: answers to common questions about renting in Djerba.",
+    "eyebrow": "Help",
+    "title": "Frequently asked questions",
+    "intro": "Answers to the questions most often asked before booking.",
+    "filterLabel": "Filter by topic",
+    "all": "All",
+    "groups": {
+      "booking": "Booking",
+      "payment": "Payment and inclusions",
+      "vehicles": "Vehicles",
+      "practical": "Practical info"
+    },
+    "stillTitle": "Another question?",
+    "stillText": "Message us on WhatsApp or give us a call.",
+    "ctaWhatsapp": "Message us on WhatsApp",
+    "ctaCall": "Call us",
+    "address": "Djerba tourist area, opposite Hotel Zenon",
+    "whatsappMessage": "Hello, I have a question before booking.",
+    "questions": {
+      "howToBook": {
+        "q": "How do I book a vehicle?",
+        "a": "Choose a vehicle on the Scooter rental page, enter your dates, the quantity and your contact details, then send your request. You can also message us directly on WhatsApp at +216 28 340 240."
+      },
+      "confirmation": {
+        "q": "Is my booking confirmed straight away?",
+        "a": "No. Your request is first recorded, then the agency confirms it by WhatsApp or email. Please give a valid phone number and email address."
+      },
+      "severalVehicles": {
+        "q": "Can I book several vehicles?",
+        "a": "Yes. You can choose several units of the same model in one request. For different models, send one request per vehicle or message us on WhatsApp."
+      },
+      "changeOrCancel": {
+        "q": "How do I change or cancel my booking?",
+        "a": "Contact us on WhatsApp with your name and rental dates."
+      },
+      "howToPay": {
+        "q": "How does payment work?",
+        "a": "Payment is made on site, at the agency. There is no online payment."
+      },
+      "deposit": {
+        "q": "Do I have to pay a deposit?",
+        "a": "No, rentals are deposit-free."
+      },
+      "included": {
+        "q": "What is included in the rental?",
+        "a": "The helmet, anti-theft lock and insurance are included, along with free pick-up at your hotel. For insurance details, please ask us."
+      },
+      "whichVehicles": {
+        "q": "Which vehicles do you offer?",
+        "a": "50cc and 125cc scooters, an electric scooter, a three-wheel scooter, electric bikes and classic bikes. The available models are shown on the Scooter rental page."
+      },
+      "condition": {
+        "q": "What condition are the vehicles in?",
+        "a": "Our vehicles are recent and in excellent condition."
+      },
+      "availability": {
+        "q": "How can I tell if a vehicle is available on my dates?",
+        "a": "Enter your dates in the booking form: the agency checks availability and replies. If in doubt, message us on WhatsApp."
+      },
+      "hotelPickup": {
+        "q": "How does the free hotel pick-up work?",
+        "a": "Enter your hotel's name in the booking form. The agency will explain the pick-up arrangements when it confirms your booking."
+      },
+      "where": {
+        "q": "Where is the agency?",
+        "a": "In Djerba's tourist area, opposite Hotel Zenon."
+      },
+      "contact": {
+        "q": "How can I contact you?",
+        "a": "By WhatsApp or by phone on +216 28 340 240."
+      }
     }
   }
 }
