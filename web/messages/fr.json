@@ -133,7 +133,11 @@
     "navAbout": "À propos",
     "navFaq": "FAQ",
     "openMenu": "Ouvrir le menu",
-    "closeMenu": "Fermer le menu"
+    "closeMenu": "Fermer le menu",
+    "navRentalLink": "Location de scooters",
+    "navRentalText": "Scooters et vélos à louer",
+    "navExcursions": "Excursions en scooter",
+    "navExcursionsText": "Tour de l'île, du Sud et du Nord"
   },
 
   "footer": {
@@ -294,6 +298,60 @@
       "deposit": "Caution demandée"
     }
   },
+
+  "excursions": {
+  "metaTitle": "Excursions en scooter à Djerba | Location Scooter Djerba",
+  "metaDescription": "Excursions en scooter à Djerba : tour de l'île, tour du Sud et tour du Nord. Casque inclus, sans caution, paiement sur place.",
+  "eyebrow": "Excursions",
+  "title": "Découvrez Djerba en excursion à scooter",
+  "intro": "Choisissez votre itinéraire : le tour de l'île, du Sud ou du Nord de Djerba.",
+  "trustLine": "Casque inclus · Sans caution · Paiement sur place",
+  "from": "À partir de",
+"viewDetails": "Voir les détails",
+"notFoundTitle": "Excursion introuvable",
+"detail": {
+  "backToList": "Retour aux excursions",
+  "photos": "Photos de l'excursion",
+  "noPhoto": "Photo bientôt disponible",
+  "description": "À propos de cette excursion",
+  "highlights": "Les points forts",
+  "specifications": "Informations",
+  "type": "Itinéraire",
+  "places": "Places par départ",
+  "pricing": "Tarif de l'excursion"
+},
+"reservation": {
+  "title": "Demander une réservation",
+  "intro": "Choisissez la date et le nombre de participants, puis indiquez vos coordonnées. Votre demande reste en attente jusqu'à sa confirmation.",
+  "date": "Date de l'excursion",
+  "participants": "Nombre de participants",
+  "fullDate": "Cette date est complète. Choisissez un autre jour ou contactez-nous."
+},
+  "types": {
+    "default": "Excursion",
+    "island": "Île entière",
+    "south": "Sud de l'île",
+    "north": "Nord de l'île"
+  },
+  "units": {
+    "person": "personne",
+    "tour": "excursion",
+    "day": "jour"
+  },
+  "placesPerDeparture": "{count, plural, one {# place par départ} other {# places par départ}}",
+  "bookWhatsapp": "Réserver sur WhatsApp",
+  "whatsappMessage": "Bonjour, je souhaite réserver l'excursion {name} à Djerba. Date souhaitée : … Nombre de personnes : …",
+  "whatsappGeneral": "Bonjour, j'ai une question sur les excursions en scooter à Djerba.",
+  "empty": "Aucune excursion n'est disponible pour le moment. Écrivez-nous sur WhatsApp.",
+  "howTitle": "Comment réserver",
+  "steps": {
+    "choose": { "title": "Choisissez votre excursion", "text": "Tour de l'île, du Sud ou du Nord : sélectionnez celle qui vous convient." },
+    "message": { "title": "Écrivez-nous sur WhatsApp", "text": "Indiquez la date souhaitée et le nombre de personnes." },
+    "confirm": { "title": "Nous vous confirmons", "text": "L'agence vous répond avec la disponibilité et les détails." }
+  },
+  "ctaText": "Une question sur une excursion ?",
+  "ctaWhatsapp": "Écrire sur WhatsApp"
+},
 
 
 "faq": {
