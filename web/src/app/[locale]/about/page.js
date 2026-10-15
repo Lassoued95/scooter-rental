@@ -123,7 +123,7 @@ export default async function AboutPage({ params }) {
           className="absolute inset-0 -z-20"
           position="center 40%"
           priority
-          src="/bg/bg2.png"
+          src="/bg/bg2.webp"
         />
         <div
           aria-hidden="true"
@@ -213,7 +213,7 @@ export default async function AboutPage({ params }) {
                   alt={t("storyImageAlt")}
                   className="absolute inset-0"
                   sizes="(min-width: 1024px) 40vw, 90vw"
-                  src="/bg/bg3.png"
+                  src="/bg/bg3.webp"
                 />
               </div>
               <div className="absolute bottom-0 left-0 aspect-square w-[46%] overflow-hidden rounded-3xl border-8 border-background shadow-2xl">
@@ -222,7 +222,7 @@ export default async function AboutPage({ params }) {
                   className="object-cover"
                   fill
                   sizes="25vw"
-                  src="/bg/bg.png"
+                  src="/bg/bg.webp"
                 />
               </div>
               <Float className="absolute left-0 top-8">

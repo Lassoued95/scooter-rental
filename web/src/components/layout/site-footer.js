@@ -22,7 +22,7 @@ const BUSINESS = {
   phoneLink: "+21628340240",
   whatsapp: "21628340240",
   email: "", // ex. "contact@votre-domaine.com"
-  facebook: "", // URL complète de la page Facebook
+  facebook: "https://www.facebook.com/profile.php?id=61584873759219",
   instagram: "", // URL complète du compte Instagram
   mapsUrl:
     "https://www.google.com/maps/place/Location+Scooter+Djerba/@33.8516212,10.9854728,17z/",
@@ -56,7 +56,48 @@ const columnTitle =
 const linkClass =
   "rounded-sm text-section-text/80 transition hover:text-section-text hover:underline hover:decoration-primary hover:underline-offset-4 focus-visible:text-section-text";
 const socialClass =
-  "inline-flex min-h-10 items-center rounded-full border border-white/25 px-4 text-sm font-semibold text-section-text transition hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:border-primary";
+  "inline-flex min-h-10 items-center gap-2 rounded-full border border-white/25 px-4 text-sm font-semibold text-section-text transition hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:border-primary";
+
+// Brand icons drawn inline (stroke style, same look as the lucide icons)
+function FacebookIcon(props) {
+  return (
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="18"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="18"
+      {...props}
+    >
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
+function InstagramIcon(props) {
+  return (
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="18"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="18"
+      {...props}
+    >
+      <rect height="20" rx="5" ry="5" width="20" x="2" y="2" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
 export async function SiteFooter() {
   const t = await getTranslations("footer");
@@ -210,6 +251,7 @@ export async function SiteFooter() {
                 {BUSINESS.facebook && (
                   <li>
                     <a className={socialClass} href={BUSINESS.facebook} rel="noreferrer noopener" target="_blank">
+                      <FacebookIcon />
                       Facebook
                     </a>
                   </li>
@@ -217,6 +259,7 @@ export async function SiteFooter() {
                 {BUSINESS.instagram && (
                   <li>
                     <a className={socialClass} href={BUSINESS.instagram} rel="noreferrer noopener" target="_blank">
+                      <InstagramIcon />
                       Instagram
                     </a>
                   </li>
