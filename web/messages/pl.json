@@ -128,6 +128,10 @@
     "whatsapp": "Napisz do nas na WhatsAppie",
     "toggleTheme": "Zmień motyw",
     "language": "Zmień język",
+    "navRentalLink": "Wynajem skuterów",
+    "navRentalText": "Skutery i rowery do wynajęcia",
+    "navExcursions": "Wycieczki skuterowe z przewodnikiem",
+    "navExcursionsText": "Trasy po wyspie, południu i północy",
     "mainNavigation": "Nawigacja główna",
     "navScooters": "Wynajem skuterów",
     "navAbout": "O nas",
@@ -290,6 +294,69 @@
       "vehicles": "Rodzaje pojazdów",
       "deposit": "Wymagana kaucja"
     }
+  },
+  "excursions": {
+    "metaTitle": "Wycieczki skuterowe z przewodnikiem na Dżerbie | Scooter Rental Djerba",
+    "metaDescription": "Poznaj Dżerbę podczas wycieczki skuterowej z przewodnikiem. Wybierz trasę po wyspie, południu lub północy i zgłoś preferowaną datę oraz godzinę.",
+    "eyebrow": "Wycieczki",
+    "title": "Poznaj Dżerbę podczas wycieczki skuterowej z przewodnikiem",
+    "intro": "Wybierz trasę: cała wyspa, południe lub północ Dżerby.",
+    "trustLine": "Przewodnik w cenie · Cena za osobę · Wyjazdy o 08:00 i 14:00",
+    "from": "Od",
+    "viewDetails": "Zobacz szczegóły",
+    "notFoundTitle": "Nie znaleziono wycieczki",
+    "detail": {
+      "backToList": "Wróć do wycieczek",
+      "photos": "Zdjęcia wycieczki",
+      "noPhoto": "Zdjęcie wkrótce",
+      "description": "O tej wycieczce",
+      "highlights": "Najważniejsze atrakcje",
+      "specifications": "Informacje o wycieczce",
+      "type": "Trasa",
+      "guide": "Przewodnictwo",
+      "guideIncluded": "Przewodnik w cenie",
+      "pricing": "Cena wycieczki"
+    },
+    "reservation": {
+      "title": "Zapytaj o wycieczkę",
+      "intro": "Wybierz datę, godzinę wyjazdu i liczbę uczestników, a następnie podaj dane kontaktowe. Prośba oczekuje na potwierdzenie.",
+      "date": "Data wycieczki",
+      "departureTime": "Godzina wyjazdu",
+      "selectDepartureTime": "Wybierz godzinę wyjazdu",
+      "participants": "Liczba uczestników"
+    },
+    "types": {
+      "default": "Wycieczka",
+      "island": "Cała wyspa",
+      "south": "Południe wyspy",
+      "north": "Północ wyspy"
+    },
+    "units": {
+      "person": "osoba",
+      "tour": "wycieczka",
+      "day": "dzień"
+    },
+    "bookWhatsapp": "Rezerwuj przez WhatsApp",
+    "whatsappMessage": "Dzień dobry, chcę zarezerwować wycieczkę {name} na Dżerbie. Preferowana data: … Godzina wyjazdu: … Liczba uczestników: …",
+    "whatsappGeneral": "Dzień dobry, mam pytanie o wycieczki z przewodnikiem na Dżerbie.",
+    "empty": "Obecnie brak dostępnych wycieczek. Napisz do nas na WhatsApp.",
+    "howTitle": "Jak zarezerwować",
+    "steps": {
+      "choose": {
+        "title": "Wybierz wycieczkę",
+        "text": "Wybierz trasę po całej wyspie, południu lub północy."
+      },
+      "message": {
+        "title": "Wyślij prośbę",
+        "text": "Wybierz datę i godzinę wyjazdu, a następnie podaj dane kontaktowe."
+      },
+      "confirm": {
+        "title": "Potwierdzimy",
+        "text": "Agencja odpowie z potwierdzeniem i szczegółami wycieczki."
+      }
+    },
+    "ctaText": "Masz pytanie o wycieczkę?",
+    "ctaWhatsapp": "Napisz do nas"
   },
   "faq": {
     "metaTitle": "Najczęstsze pytania | Wynajem skuterów na Dżerbie",

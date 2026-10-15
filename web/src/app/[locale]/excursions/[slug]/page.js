@@ -120,16 +120,12 @@ export default async function ExcursionDetailsPage({ params }) {
   const currency = tour.currency ?? tour.price?.currency ?? "EUR";
   const price = hasPrice ? formatPrice(amount, locale, currency) : null;
 
-  const unit = tour.price?.unit ?? tour.priceUnit ?? "person";
-  const unitLabel = t.has(`units.${unit}`) ? t(`units.${unit}`) : "";
+  const unitLabel = t("units.person");
 
   const typeLabel =
     tour.tourType && t.has(`types.${tour.tourType}`)
       ? t(`types.${tour.tourType}`)
       : t("types.default");
-
-  const places = Number(tour.capacityPerSlot);
-  const hasPlaces = Number.isFinite(places) && places > 0;
 
   const specs = [
     {
@@ -138,13 +134,13 @@ export default async function ExcursionDetailsPage({ params }) {
       label: t("detail.type"),
       value: typeLabel,
     },
-    hasPlaces && {
-      key: "places",
+    {
+      key: "guide",
       Icon: Users,
-      label: t("detail.places"),
-      value: String(places),
+      label: t("detail.guide"),
+      value: t("detail.guideIncluded"),
     },
-  ].filter(Boolean);
+  ];
 
   const lead = tour.tagline || tour.description || "";
   const showDescription =
@@ -388,7 +384,6 @@ export default async function ExcursionDetailsPage({ params }) {
             </FadeUp>
             <FadeUp delay={0.15}>
               <TourReservationForm
-                capacity={hasPlaces ? places : null}
                 productId={tour.id}
                 whatsappUrl={whatsappUrl}
               />

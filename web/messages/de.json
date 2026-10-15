@@ -128,6 +128,10 @@
     "whatsapp": "Kontakt über WhatsApp",
     "toggleTheme": "Farbschema wechseln",
     "language": "Sprache ändern",
+    "navRentalLink": "Roller mieten",
+    "navRentalText": "Roller und Fahrräder mieten",
+    "navExcursions": "Geführte Rollertouren",
+    "navExcursionsText": "Touren über die Insel, den Süden und den Norden",
     "mainNavigation": "Hauptnavigation",
     "navScooters": "Rollerverleih",
     "navAbout": "Über uns",
@@ -290,6 +294,69 @@
       "vehicles": "Fahrzeugtypen",
       "deposit": "Kaution erforderlich"
     }
+  },
+  "excursions": {
+    "metaTitle": "Geführte Rollertouren auf Djerba | Scooter Rental Djerba",
+    "metaDescription": "Entdecken Sie Djerba auf einer geführten Rollertour. Wählen Sie eine Insel-, Süd- oder Nordroute und fragen Sie Ihr Datum und Ihre Abfahrtszeit an.",
+    "eyebrow": "Ausflüge",
+    "title": "Entdecken Sie Djerba auf einer geführten Rollertour",
+    "intro": "Wählen Sie Ihre Route: die ganze Insel, den Süden oder den Norden Djerbas.",
+    "trustLine": "Guide inklusive · Preis pro Person · Abfahrten um 08:00 und 14:00",
+    "from": "Ab",
+    "viewDetails": "Details ansehen",
+    "notFoundTitle": "Ausflug nicht gefunden",
+    "detail": {
+      "backToList": "Zurück zu den Ausflügen",
+      "photos": "Tourfotos",
+      "noPhoto": "Foto folgt in Kürze",
+      "description": "Über diese Tour",
+      "highlights": "Höhepunkte",
+      "specifications": "Tourinformationen",
+      "type": "Route",
+      "guide": "Begleitung",
+      "guideIncluded": "Guide inklusive",
+      "pricing": "Tourpreis"
+    },
+    "reservation": {
+      "title": "Tour anfragen",
+      "intro": "Wählen Sie ein Datum, eine Abfahrtszeit und die Teilnehmerzahl und geben Sie dann Ihre Kontaktdaten ein. Ihre Anfrage wird nach Bestätigung verbindlich.",
+      "date": "Tourdatum",
+      "departureTime": "Abfahrtszeit",
+      "selectDepartureTime": "Abfahrtszeit auswählen",
+      "participants": "Teilnehmerzahl"
+    },
+    "types": {
+      "default": "Tour",
+      "island": "Ganze Insel",
+      "south": "Süden der Insel",
+      "north": "Norden der Insel"
+    },
+    "units": {
+      "person": "Person",
+      "tour": "Tour",
+      "day": "Tag"
+    },
+    "bookWhatsapp": "Per WhatsApp buchen",
+    "whatsappMessage": "Hallo, ich möchte die Tour {name} auf Djerba buchen. Wunschtermin: … Abfahrtszeit: … Teilnehmerzahl: …",
+    "whatsappGeneral": "Hallo, ich habe eine Frage zu geführten Touren auf Djerba.",
+    "empty": "Derzeit sind keine Ausflüge verfügbar. Schreiben Sie uns auf WhatsApp.",
+    "howTitle": "So buchen Sie",
+    "steps": {
+      "choose": {
+        "title": "Tour auswählen",
+        "text": "Wählen Sie die passende Route über die ganze Insel, den Süden oder den Norden."
+      },
+      "message": {
+        "title": "Anfrage senden",
+        "text": "Wählen Sie Datum und Abfahrtszeit und geben Sie Ihre Kontaktdaten ein."
+      },
+      "confirm": {
+        "title": "Wir bestätigen",
+        "text": "Die Agentur antwortet mit der Bestätigung und den Tourdetails."
+      }
+    },
+    "ctaText": "Haben Sie eine Frage zu einer Tour?",
+    "ctaWhatsapp": "Nachricht senden"
   },
   "faq": {
     "metaTitle": "Häufige Fragen | Rollerverleih Djerba",

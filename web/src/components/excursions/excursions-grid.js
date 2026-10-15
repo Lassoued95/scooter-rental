@@ -42,7 +42,7 @@ function ExcursionCard({ item, index }) {
         }).format(item.price)
       : null;
 
-  const unitLabel = t.has(`units.${item.unit}`) ? t(`units.${item.unit}`) : null;
+  const unitLabel = t("units.person");
   const typeLabel =
     item.tourType && t.has(`types.${item.tourType}`)
       ? t(`types.${item.tourType}`)
@@ -130,12 +130,8 @@ function ExcursionCard({ item, index }) {
 
           <div className="mt-auto flex items-center justify-between pt-6">
             <span className="inline-flex items-center gap-1.5 text-sm font-medium text-muted">
-              {item.places ? (
-                <>
-                  <Users aria-hidden="true" size={16} />
-                  {t("placesPerDeparture", { count: item.places })}
-                </>
-              ) : null}
+              <Users aria-hidden="true" size={16} />
+              {t("detail.guideIncluded")}
             </span>
             <span className="inline-flex items-center gap-2 font-bold text-primary">
               {t("viewDetails")}

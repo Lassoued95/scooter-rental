@@ -3,7 +3,7 @@ const WHATSAPP_URL = "https://wa.me/21628340240";
 const TEXTS = {
   fr: {
     hello: "Bonjour",
-    labels: { reference: "Référence", vehicle: "Véhicule", dates: "Dates", quantity: "Quantité", total: "Total" },
+    labels: { reference: "Référence", vehicle: "Véhicule", tour: "Excursion", dates: "Dates", date: "Date", departure: "Départ", quantity: "Quantité", participants: "Participants", pricePerPerson: "Prix par personne", total: "Total" },
     pay: "Paiement sur place, sans caution.",
     contact: "Une question ? Écrivez-nous sur WhatsApp :",
     RECEIVED: { subject: "Nous avons reçu votre demande de réservation", intro: "Nous avons bien reçu votre demande. Elle est en attente de confirmation." },
@@ -12,7 +12,7 @@ const TEXTS = {
   },
   en: {
     hello: "Hello",
-    labels: { reference: "Reference", vehicle: "Vehicle", dates: "Dates", quantity: "Quantity", total: "Total" },
+    labels: { reference: "Reference", vehicle: "Vehicle", tour: "Tour", dates: "Dates", date: "Date", departure: "Departure", quantity: "Quantity", participants: "Participants", pricePerPerson: "Price per person", total: "Total" },
     pay: "Payment on site, no deposit.",
     contact: "Questions? Message us on WhatsApp:",
     RECEIVED: { subject: "We received your reservation request", intro: "We received your request. It is pending confirmation." },
@@ -21,7 +21,7 @@ const TEXTS = {
   },
   de: {
     hello: "Hallo",
-    labels: { reference: "Referenz", vehicle: "Fahrzeug", dates: "Datum", quantity: "Anzahl", total: "Gesamt" },
+    labels: { reference: "Referenz", vehicle: "Fahrzeug", tour: "Tour", dates: "Datum", date: "Datum", departure: "Abfahrt", quantity: "Anzahl", participants: "Teilnehmer", pricePerPerson: "Preis pro Person", total: "Gesamt" },
     pay: "Zahlung vor Ort, ohne Kaution.",
     contact: "Fragen? Schreiben Sie uns auf WhatsApp:",
     RECEIVED: { subject: "Wir haben Ihre Reservierungsanfrage erhalten", intro: "Wir haben Ihre Anfrage erhalten. Sie wartet auf Bestätigung." },
@@ -30,7 +30,7 @@ const TEXTS = {
   },
   it: {
     hello: "Buongiorno",
-    labels: { reference: "Riferimento", vehicle: "Veicolo", dates: "Date", quantity: "Quantità", total: "Totale" },
+    labels: { reference: "Riferimento", vehicle: "Veicolo", tour: "Escursione", dates: "Date", date: "Data", departure: "Partenza", quantity: "Quantità", participants: "Partecipanti", pricePerPerson: "Prezzo a persona", total: "Totale" },
     pay: "Pagamento in loco, senza cauzione.",
     contact: "Domande? Scrivici su WhatsApp:",
     RECEIVED: { subject: "Abbiamo ricevuto la tua richiesta di prenotazione", intro: "Abbiamo ricevuto la tua richiesta. È in attesa di conferma." },
@@ -39,7 +39,7 @@ const TEXTS = {
   },
   pl: {
     hello: "Dzień dobry",
-    labels: { reference: "Numer", vehicle: "Pojazd", dates: "Daty", quantity: "Liczba", total: "Razem" },
+    labels: { reference: "Numer", vehicle: "Pojazd", tour: "Wycieczka", dates: "Daty", date: "Data", departure: "Wyjazd", quantity: "Liczba", participants: "Uczestnicy", pricePerPerson: "Cena za osobę", total: "Razem" },
     pay: "Płatność na miejscu, bez kaucji.",
     contact: "Pytania? Napisz do nas na WhatsApp:",
     RECEIVED: { subject: "Otrzymaliśmy prośbę o rezerwację", intro: "Otrzymaliśmy Twoją prośbę. Oczekuje na potwierdzenie." },
@@ -48,7 +48,7 @@ const TEXTS = {
   },
   pt: {
     hello: "Olá",
-    labels: { reference: "Referência", vehicle: "Veículo", dates: "Datas", quantity: "Quantidade", total: "Total" },
+    labels: { reference: "Referência", vehicle: "Veículo", tour: "Excursão", dates: "Datas", date: "Data", departure: "Partida", quantity: "Quantidade", participants: "Participantes", pricePerPerson: "Preço por pessoa", total: "Total" },
     pay: "Pagamento no local, sem caução.",
     contact: "Dúvidas? Escreva-nos no WhatsApp:",
     RECEIVED: { subject: "Recebemos o seu pedido de reserva", intro: "Recebemos o seu pedido. Está pendente de confirmação." },
@@ -77,11 +77,21 @@ function buildStatusEmail(status, reservation) {
   const copy = t[status];
   const showPay = status === "CONFIRMED";
 
+  const isTour = reservation.type === "tour";
   const rows = [
     [t.labels.reference, reservation.reference],
-    [t.labels.vehicle, reservation.productName],
-    [t.labels.dates, `${reservation.startDate} - ${reservation.endDate}`],
-    [t.labels.quantity, String(reservation.quantity)],
+    [isTour ? t.labels.tour : t.labels.vehicle, reservation.productName],
+    isTour
+      ? [t.labels.date, reservation.date]
+      : [t.labels.dates, `${reservation.startDate} - ${reservation.endDate}`],
+    ...(isTour ? [[t.labels.departure, reservation.departureTime]] : []),
+    [isTour ? t.labels.participants : t.labels.quantity, String(reservation.quantity)],
+    ...(isTour
+      ? [[
+          t.labels.pricePerPerson,
+          `${Number(reservation.unitPrice).toFixed(2)} ${reservation.currency}`,
+        ]]
+      : []),
     [t.labels.total, `${Number(reservation.totalPrice).toFixed(2)} ${reservation.currency}`],
   ];
 

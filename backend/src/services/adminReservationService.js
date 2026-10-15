@@ -29,11 +29,15 @@ function serialize(doc) {
     id: doc.id,
     reference: data.reference || doc.id.slice(0, 8).toUpperCase(),
     status: data.status,
+    type: data.type ?? "rental",
     productId: data.productId,
     productName: data.productName,
     startDate: data.startDate,
     endDate: data.endDate,
+    date: data.date,
+    departureTime: data.departureTime,
     quantity: data.quantity,
+    unitPrice: data.unitPrice,
     totalPrice: data.totalPrice,
     currency: data.currency ?? "EUR",
     customer: {
@@ -141,7 +145,7 @@ async function updateReservationStatus(id, nextStatus, adminUser) {
 
     // Toutes les LECTURES avant toutes les ÉCRITURES (règle des transactions Firestore)
     let releases = [];
-    if (nextStatus === "CANCELLED") {
+    if (nextStatus === "CANCELLED" && data.type !== "tour") {
       const refs = expandDateRange(data.startDate, data.endDate).map((date) =>
         db.collection("availability").doc(`${data.productId}_${date}`),
       );

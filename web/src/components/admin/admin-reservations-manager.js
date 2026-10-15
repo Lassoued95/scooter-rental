@@ -96,6 +96,7 @@ function ReservationDialog({ busy, onClose, onStatus, reservation }) {
   }, [onClose]);
 
   const { customer } = reservation;
+  const isTour = reservation.type === "tour";
   const days = countDays(reservation.startDate, reservation.endDate);
   const greeting = (WHATSAPP_GREETING[reservation.locale] ?? WHATSAPP_GREETING.en)(
     customer.name,
@@ -117,7 +118,11 @@ function ReservationDialog({ busy, onClose, onStatus, reservation }) {
   function handleAction(action) {
     if (
       action.to === "CANCELLED" &&
-      !window.confirm("Annuler cette réservation ? Le véhicule sera de nouveau disponible pour ces dates.")
+      !window.confirm(
+        isTour
+          ? "Annuler cette demande d'excursion ?"
+          : "Annuler cette réservation ? Le véhicule sera de nouveau disponible pour ces dates.",
+      )
     ) {
       return;
     }
@@ -125,11 +130,17 @@ function ReservationDialog({ busy, onClose, onStatus, reservation }) {
   }
 
   const rows = [
-    ["Véhicule", `${reservation.productName} × ${reservation.quantity}`],
-    [
-      "Dates",
-      `${formatDay(reservation.startDate)} → ${formatDay(reservation.endDate)} (${days} jour${days > 1 ? "s" : ""})`,
-    ],
+    [isTour ? "Excursion" : "Véhicule", reservation.productName],
+    [isTour ? "Participants" : "Quantité", reservation.quantity],
+    isTour
+      ? ["Date", `${formatDay(reservation.date)} · ${reservation.departureTime}`]
+      : [
+          "Dates",
+          `${formatDay(reservation.startDate)} → ${formatDay(reservation.endDate)} (${days} jour${days > 1 ? "s" : ""})`,
+        ],
+    ...(isTour
+      ? [["Prix par personne", formatMoney(reservation.unitPrice, reservation.currency)]]
+      : []),
     ["Total", formatMoney(reservation.totalPrice, reservation.currency)],
     ["Hôtel (prise en charge)", customer.hotel || "Non précisé"],
     ["Reçue le", formatDateTime(reservation.createdAt)],
@@ -473,12 +484,16 @@ export function AdminReservationsManager() {
                     <StatusBadge status={reservation.status} />
                   </span>
                   <span className="text-sm text-foreground">
-                    {reservation.productName} × {reservation.quantity}
+                    {reservation.type === "tour"
+                      ? `${reservation.productName} · ${reservation.quantity} participant(s)`
+                      : `${reservation.productName} × ${reservation.quantity}`}
                   </span>
                   <span className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
                     <span className="inline-flex items-center gap-1.5">
                       <CalendarDays aria-hidden="true" size={15} />
-                      {formatDay(reservation.startDate)} → {formatDay(reservation.endDate)}
+                      {reservation.type === "tour"
+                        ? `${formatDay(reservation.date)} · ${reservation.departureTime}`
+                        : `${formatDay(reservation.startDate)} → ${formatDay(reservation.endDate)}`}
                     </span>
                     {reservation.customer.hotel && <span>{reservation.customer.hotel}</span>}
                   </span>

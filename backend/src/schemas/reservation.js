@@ -15,10 +15,11 @@ const sanitizeText = (value) => {
 
 const itemSchema = z.object({
   productId: z.string().trim().min(1).max(120).regex(/^[a-z0-9-]+$/i),
-  quantity: z.number().int().min(1).max(10),
+  quantity: z.number().int().min(1),
   startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  departureTime: z.enum(["08:00", "14:00"]).optional(),
 }).superRefine((item, ctx) => {
   const hasVehicleRange = Boolean(item.startDate && item.endDate);
   const hasTourDate = Boolean(item.date);
@@ -44,6 +45,30 @@ const itemSchema = z.object({
       code: z.ZodIssueCode.custom,
       path: ["date"],
       message: "Use either date for tours or a rental range for vehicles.",
+    });
+  }
+
+  if (hasVehicleRange && item.quantity > 10) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["quantity"],
+      message: "Rental quantity cannot exceed 10.",
+    });
+  }
+
+  if (hasTourDate && !item.departureTime) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["departureTime"],
+      message: "A departure time is required for tours.",
+    });
+  }
+
+  if (!hasTourDate && item.departureTime) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["departureTime"],
+      message: "Departure times are only valid for tours.",
     });
   }
 });

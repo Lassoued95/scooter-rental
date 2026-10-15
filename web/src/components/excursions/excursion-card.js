@@ -28,19 +28,17 @@ export async function ExcursionCard({ tour, locale, index }) {
       ? null
       : new Intl.NumberFormat(locale, {
           style: "currency",
-          currency: tour.price?.currency ?? "EUR",
+          currency: tour.currency ?? tour.price?.currency ?? "EUR",
           maximumFractionDigits: 2,
           minimumFractionDigits: Number.isInteger(amount) ? 0 : 2,
         }).format(amount);
 
-  const unit = tour.price?.unit ?? "person";
-  const unitLabel = t.has(`units.${unit}`) ? t(`units.${unit}`) : null;
+  const unitLabel = t("units.person");
 
   const typeLabel = t.has(`types.${tour.tourType}`)
     ? t(`types.${tour.tourType}`)
     : t("types.default");
 
-  const places = Number(tour.capacityPerSlot);
   const src = imageSrc(tour.images?.[0]);
   const highlights = (tour.highlights ?? []).filter(Boolean).slice(0, 3);
 
@@ -124,12 +122,10 @@ export async function ExcursionCard({ tour, locale, index }) {
           )}
 
           <div className="mt-auto pt-6">
-            {Number.isFinite(places) && places > 0 && (
-              <p className="m-0 mb-4 inline-flex items-center gap-2 text-sm font-medium text-muted">
-                <Users aria-hidden="true" size={16} />
-                {t("placesPerDeparture", { count: places })}
-              </p>
-            )}
+            <p className="m-0 mb-4 inline-flex items-center gap-2 text-sm font-medium text-muted">
+              <Users aria-hidden="true" size={16} />
+              {t("detail.guideIncluded")}
+            </p>
 
             <a
               className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-5 font-bold text-primary-foreground transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:-translate-y-0.5"

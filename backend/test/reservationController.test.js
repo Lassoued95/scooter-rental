@@ -9,6 +9,8 @@ class MockReservationError extends Error {
 }
 
 let createCalls = 0;
+let tourCalls = 0;
+let tourInput = null;
 const reservationServicePath = require.resolve("../src/services/reservationService");
 const productServicePath = require.resolve("../src/services/productService");
 const availabilityServicePath = require.resolve("../src/services/availabilityService");
@@ -19,6 +21,11 @@ require.cache[reservationServicePath] = {
   loaded: true,
   exports: {
     ReservationError: MockReservationError,
+    createTourReservation: async (input) => {
+      tourCalls += 1;
+      tourInput = input;
+      return { id: "tour-reservation", reference: "TOUR1234", status: "PENDING" };
+    },
     createVehicleReservation: async () => {
       createCalls += 1;
       throw new MockReservationError("Internal details must not be returned.", 409);
@@ -88,4 +95,95 @@ test("reservation errors return a safe message, not the internal error.message",
   assert.equal(response.statusCode, 409);
   assert.equal(response.body.message, "The requested dates or quantity are not available.");
   assert.ok(!response.body.message.includes("Internal details"));
+});
+
+test("tour requests accept more than ten participants and preserve the departure time", async () => {
+  tourCalls = 0;
+  tourInput = null;
+  const response = responseCapture();
+
+  await createReservationHandler(
+    {
+      body: {
+        items: [{
+          productId: "island-tour",
+          quantity: 25,
+          date: "2026-10-20",
+          departureTime: "14:00",
+        }],
+        customer: {
+          fullName: "Test Customer",
+          phone: "+21612345678",
+          email: "customer@example.test",
+        },
+        locale: "en",
+        termsAccepted: true,
+      },
+    },
+    response,
+  );
+
+  assert.equal(response.statusCode, 201);
+  assert.equal(response.body.reservation.reference, "TOUR1234");
+  assert.equal(tourCalls, 1);
+  assert.equal(tourInput.items[0].quantity, 25);
+  assert.equal(tourInput.items[0].departureTime, "14:00");
+});
+
+test("tour requests reject departure times other than the two scheduled slots", async () => {
+  tourCalls = 0;
+  const response = responseCapture();
+
+  await createReservationHandler(
+    {
+      body: {
+        items: [{
+          productId: "island-tour",
+          quantity: 1,
+          date: "2026-10-20",
+          departureTime: "10:00",
+        }],
+        customer: {
+          fullName: "Test Customer",
+          phone: "+21612345678",
+          email: "customer@example.test",
+        },
+        locale: "en",
+        termsAccepted: true,
+      },
+    },
+    response,
+  );
+
+  assert.equal(response.statusCode, 400);
+  assert.equal(tourCalls, 0);
+});
+
+test("scooter reservation quantity remains capped at ten", async () => {
+  createCalls = 0;
+  const response = responseCapture();
+
+  await createReservationHandler(
+    {
+      body: {
+        items: [{
+          productId: "scooter-125",
+          quantity: 11,
+          startDate: "2026-10-20",
+          endDate: "2026-10-20",
+        }],
+        customer: {
+          fullName: "Test Customer",
+          phone: "+21612345678",
+          email: "customer@example.test",
+        },
+        locale: "en",
+        termsAccepted: true,
+      },
+    },
+    response,
+  );
+
+  assert.equal(response.statusCode, 400);
+  assert.equal(createCalls, 0);
 });

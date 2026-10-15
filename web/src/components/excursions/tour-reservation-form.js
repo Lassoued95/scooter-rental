@@ -1,62 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CalendarDays, CheckCircle2, LoaderCircle } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { ApiError, apiFetch } from "@/lib/api/client";
+import { ApiError } from "@/lib/api/client";
 import { createReservation } from "@/lib/api/reservations";
-import { isIsoDate, todayInTunis } from "@/lib/cart/dates";
+import { todayInTunis } from "@/lib/cart/dates";
 
 const inputClass =
   "mt-2 min-h-12 w-full rounded-xl border border-border bg-background px-3 text-foreground outline-none transition placeholder:text-muted/70 focus:border-primary focus:ring-2 focus:ring-primary/20";
 
-export function TourReservationForm({ productId, capacity, whatsappUrl }) {
+export function TourReservationForm({ productId, whatsappUrl }) {
   const t = useTranslations("excursions");
   const tp = useTranslations("products");
   const locale = useLocale();
   const [today] = useState(todayInTunis);
-  const [date, setDate] = useState("");
   const [pending, setPending] = useState(false);
   const [result, setResult] = useState(null); // null | { reference }
   const [errorKey, setErrorKey] = useState("");
-  const [availability, setAvailability] = useState({
-    date: null,
-    status: "idle",
-    available: null,
-  });
-
-  // Places restantes pour la date choisie (n'empêche jamais l'envoi)
-  useEffect(() => {
-    if (!isIsoDate(date)) return;
-    let cancelled = false;
-
-    const timer = setTimeout(async () => {
-      try {
-        const data = await apiFetch(
-          `/api/products/${encodeURIComponent(productId)}/availability?date=${date}`,
-          { revalidate: 0 },
-        );
-        const available = Number(data?.available);
-        if (cancelled) return;
-        setAvailability(
-          Number.isFinite(available)
-            ? { date, status: "ok", available }
-            : { date, status: "error", available: null },
-        );
-      } catch {
-        if (!cancelled) setAvailability({ date, status: "error", available: null });
-      }
-    }, 400);
-
-    return () => {
-      cancelled = true;
-      clearTimeout(timer);
-    };
-  }, [date, productId]);
-
-  const dateReady = isIsoDate(date);
-  const current = dateReady && availability.date === date ? availability : null;
-  const checking = dateReady && !current;
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -71,6 +32,7 @@ export function TourReservationForm({ productId, capacity, whatsappUrl }) {
             productId,
             quantity: Number(formData.get("quantity")),
             date: formData.get("date"),
+            departureTime: formData.get("departureTime"),
           },
         ],
         customer: {
@@ -92,21 +54,12 @@ export function TourReservationForm({ productId, capacity, whatsappUrl }) {
     } catch (submitError) {
       const status = submitError instanceof ApiError ? submitError.status : 0;
       setErrorKey(
-        status === 409
-          ? "availabilityError"
-          : status === 429
-            ? "rateLimitError"
-            : "errorMessage",
+        status === 429 ? "rateLimitError" : "errorMessage",
       );
     } finally {
       setPending(false);
     }
   }
-
-  const maxQuantity =
-    Number.isFinite(Number(capacity)) && Number(capacity) > 0
-      ? Math.min(Number(capacity), 10)
-      : 10;
 
   return (
     <section
@@ -152,17 +105,30 @@ export function TourReservationForm({ productId, capacity, whatsappUrl }) {
                 className={inputClass}
                 min={today || undefined}
                 name="date"
-                onChange={(event) => setDate(event.target.value)}
                 required
                 type="date"
               />
             </label>
             <label className="text-sm font-semibold text-foreground">
+              {t("reservation.departureTime")}
+              <select
+                className={inputClass}
+                defaultValue=""
+                name="departureTime"
+                required
+              >
+                <option disabled value="">
+                  {t("reservation.selectDepartureTime")}
+                </option>
+                <option value="08:00">08:00</option>
+                <option value="14:00">14:00</option>
+              </select>
+            </label>
+            <label className="text-sm font-semibold text-foreground sm:col-span-2">
               {t("reservation.participants")}
               <input
                 className={inputClass}
                 defaultValue="1"
-                max={maxQuantity}
                 min="1"
                 name="quantity"
                 required
@@ -170,25 +136,6 @@ export function TourReservationForm({ productId, capacity, whatsappUrl }) {
               />
             </label>
           </div>
-
-          {(checking || current) && (
-            <p
-              aria-live="polite"
-              className={`m-0 text-sm font-medium ${
-                current?.status === "ok" && current.available <= 0
-                  ? "text-error"
-                  : "text-muted"
-              }`}
-            >
-              {checking
-                ? tp("reservation.checkingAvailability")
-                : current.status === "ok"
-                  ? current.available <= 0
-                    ? t("reservation.fullDate")
-                    : tp("reservation.remaining", { count: current.available })
-                  : tp("reservation.availabilityUnavailable")}
-            </p>
-          )}
 
           <label className="text-sm font-semibold text-foreground">
             {tp("reservation.fullName")}

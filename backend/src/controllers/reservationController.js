@@ -1,5 +1,9 @@
 const { reservationSchema } = require("../schemas/reservation");
-const { createVehicleReservation, ReservationError } = require("../services/reservationService");
+const {
+  createTourReservation,
+  createVehicleReservation,
+  ReservationError,
+} = require("../services/reservationService");
 const productService = require("../services/productService");
 const availabilityService = require("../services/availabilityService");
 const { validateAvailabilityQuery } = require("../utils/availabilityQuery");
@@ -24,21 +28,24 @@ async function createReservationHandler(req, res) {
     });
   }
 
-  if (result.data.items.length !== 1 || result.data.items[0].date) {
+  if (result.data.items.length !== 1) {
     return res.status(400).json({
       success: false,
-      message: "Only single-vehicle reservations are supported.",
+      message: "Only single-product reservations are supported.",
     });
   }
 
   try {
-    const reservation = await createVehicleReservation(result.data);
+    const item = result.data.items[0];
+    const reservation = item.date
+      ? await createTourReservation(result.data)
+      : await createVehicleReservation(result.data);
     return res.status(201).json({ success: true, reservation });
   } catch (error) {
     if (error instanceof ReservationError) {
       const messages = {
         400: "Please check the reservation details and try again.",
-        404: "This vehicle is no longer available.",
+        404: "This product is no longer available.",
         409: "The requested dates or quantity are not available.",
         429: "The reservation limit for this email address or phone number is 3 requests per 24 hours.",
       };

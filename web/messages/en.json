@@ -120,6 +120,10 @@
     "whatsapp": "Contact us on WhatsApp",
     "toggleTheme": "Toggle color theme",
     "language": "Change language",
+    "navRentalLink": "Scooter rental",
+    "navRentalText": "Scooters and bikes for rent",
+    "navExcursions": "Guided scooter tours",
+    "navExcursionsText": "Island, south and north tours",
     "mainNavigation": "Main navigation",
     "navScooters": "Scooter rental",
     "navAbout": "About",
@@ -282,6 +286,69 @@
       "vehicles": "Vehicle types",
       "deposit": "Deposit required"
     }
+  },
+  "excursions": {
+    "metaTitle": "Guided scooter tours in Djerba | Scooter Rental Djerba",
+    "metaDescription": "Explore Djerba on a guided scooter tour. Choose an island, south or north route and request your preferred date and departure time.",
+    "eyebrow": "Excursions",
+    "title": "Discover Djerba on a guided scooter tour",
+    "intro": "Choose your route: the full island, south or north of Djerba.",
+    "trustLine": "Guide included · Prices per person · Departures at 08:00 and 14:00",
+    "from": "From",
+    "viewDetails": "View details",
+    "notFoundTitle": "Excursion not found",
+    "detail": {
+      "backToList": "Back to excursions",
+      "photos": "Tour photos",
+      "noPhoto": "Photo coming soon",
+      "description": "About this tour",
+      "highlights": "Highlights",
+      "specifications": "Tour information",
+      "type": "Route",
+      "guide": "Guiding",
+      "guideIncluded": "Guide included",
+      "pricing": "Tour price"
+    },
+    "reservation": {
+      "title": "Request a tour",
+      "intro": "Choose a date, departure time and number of participants, then enter your contact details. Your request is pending until confirmed.",
+      "date": "Tour date",
+      "departureTime": "Departure time",
+      "selectDepartureTime": "Choose a departure time",
+      "participants": "Number of participants"
+    },
+    "types": {
+      "default": "Tour",
+      "island": "Full island",
+      "south": "South of the island",
+      "north": "North of the island"
+    },
+    "units": {
+      "person": "person",
+      "tour": "tour",
+      "day": "day"
+    },
+    "bookWhatsapp": "Book on WhatsApp",
+    "whatsappMessage": "Hello, I would like to book the {name} tour in Djerba. Preferred date: … Departure time: … Number of participants: …",
+    "whatsappGeneral": "Hello, I have a question about guided tours in Djerba.",
+    "empty": "No excursions are available right now. Message us on WhatsApp.",
+    "howTitle": "How to book",
+    "steps": {
+      "choose": {
+        "title": "Choose your tour",
+        "text": "Choose the full-island, south or north route that suits you."
+      },
+      "message": {
+        "title": "Send your request",
+        "text": "Select your date and departure time, then enter your contact details."
+      },
+      "confirm": {
+        "title": "We will confirm",
+        "text": "The agency will reply with confirmation and tour details."
+      }
+    },
+    "ctaText": "Have a question about a tour?",
+    "ctaWhatsapp": "Message us"
   },
   "faq": {
     "metaTitle": "Frequently asked questions | Scooter rental Djerba",

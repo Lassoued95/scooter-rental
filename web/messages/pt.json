@@ -128,6 +128,10 @@
     "whatsapp": "Fale connosco pelo WhatsApp",
     "toggleTheme": "Mudar tema",
     "language": "Mudar idioma",
+    "navRentalLink": "Aluguer de scooters",
+    "navRentalText": "Scooters e bicicletas para alugar",
+    "navExcursions": "Passeios guiados de scooter",
+    "navExcursionsText": "Passeios pela ilha, sul e norte",
     "mainNavigation": "Navegação principal",
     "navScooters": "Aluguer de scooters",
     "navAbout": "Sobre nós",
@@ -290,6 +294,69 @@
       "vehicles": "Tipos de veículos",
       "deposit": "Caução exigida"
     }
+  },
+  "excursions": {
+    "metaTitle": "Passeios de scooter com guia em Djerba | Scooter Rental Djerba",
+    "metaDescription": "Descubra Djerba num passeio de scooter com guia. Escolha um percurso pela ilha, sul ou norte e solicite a data e o horário de partida.",
+    "eyebrow": "Passeios",
+    "title": "Descubra Djerba num passeio de scooter com guia",
+    "intro": "Escolha o percurso: toda a ilha, o sul ou o norte de Djerba.",
+    "trustLine": "Guia incluído · Preço por pessoa · Partidas às 08:00 e às 14:00",
+    "from": "A partir de",
+    "viewDetails": "Ver detalhes",
+    "notFoundTitle": "Passeio não encontrado",
+    "detail": {
+      "backToList": "Voltar aos passeios",
+      "photos": "Fotografias do passeio",
+      "noPhoto": "Fotografia em breve",
+      "description": "Sobre este passeio",
+      "highlights": "Destaques",
+      "specifications": "Informações do passeio",
+      "type": "Percurso",
+      "guide": "Acompanhamento",
+      "guideIncluded": "Guia incluído",
+      "pricing": "Preço do passeio"
+    },
+    "reservation": {
+      "title": "Pedir um passeio",
+      "intro": "Escolha a data, o horário de partida e o número de participantes e, em seguida, introduza os seus contactos. O pedido aguarda confirmação.",
+      "date": "Data do passeio",
+      "departureTime": "Horário de partida",
+      "selectDepartureTime": "Escolha um horário de partida",
+      "participants": "Número de participantes"
+    },
+    "types": {
+      "default": "Passeio",
+      "island": "Toda a ilha",
+      "south": "Sul da ilha",
+      "north": "Norte da ilha"
+    },
+    "units": {
+      "person": "pessoa",
+      "tour": "passeio",
+      "day": "dia"
+    },
+    "bookWhatsapp": "Reservar pelo WhatsApp",
+    "whatsappMessage": "Olá, gostaria de reservar o passeio {name} em Djerba. Data pretendida: … Horário de partida: … Número de participantes: …",
+    "whatsappGeneral": "Olá, tenho uma pergunta sobre passeios guiados em Djerba.",
+    "empty": "Não há passeios disponíveis neste momento. Escreva-nos pelo WhatsApp.",
+    "howTitle": "Como reservar",
+    "steps": {
+      "choose": {
+        "title": "Escolha o passeio",
+        "text": "Escolha o percurso por toda a ilha, pelo sul ou pelo norte."
+      },
+      "message": {
+        "title": "Envie o seu pedido",
+        "text": "Selecione a data e o horário de partida e introduza os seus contactos."
+      },
+      "confirm": {
+        "title": "Confirmaremos",
+        "text": "A agência responderá com a confirmação e os detalhes do passeio."
+      }
+    },
+    "ctaText": "Tem uma pergunta sobre um passeio?",
+    "ctaWhatsapp": "Escreva-nos"
   },
   "faq": {
     "metaTitle": "Perguntas frequentes | Aluguer de scooters em Djerba",
