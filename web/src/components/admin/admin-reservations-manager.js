@@ -8,6 +8,9 @@ import {
   Phone,
   RefreshCw,
   Search,
+  Trash2,
+  TrendingUp,
+  Wallet,
   X,
 } from "lucide-react";
 import { AdminLoginCard } from "@/components/admin/admin-login-card";
@@ -15,6 +18,7 @@ import { adminErrorMessage, adminRequest } from "@/lib/admin/admin-request";
 import { useAdminSession } from "@/lib/admin/use-admin-session";
 
 const PAGE_SIZE = 20;
+const DELETE_ALL_WORD = "SUPPRIMER";
 
 const STATUS = {
   PENDING: { label: "En attente", badge: "bg-primary/15 text-primary" },
@@ -83,7 +87,29 @@ function StatusBadge({ status }) {
   );
 }
 
-function ReservationDialog({ busy, onClose, onStatus, reservation }) {
+function StatCard({ icon: Icon, label, total, count, currency }) {
+  const ready = typeof total === "number";
+  return (
+    <div className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm">
+      <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary">
+        <Icon aria-hidden="true" size={22} />
+      </span>
+      <div className="min-w-0">
+        <p className="m-0 text-xs font-bold uppercase tracking-[0.14em] text-muted">{label}</p>
+        <p className="mb-0 mt-1 font-display text-3xl font-bold leading-none">
+          {ready ? formatMoney(total, currency) : "–"}
+        </p>
+        <p className="mb-0 mt-2 text-xs text-muted">
+          {ready
+            ? `${count} réservation${count > 1 ? "s" : ""} (confirmées + terminées)`
+            : "Chargement…"}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ReservationDialog({ busy, onClose, onDelete, onStatus, reservation }) {
   const closeRef = useRef(null);
 
   useEffect(() => {
@@ -127,6 +153,15 @@ function ReservationDialog({ busy, onClose, onStatus, reservation }) {
       return;
     }
     onStatus(reservation.id, action.to);
+  }
+
+  function handleDelete() {
+    const holdsStock =
+      !isTour && (reservation.status === "PENDING" || reservation.status === "CONFIRMED");
+    const message =
+      `Supprimer définitivement la réservation ${reservation.reference} ? Cette action est irréversible.` +
+      (holdsStock ? " Le véhicule sera de nouveau disponible pour ces dates." : "");
+    if (window.confirm(message)) onDelete(reservation.id);
   }
 
   const rows = [
@@ -247,25 +282,121 @@ function ReservationDialog({ busy, onClose, onStatus, reservation }) {
           )}
         </div>
 
-        {actions.length > 0 && (
-          <div className="sticky bottom-0 mt-auto flex flex-wrap gap-3 border-t border-border bg-surface p-5">
-            {actions.map((action) => (
-              <button
-                className={`min-h-12 flex-1 rounded-full px-5 text-sm font-bold transition disabled:cursor-wait disabled:opacity-60 ${
-                  action.primary
-                    ? "bg-primary text-primary-foreground hover:bg-primary-hover"
-                    : "border border-error/40 text-error hover:bg-error-background"
-                }`}
-                disabled={busy}
-                key={action.to}
-                onClick={() => handleAction(action)}
-                type="button"
-              >
-                {action.label}
-              </button>
-            ))}
-          </div>
+        <div className="sticky bottom-0 mt-auto grid gap-3 border-t border-border bg-surface p-5">
+          {actions.length > 0 && (
+            <div className="flex flex-wrap gap-3">
+              {actions.map((action) => (
+                <button
+                  className={`min-h-12 flex-1 rounded-full px-5 text-sm font-bold transition disabled:cursor-wait disabled:opacity-60 ${
+                    action.primary
+                      ? "bg-primary text-primary-foreground hover:bg-primary-hover"
+                      : "border border-error/40 text-error hover:bg-error-background"
+                  }`}
+                  disabled={busy}
+                  key={action.to}
+                  onClick={() => handleAction(action)}
+                  type="button"
+                >
+                  {action.label}
+                </button>
+              ))}
+            </div>
+          )}
+          <button
+            className="flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold text-error transition hover:bg-error-background disabled:cursor-wait disabled:opacity-60"
+            disabled={busy}
+            onClick={handleDelete}
+            type="button"
+          >
+            <Trash2 aria-hidden="true" size={16} />
+            Supprimer définitivement
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function DeleteAllDialog({ busy, count, error, onCancel, onConfirm }) {
+  const [typed, setTyped] = useState("");
+  const inputRef = useRef(null);
+  const ready = typed.trim().toUpperCase() === DELETE_ALL_WORD;
+
+  useEffect(() => {
+    inputRef.current?.focus();
+    function onKeyDown(event) {
+      if (event.key === "Escape" && !busy) onCancel();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [busy, onCancel]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <button
+        aria-label="Fermer"
+        className="absolute inset-0 bg-black/60"
+        disabled={busy}
+        onClick={onCancel}
+        tabIndex={-1}
+        type="button"
+      />
+      <section
+        aria-labelledby="delete-all-title"
+        aria-modal="true"
+        className="relative w-full max-w-md rounded-3xl border border-border bg-surface p-6 shadow-2xl"
+        role="alertdialog"
+      >
+        <span className="flex size-12 items-center justify-center rounded-2xl bg-error-background text-error">
+          <Trash2 aria-hidden="true" size={22} />
+        </span>
+        <h2 className="mb-0 mt-4 font-display text-2xl" id="delete-all-title">
+          Supprimer toutes les réservations ?
+        </h2>
+        <p className="mb-0 mt-3 text-sm leading-6 text-muted">
+          {count} réservation{count > 1 ? "s" : ""} (toutes les périodes et tous les statuts)
+          {count > 1 ? " seront supprimées" : " sera supprimée"} définitivement. Le chiffre
+          d&apos;affaires affiché repartira à zéro et le stock des véhicules sera libéré. Cette
+          action est irréversible.
+        </p>
+
+        <label className="mt-5 block text-sm font-semibold" htmlFor="delete-all-input">
+          Tapez <span className="font-bold text-error">{DELETE_ALL_WORD}</span> pour confirmer
+        </label>
+        <input
+          autoComplete="off"
+          className="mt-2 min-h-11 w-full rounded-xl border border-border bg-background px-3.5 text-sm outline-none focus:border-error focus:ring-2 focus:ring-error/20"
+          id="delete-all-input"
+          onChange={(event) => setTyped(event.target.value)}
+          ref={inputRef}
+          type="text"
+          value={typed}
+        />
+
+        {error && (
+          <p className="mb-0 mt-4 rounded-xl bg-error-background p-3 text-sm text-error" role="alert">
+            {error}
+          </p>
         )}
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <button
+            className="min-h-12 flex-1 rounded-full border border-border px-5 text-sm font-bold transition hover:bg-surface-elevated disabled:opacity-60"
+            disabled={busy}
+            onClick={onCancel}
+            type="button"
+          >
+            Annuler
+          </button>
+          <button
+            className="min-h-12 flex-1 rounded-full bg-error px-5 text-sm font-bold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+            disabled={!ready || busy}
+            onClick={onConfirm}
+            type="button"
+          >
+            {busy ? "Suppression…" : "Tout supprimer"}
+          </button>
+        </div>
       </section>
     </div>
   );
@@ -280,7 +411,9 @@ export function AdminReservationsManager() {
   const [page, setPage] = useState(1);
   const [reloadToken, setReloadToken] = useState(0);
   const [result, setResult] = useState({ key: null, data: null, error: "" });
+  const [stats, setStats] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
+  const [showDeleteAll, setShowDeleteAll] = useState(false);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState("");
   const [actionError, setActionError] = useState("");
@@ -321,6 +454,24 @@ export function AdminReservationsManager() {
     };
   }, [status, user, filter, debouncedQuery, page, requestKey]);
 
+  // chiffre d'affaires (7 et 30 derniers jours) : rechargé avec la liste
+  useEffect(() => {
+    if (status !== "admin" || !user) return;
+    let cancelled = false;
+
+    adminRequest(user, "/api/admin/reservations/stats")
+      .then((data) => {
+        if (!cancelled) setStats(data);
+      })
+      .catch(() => {
+        // les cartes restent sur leur dernière valeur : la liste affiche déjà les erreurs
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [status, user, reloadToken]);
+
   // actualisation automatique toutes les 60 secondes
   useEffect(() => {
     if (status !== "admin") return;
@@ -359,6 +510,51 @@ export function AdminReservationsManager() {
     }
   }
 
+  async function deleteOne(id) {
+    setBusy(true);
+    setActionError("");
+    setNotice("");
+    try {
+      await adminRequest(user, `/api/admin/reservations/${encodeURIComponent(id)}`, {
+        method: "DELETE",
+      });
+
+      setSelectedId(null);
+      // dernière réservation de la page : on revient à la page précédente
+      if ((result.data?.reservations?.length ?? 0) <= 1 && page > 1) {
+        setPage((current) => current - 1);
+      }
+      setReloadToken((token) => token + 1);
+      setNotice("Réservation supprimée.");
+    } catch (requestError) {
+      setActionError(adminErrorMessage(requestError.message));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function deleteAll() {
+    setBusy(true);
+    setActionError("");
+    setNotice("");
+    try {
+      const response = await adminRequest(user, "/api/admin/reservations?confirm=all", {
+        method: "DELETE",
+      });
+
+      const deleted = response.deleted ?? 0;
+      setShowDeleteAll(false);
+      setSelectedId(null);
+      setPage(1);
+      setReloadToken((token) => token + 1);
+      setNotice(`${deleted} réservation${deleted > 1 ? "s" : ""} supprimée${deleted > 1 ? "s" : ""}.`);
+    } catch (requestError) {
+      setActionError(adminErrorMessage(requestError.message));
+    } finally {
+      setBusy(false);
+    }
+  }
+
   if (status === "loading") {
     return (
       <p className="flex items-center gap-3 text-muted" role="status">
@@ -383,12 +579,31 @@ export function AdminReservationsManager() {
   const reservations = data?.reservations ?? [];
   const selected = reservations.find((reservation) => reservation.id === selectedId) ?? null;
   const total = data?.total ?? 0;
+  const totalAll = data?.counts?.all ?? 0;
   const firstItem = total === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;
   const lastItem = Math.min(page * PAGE_SIZE, total);
   const hasNext = page * PAGE_SIZE < total;
 
   return (
     <div className="grid gap-6">
+      {/* Chiffre d'affaires */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <StatCard
+          count={stats?.last7Days?.count}
+          currency={stats?.currency}
+          icon={TrendingUp}
+          label="7 derniers jours"
+          total={stats?.last7Days?.total}
+        />
+        <StatCard
+          count={stats?.last30Days?.count}
+          currency={stats?.currency}
+          icon={Wallet}
+          label="30 derniers jours"
+          total={stats?.last30Days?.total}
+        />
+      </div>
+
       <section className="overflow-hidden rounded-3xl border border-border bg-surface shadow-sm">
         <div className="border-b border-border/70 p-5 sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
@@ -403,15 +618,30 @@ export function AdminReservationsManager() {
                   : "Chargement…"}
               </p>
             </div>
-            <button
-              aria-label="Actualiser la liste"
-              className="flex size-11 items-center justify-center rounded-full border border-border transition hover:bg-surface-elevated"
-              onClick={() => setReloadToken((token) => token + 1)}
-              title="Actualiser la liste"
-              type="button"
-            >
-              <RefreshCw aria-hidden="true" className={loading ? "animate-spin" : ""} size={17} />
-            </button>
+            <div className="flex flex-wrap items-center gap-2">
+              {totalAll > 0 && (
+                <button
+                  className="flex min-h-11 items-center gap-2 rounded-full border border-error/40 px-4 text-sm font-bold text-error transition hover:bg-error-background"
+                  onClick={() => {
+                    setActionError("");
+                    setShowDeleteAll(true);
+                  }}
+                  type="button"
+                >
+                  <Trash2 aria-hidden="true" size={16} />
+                  Tout supprimer
+                </button>
+              )}
+              <button
+                aria-label="Actualiser la liste"
+                className="flex size-11 items-center justify-center rounded-full border border-border transition hover:bg-surface-elevated"
+                onClick={() => setReloadToken((token) => token + 1)}
+                title="Actualiser la liste"
+                type="button"
+              >
+                <RefreshCw aria-hidden="true" className={loading ? "animate-spin" : ""} size={17} />
+              </button>
+            </div>
           </div>
 
           <div
@@ -457,7 +687,7 @@ export function AdminReservationsManager() {
           </label>
         </div>
 
-        {(result.error || actionError) && (
+        {(result.error || (actionError && !showDeleteAll)) && (
           <p className="mx-5 mt-4 rounded-xl bg-error-background p-4 text-sm text-error sm:mx-6" role="alert">
             {actionError || result.error}
           </p>
@@ -560,8 +790,19 @@ export function AdminReservationsManager() {
         <ReservationDialog
           busy={busy}
           onClose={() => setSelectedId(null)}
+          onDelete={deleteOne}
           onStatus={changeStatus}
           reservation={selected}
+        />
+      )}
+
+      {showDeleteAll && (
+        <DeleteAllDialog
+          busy={busy}
+          count={totalAll}
+          error={actionError}
+          onCancel={() => setShowDeleteAll(false)}
+          onConfirm={deleteAll}
         />
       )}
     </div>

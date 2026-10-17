@@ -10,11 +10,13 @@ const {
   deleteProduct,
 } = require("../controllers/adminProductController");
 
-
 const {
   listReservationsHandler,
   getReservationHandler,
   updateReservationStatusHandler,
+  getRevenueStatsHandler,
+  deleteReservationHandler,
+  deleteAllReservationsHandler,
 } = require("../controllers/adminReservationController");
 
 const router = express.Router();
@@ -32,8 +34,11 @@ router.use(
 router.use(requireAdmin);
 
 router.get("/reservations", listReservationsHandler);
+router.get("/reservations/stats", getRevenueStatsHandler); // AVANT /reservations/:id
 router.get("/reservations/:id", getReservationHandler);
 router.patch("/reservations/:id/status", updateReservationStatusHandler);
+router.delete("/reservations/:id", deleteReservationHandler);
+router.delete("/reservations", deleteAllReservationsHandler); // exige ?confirm=all
 
 router.get("/me", (req, res) => {
   res.json({ success: true, admin: req.admin });

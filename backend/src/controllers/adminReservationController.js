@@ -78,8 +78,53 @@ async function updateReservationStatusHandler(req, res) {
   }
 }
 
+// Chiffre d'affaires des 7 et 30 derniers jours
+async function getRevenueStatsHandler(req, res) {
+  try {
+    const stats = await service.getRevenueStats();
+    res.set("Cache-Control", "no-store");
+    return res.json({ success: true, ...stats });
+  } catch (error) {
+    return handleError(res, error, "Revenue stats error:");
+  }
+}
+
+async function deleteReservationHandler(req, res) {
+  try {
+    if (!ID_PATTERN.test(req.params.id)) {
+      return res.status(404).json({ success: false, message: "Reservation not found." });
+    }
+
+    await service.deleteReservation(req.params.id);
+    console.log("[admin] reservation deleted:", req.params.id, "by", req.admin?.email);
+    return res.json({ success: true });
+  } catch (error) {
+    return handleError(res, error, "Delete reservation error:");
+  }
+}
+
+async function deleteAllReservationsHandler(req, res) {
+  try {
+    // garde-fou : un appel accidentel ne doit jamais vider la base
+    if (req.query.confirm !== "all") {
+      return res
+        .status(400)
+        .json({ success: false, message: "Confirmation required." });
+    }
+
+    const { deleted } = await service.deleteAllReservations();
+    console.log("[admin] all reservations deleted:", deleted, "by", req.admin?.email);
+    return res.json({ success: true, deleted });
+  } catch (error) {
+    return handleError(res, error, "Delete all reservations error:");
+  }
+}
+
 module.exports = {
   listReservationsHandler,
   getReservationHandler,
   updateReservationStatusHandler,
+  getRevenueStatsHandler,
+  deleteReservationHandler,
+  deleteAllReservationsHandler,
 };
