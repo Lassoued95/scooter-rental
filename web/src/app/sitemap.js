@@ -28,6 +28,7 @@ export default async function sitemap() {
     "",
     "/scooters",
     "/about",
+    "/faq",
     ...products.map((product) => `/scooters/${product.slug}`),
   ];
 
