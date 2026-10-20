@@ -1,8 +1,12 @@
+import { optimizeCloudinaryUrl } from "@/lib/cloudinary-url";
+
 function parseImage(raw) {
   if (!raw) return null;
 
   if (typeof raw === "string") {
-    if (raw.startsWith("http")) return { src: raw, remote: true };
+    if (raw.startsWith("http")) {
+      return { src: optimizeCloudinaryUrl(raw, { width: 800 }), remote: true };
+    }
     if (raw.startsWith("/")) return { src: raw };
     return { src: raw, cloudinary: true }; // bare publicId
   }

@@ -15,6 +15,8 @@ import { routing } from "@/i18n/routing";
 import { getProducts } from "@/lib/api/products";
 import { whatsappCtaClass } from "@/components/scooters/cta";
 import { DetailGallery } from "@/components/scooters/detail-gallery";
+import { optimizeCloudinaryUrl } from "@/lib/cloudinary-url";
+import { OG_LOCALES } from "@/lib/og-locales";
 import {
   FadeUp,
   Float,
@@ -40,13 +42,13 @@ function formatPrice(amount, locale) {
   }).format(amount);
 }
 
-function imageSrc(image, width = 1600) {
+function imageSrc(image, width = 1600, format = "auto") {
   if (!image) return null;
-  if (image.url) return image.url;
+  if (image.url) return optimizeCloudinaryUrl(image.url, { width, format });
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   return image.publicId && cloudName
-    ? `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto,w_${width}/${image.publicId}`
+    ? `https://res.cloudinary.com/${cloudName}/image/upload/f_${format},q_auto,w_${width}/${image.publicId}`
     : null;
 }
 
@@ -68,7 +70,7 @@ export async function generateMetadata({ params }) {
 
   const description =
     product.description || product.tagline || t("metaDescription");
-  const cover = imageSrc(product.images?.[0]);
+  const cover = imageSrc(product.images?.[0], 1200, "jpg");
   const path = `/${locale}/scooters/${product.slug}`;
 
   return {
@@ -91,7 +93,7 @@ export async function generateMetadata({ params }) {
       description,
       type: "website",
       siteName: "Location Scooter Djerba",
-      locale,
+      locale: OG_LOCALES[locale] ?? locale,
       url: path,
       ...(cover ? { images: [cover] } : {}),
     },

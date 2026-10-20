@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
+import { OG_LOCALES } from "@/lib/og-locales";
 import "../globals.css";
 
 const SITE_URL = "https://www.scooterdjerba.com";
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }) {
       siteName: "Location Scooter Djerba",
       title: t("title"),
       description: t("description"),
-      locale,
+      locale: OG_LOCALES[locale] ?? locale,
     },
   };
 }
