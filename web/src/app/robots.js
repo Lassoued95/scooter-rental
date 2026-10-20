@@ -1,8 +1,6 @@
 export default function robots() {
   return {
-    rules: {
-      userAgent: "*",
-      disallow: ["/admin", "/*/admin"],
-    },
+    rules: { userAgent: "*", allow: "/", disallow: ["/*/admin"] },
+    sitemap: "https://www.scooterdjerba.com/sitemap.xml",
   };
 }

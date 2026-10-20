@@ -10,6 +10,8 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import "../globals.css";
 
+const SITE_URL = "https://www.scooterdjerba.com";
+
 const sans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin", "latin-ext"],
@@ -32,15 +34,26 @@ export async function generateMetadata({ params }) {
   const t = await getTranslations({ locale, namespace: "metadata" });
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
     alternates: {
-      languages: Object.fromEntries(
-        routing.locales.map((supportedLocale) => [
-          supportedLocale,
-          `/${supportedLocale}`,
-        ]),
-      ),
+      languages: {
+        ...Object.fromEntries(
+          routing.locales.map((supportedLocale) => [
+            supportedLocale,
+            `/${supportedLocale}`,
+          ]),
+        ),
+        "x-default": `/${routing.defaultLocale}`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      siteName: "Location Scooter Djerba",
+      title: t("title"),
+      description: t("description"),
+      locale,
     },
   };
 }
@@ -53,7 +66,7 @@ export default async function LocaleLayout({ children, params }) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html data-scroll-behavior="smooth" lang={locale} suppressHydrationWarning>
       <body className={`${sans.variable} ${display.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider

@@ -26,6 +26,7 @@ import { PricingCard } from "@/components/scooters/pricing-card";
 import { ReservationForm } from "@/components/scooters/reservation-form";
 
 const WHATSAPP_NUMBER = "21628340240";
+const SITE_URL = "https://www.scooterdjerba.com";
 
 export const revalidate = 300;
 
@@ -68,23 +69,30 @@ export async function generateMetadata({ params }) {
   const description =
     product.description || product.tagline || t("metaDescription");
   const cover = imageSrc(product.images?.[0]);
+  const path = `/${locale}/scooters/${product.slug}`;
 
   return {
     title: `${product.name} | ${t("metaTitle")}`,
     description,
     alternates: {
-      canonical: `/${locale}/scooters/${product.slug}`,
-      languages: Object.fromEntries(
-        routing.locales.map((supportedLocale) => [
-          supportedLocale,
-          `/${supportedLocale}/scooters/${product.slug}`,
-        ]),
-      ),
+      canonical: path,
+      languages: {
+        ...Object.fromEntries(
+          routing.locales.map((supportedLocale) => [
+            supportedLocale,
+            `/${supportedLocale}/scooters/${product.slug}`,
+          ]),
+        ),
+        "x-default": `/${routing.defaultLocale}/scooters/${product.slug}`,
+      },
     },
     openGraph: {
       title: product.name,
       description,
       type: "website",
+      siteName: "Location Scooter Djerba",
+      locale,
+      url: path,
       ...(cover ? { images: [cover] } : {}),
     },
   };
@@ -209,19 +217,24 @@ export default async function ScooterDetailsPage({ params }) {
     t("detail.trustHelmets"),
   ];
 
+    const pageUrl = `${SITE_URL}/${locale}/scooters/${product.slug}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
+    url: pageUrl,
     description: product.description || undefined,
     image: gallery.map((image) => image.src),
     ...(lowestPrice != null
       ? {
           offers: {
             "@type": "Offer",
+            url: pageUrl,
             priceCurrency: "EUR",
             price: lowestPrice,
             availability: "https://schema.org/InStock",
+            seller: { "@type": "Organization", name: "Location Scooter Djerba" },
           },
         }
       : {}),
