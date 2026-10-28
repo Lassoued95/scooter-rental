@@ -4,23 +4,33 @@ import { routing } from "@/i18n/routing";
 
 const handleI18nRouting = createMiddleware(routing);
 
+function getPreferredLocale(request) {
+  const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
+  return routing.locales.includes(cookieLocale)
+    ? cookieLocale
+    : routing.defaultLocale;
+}
+
 export default function proxy(request) {
-  if (request.nextUrl.pathname === "/") {
-    const preferredLocale = request.cookies.get("NEXT_LOCALE")?.value;
-    const locale = routing.locales.includes(preferredLocale)
-      ? preferredLocale
-      : routing.defaultLocale;
-    const localizedUrl = request.nextUrl.clone();
-    localizedUrl.pathname = `/${locale}`;
-    return NextResponse.redirect(localizedUrl);
+  const { pathname } = request.nextUrl;
+  const firstSegment = pathname.split("/")[1];
+
+  // Valid language prefix: next-intl handles it
+  if (routing.locales.includes(firstSegment)) {
+    return handleI18nRouting(request);
   }
 
-  const localePrefix = request.nextUrl.pathname.split("/")[1];
-  if (!routing.locales.includes(localePrefix)) return NextResponse.next();
+  // Looks like a language code but is not supported (/xx/...): normal 404
+  if (/^[a-z]{2}$/.test(firstSegment)) return NextResponse.next();
 
-  return handleI18nRouting(request);
+  // No language prefix (/, /about, /faq, /scooters/...): redirect, keeping path and query
+  const locale = getPreferredLocale(request);
+  const url = request.nextUrl.clone();
+  url.pathname = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
+  return NextResponse.redirect(url);
 }
 
 export const config = {
-  matcher: ["/", "/:locale([a-z]{2})/:path*"],
+  // everything except the API, Next.js internals and static files (anything with a dot)
+  matcher: "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
 };
